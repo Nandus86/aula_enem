@@ -1,0 +1,7 @@
+bin/
+*.pdf
+*.tex
+*.bat
+*.aux
+*.log
+*.out

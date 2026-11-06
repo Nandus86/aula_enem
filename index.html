@@ -1,0 +1,2294 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ENEM: Matemática & Suas Tecnologias | Revisão Reta Final</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #070913;
+      --bg-card: rgba(20, 26, 46, 0.82);
+      --bg-card-solid: #141a2e;
+      --primary: #6366f1;
+      --primary-glow: rgba(99, 102, 241, 0.4);
+      --accent: #f59e0b;
+      --accent-glow: rgba(245, 158, 11, 0.35);
+      --emerald: #10b981;
+      --emerald-glow: rgba(16, 185, 129, 0.35);
+      --rose: #f43f5e;
+      --cyan: #06b6d4;
+      --purple: #a855f7;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --border: rgba(255, 255, 255, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      overflow: hidden;
+      height: 100vh;
+      width: 100vw;
+      position: relative;
+      background-image: 
+        radial-gradient(circle at 12% 18%, rgba(99, 102, 241, 0.18) 0%, transparent 35%),
+        radial-gradient(circle at 88% 82%, rgba(245, 158, 11, 0.14) 0%, transparent 35%),
+        radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.07) 0%, transparent 60%);
+    }
+
+    body::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Top Bar */
+    .topbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 28px;
+      z-index: 120;
+      background: rgba(7, 9, 19, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      letter-spacing: 0.5px;
+    }
+
+    .brand-badge {
+      background: linear-gradient(135deg, var(--primary), var(--purple));
+      color: white;
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .top-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Timer Widget */
+    .timer-widget {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      padding: 5px 12px;
+      border-radius: 999px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+    }
+
+    .timer-display {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 50px;
+      text-align: center;
+    }
+
+    .timer-display.urgent {
+      color: var(--rose);
+      animation: pulse 0.8s infinite;
+    }
+
+    .btn-icon {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      padding: 7px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.82rem;
+      font-weight: 600;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-icon:hover {
+      background: rgba(255, 255, 255, 0.16);
+      transform: translateY(-1px);
+    }
+
+    .btn-icon.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      box-shadow: 0 0 16px var(--primary-glow);
+    }
+
+    .btn-icon.board-btn {
+      border-color: rgba(16, 185, 129, 0.45);
+      background: rgba(16, 185, 129, 0.12);
+      color: #6ee7b7;
+    }
+
+    .btn-icon.board-btn.active {
+      background: var(--emerald);
+      color: #042f2e;
+      border-color: var(--emerald);
+      box-shadow: 0 0 18px var(--emerald-glow);
+    }
+
+    /* Slide Container */
+    .deck {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      padding: 76px 56px 68px;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .slide {
+      display: none;
+      width: 100%;
+      max-width: 1380px;
+      height: 100%;
+      flex-direction: column;
+      justify-content: center;
+      animation: slideIn 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .slide.active {
+      display: flex;
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(14px) scale(0.99); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.65; transform: scale(1.06); }
+    }
+
+    /* Typography */
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 0.86rem;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      color: var(--accent);
+      margin-bottom: 10px;
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      padding: 5px 14px;
+      border-radius: 999px;
+      width: fit-content;
+    }
+
+    .kicker.cyan {
+      color: var(--cyan);
+      background: rgba(6, 182, 212, 0.12);
+      border-color: rgba(6, 182, 212, 0.3);
+    }
+
+    .kicker.emerald {
+      color: var(--emerald);
+      background: rgba(16, 185, 129, 0.12);
+      border-color: rgba(16, 185, 129, 0.3);
+    }
+
+    .kicker.purple {
+      color: #c084fc;
+      background: rgba(168, 85, 247, 0.12);
+      border-color: rgba(168, 85, 247, 0.3);
+    }
+
+    h1 {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 900;
+      font-size: clamp(2.4rem, 4.2vw, 4rem);
+      line-height: 1.08;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+
+    h2 {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: clamp(1.75rem, 2.7vw, 2.5rem);
+      line-height: 1.15;
+      margin-bottom: 14px;
+      letter-spacing: -0.01em;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #fff 15%, #93c5fd 55%, #f59e0b 95%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subtitle {
+      font-size: clamp(1.05rem, 1.35vw, 1.25rem);
+      color: var(--text-muted);
+      line-height: 1.5;
+      max-width: 960px;
+      margin-bottom: 22px;
+    }
+
+    /* Native HTML Math Typography */
+    .math-inline {
+      font-family: 'JetBrains Mono', monospace;
+      color: #fde68a;
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.07);
+      padding: 1px 6px;
+      border-radius: 5px;
+    }
+
+    .math-frac {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      vertical-align: middle;
+      margin: 0 5px;
+      line-height: 1.12;
+      font-size: 0.92em;
+    }
+
+    .math-frac .num {
+      border-bottom: 1.5px solid currentColor;
+      padding: 0 5px 2px;
+    }
+
+    .math-frac .den {
+      padding: 2px 5px 0;
+    }
+
+    /* Grid Layouts */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      width: 100%;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      width: 100%;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      width: 100%;
+    }
+
+    .card {
+      background: var(--bg-card);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 22px;
+      transition: all 0.25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card:hover {
+      border-color: rgba(255, 255, 255, 0.24);
+    }
+
+    .card.highlight-amber {
+      border-color: rgba(245, 158, 11, 0.45);
+      box-shadow: 0 12px 32px -10px var(--accent-glow);
+    }
+
+    .card.highlight-emerald {
+      border-color: rgba(16, 185, 129, 0.45);
+      box-shadow: 0 12px 32px -10px var(--emerald-glow);
+    }
+
+    .card.highlight-primary {
+      border-color: rgba(99, 102, 241, 0.5);
+      box-shadow: 0 12px 32px -10px var(--primary-glow);
+    }
+
+    .card-title {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 1.24rem;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card p, .card li {
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #cbd5e1;
+    }
+
+    .card ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .card ul li {
+      position: relative;
+      padding-left: 22px;
+    }
+
+    .card ul li::before {
+      content: "⚡";
+      position: absolute;
+      left: 0;
+      top: 1px;
+      font-size: 0.85rem;
+    }
+
+    /* Interactive Quiz System */
+    .quiz-layout {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 22px;
+      width: 100%;
+      align-items: stretch;
+    }
+
+    .question-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .question-text {
+      font-size: 1.12rem;
+      line-height: 1.55;
+      color: #f1f5f9;
+      margin-bottom: 18px;
+    }
+
+    .question-text strong {
+      color: var(--accent);
+    }
+
+    .options-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 11px;
+      margin-top: auto;
+    }
+
+    .option-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 13px;
+      padding: 13px 16px;
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      transition: all 0.2s;
+    }
+
+    .option-btn:hover {
+      background: rgba(99, 102, 241, 0.18);
+      border-color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    .option-letter {
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .option-btn.correct {
+      background: rgba(16, 185, 129, 0.22);
+      border-color: var(--emerald);
+      box-shadow: 0 0 24px var(--emerald-glow);
+    }
+
+    .option-btn.correct .option-letter {
+      background: var(--emerald);
+      color: #052e16;
+    }
+
+    .option-btn.wrong {
+      background: rgba(244, 63, 94, 0.18);
+      border-color: var(--rose);
+      opacity: 0.65;
+    }
+
+    .option-btn.wrong .option-letter {
+      background: var(--rose);
+      color: white;
+    }
+
+    /* Secret Shortcut Box (Hacks) */
+    .hack-panel {
+      background: linear-gradient(160deg, rgba(20, 26, 46, 0.9), rgba(15, 23, 42, 0.95));
+      border: 1px dashed rgba(245, 158, 11, 0.45);
+      border-radius: 20px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+    }
+
+    .hack-locked {
+      text-align: center;
+      padding: 20px 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .reveal-btn {
+      background: linear-gradient(135deg, var(--accent), #ea580c);
+      color: #fff;
+      border: none;
+      padding: 12px 22px;
+      border-radius: 12px;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 10px 25px -5px var(--accent-glow);
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .reveal-btn:hover {
+      transform: translateY(-2px) scale(1.02);
+    }
+
+    .open-board-inline {
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      color: #6ee7b7;
+      padding: 8px 14px;
+      border-radius: 10px;
+      font-size: 0.86rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .open-board-inline:hover {
+      background: rgba(16, 185, 129, 0.28);
+    }
+
+    .hack-content {
+      display: none;
+      animation: slideIn 0.35s ease;
+    }
+
+    .hack-content.visible {
+      display: block;
+    }
+
+    .formula-pill {
+      font-family: 'JetBrains Mono', monospace;
+      background: rgba(0, 0, 0, 0.45);
+      border-left: 4px solid var(--emerald);
+      padding: 12px 15px;
+      border-radius: 10px;
+      margin: 10px 0;
+      font-size: 0.98rem;
+      line-height: 1.6;
+      color: #6ee7b7;
+    }
+
+    .comp-badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 0.8rem;
+      margin-bottom: 8px;
+    }
+
+    .stat-big {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 900;
+      font-size: 2.5rem;
+      line-height: 1;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+
+    /* Speaker Notes Drawer */
+    .notes-drawer {
+      position: fixed;
+      bottom: 64px;
+      left: 32px;
+      width: 540px;
+      max-width: calc(100vw - 64px);
+      background: rgba(15, 23, 42, 0.97);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(99, 102, 241, 0.5);
+      border-radius: 16px;
+      padding: 20px;
+      z-index: 130;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+      display: none;
+    }
+
+    .notes-drawer.open {
+      display: block;
+      animation: slideIn 0.25s ease;
+    }
+
+    .notes-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      color: #818cf8;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .notes-body {
+      font-size: 0.96rem;
+      line-height: 1.55;
+      color: #e2e8f0;
+    }
+
+    /* ==========================================
+       INTERACTIVE WHITEBOARD / QUADRO BRANCO
+       ========================================== */
+    .wb-wrapper {
+      position: fixed;
+      top: 64px;
+      left: 0;
+      right: 0;
+      bottom: 56px;
+      z-index: 85;
+      display: none;
+      pointer-events: auto;
+    }
+
+    .wb-wrapper.open {
+      display: block;
+    }
+
+    .wb-wrapper.bg-transparent {
+      background: rgba(7, 9, 19, 0.15);
+    }
+
+    .wb-wrapper.bg-chalkboard {
+      background-color: #0b1324;
+      background-image: 
+        linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+
+    .wb-wrapper.bg-whiteboard {
+      background-color: #f8fafc;
+      background-image: 
+        linear-gradient(to right, rgba(15,23,42,0.07) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(15,23,42,0.07) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+
+    #wbCanvas {
+      width: 100%;
+      height: 100%;
+      cursor: crosshair;
+      touch-action: none;
+    }
+
+    .wb-toolbar {
+      position: absolute;
+      top: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 999px;
+      padding: 8px 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+      z-index: 95;
+    }
+
+    .wb-divider {
+      width: 1px;
+      height: 24px;
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .wb-mode-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: #e2e8f0;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .wb-mode-btn.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #fff;
+    }
+
+    .color-swatch {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.25);
+      cursor: pointer;
+      transition: transform 0.15s, border-color 0.15s;
+    }
+
+    .color-swatch:hover {
+      transform: scale(1.12);
+    }
+
+    .color-swatch.active {
+      transform: scale(1.2);
+      border-color: #fff;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+    }
+
+    /* Bottom Navigation Bar */
+    .bottombar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 56px;
+      background: rgba(7, 9, 19, 0.9);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 32px;
+      z-index: 120;
+    }
+
+    .progress-Wrap {
+      flex: 1;
+      max-width: 460px;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 999px;
+      overflow: hidden;
+      margin: 0 24px;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      width: 6%;
+      transition: width 0.3s ease;
+    }
+
+    .nav-btns {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .slide-counter {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      min-width: 75px;
+    }
+
+    #confetti-canvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 150;
+    }
+
+    @media (max-width: 1100px) {
+      .deck { padding: 72px 24px 64px; overflow-y: auto; }
+      .grid-2, .grid-3, .grid-4, .quiz-layout { grid-template-columns: 1fr; }
+      .wb-toolbar { flex-wrap: wrap; border-radius: 16px; width: 92%; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-badge">RETA FINAL</span>
+      <span>MATEMÁTICA & SUAS TECNOLOGIAS • ENEM</span>
+    </div>
+
+    <div class="top-controls">
+      <div class="timer-widget" title="Cronômetro de Desafio para os Alunos">
+        <span>⏱️</span>
+        <span class="timer-display" id="timerDisplay">01:00</span>
+        <button class="btn-icon" onclick="startTimer(90)">90s</button>
+        <button class="btn-icon" onclick="startTimer(60)">60s</button>
+        <button class="btn-icon" onclick="startTimer(30)">30s</button>
+        <button class="btn-icon" onclick="resetTimer()">↺</button>
+      </div>
+
+      <button class="btn-icon board-btn" id="wbToggleBtn" onclick="toggleWhiteboard()" title="Atalho: Tecla B ou Q">
+        ✏️ Quadro Branco (B)
+      </button>
+      <button class="btn-icon" id="notesPopupBtn" onclick="openPresenterPopup()" title="Abre uma janela separada para arrastar para a tela do seu Notebook (Modo Estendido)" style="border-color: rgba(245, 158, 11, 0.5); background: rgba(245, 158, 11, 0.14); color: #fde68a;">
+        🖥️ Guia 2ª Tela (P)
+      </button>
+      <button class="btn-icon" id="notesToggleBtn" onclick="toggleNotes()" title="Atalho: Tecla N">
+        🎙️ Guia Local (N)
+      </button>
+      <button class="btn-icon" onclick="toggleFullScreen()" title="Atalho: Tecla F">
+        ⛶ Tela Cheia (F)
+      </button>
+    </div>
+  </header>
+
+  <!-- INTERACTIVE WHITEBOARD / QUADRO DE CONTAS -->
+  <div class="wb-wrapper bg-transparent" id="wbWrapper">
+    <div class="wb-toolbar">
+      <span style="font-family:'Outfit'; font-weight:800; font-size:0.85rem; color:#6ee7b7;">✏️ QUADRO:</span>
+      <button class="wb-mode-btn active" id="modeTransparent" onclick="setBoardBg('transparent')" title="Riscar direto por cima do slide">Riscar Slide</button>
+      <button class="wb-mode-btn" id="modeChalk" onclick="setBoardBg('chalkboard')" title="Fundo escuro quadriculado para fazer contas">Lousa Escura</button>
+      <button class="wb-mode-btn" id="modeWhite" onclick="setBoardBg('whiteboard')" title="Quadro branco quadriculado">Quadro Branco</button>
+
+      <div class="wb-divider"></div>
+
+      <!-- Colors -->
+      <div class="color-swatch active" style="background:#facc15;" onclick="setPenColor('#facc15', this)" title="Amarelo Neon"></div>
+      <div class="color-swatch" style="background:#22d3ee;" onclick="setPenColor('#22d3ee', this)" title="Azul Ciano"></div>
+      <div class="color-swatch" style="background:#10b981;" onclick="setPenColor('#10b981', this)" title="Verde"></div>
+      <div class="color-swatch" style="background:#f43f5e;" onclick="setPenColor('#f43f5e', this)" title="Vermelho"></div>
+      <div class="color-swatch" style="background:#ffffff;" onclick="setPenColor('#ffffff', this)" title="Branco"></div>
+      <div class="color-swatch" style="background:#0f172a;" onclick="setPenColor('#0f172a', this)" title="Preto (para o Quadro Branco)"></div>
+
+      <div class="wb-divider"></div>
+
+      <button class="wb-mode-btn active" id="toolPen" onclick="setPenTool('pen')">🖊️ Caneta</button>
+      <button class="wb-mode-btn" id="toolHighlighter" onclick="setPenTool('highlighter')">🖍️ Marca-Texto</button>
+      <button class="wb-mode-btn" id="toolEraser" onclick="setPenTool('eraser')">🧽 Borracha</button>
+
+      <div class="wb-divider"></div>
+
+      <button class="wb-mode-btn" onclick="undoStroke()" title="Desfazer último traço (Ctrl+Z)">↩️ Desfazer</button>
+      <button class="wb-mode-btn" onclick="clearBoard()" title="Apagar tudo">🗑️ Limpar</button>
+      <button class="wb-mode-btn" style="background:rgba(244,63,94,0.25); border-color:var(--rose);" onclick="toggleWhiteboard()">✕ Fechar (B)</button>
+    </div>
+
+    <canvas id="wbCanvas"></canvas>
+  </div>
+
+    <!-- SPEAKER NOTES DRAWER -->
+  <aside class="notes-drawer" id="notesDrawer" style="max-height: 75vh; overflow-y: auto; width: 640px;">
+    <div class="notes-header">
+      <span>🎙️ Guia Completo do Professor</span>
+      <div style="display:flex; gap:10px; align-items:center;">
+        <button class="btn-icon" onclick="openPresenterPopup()" style="padding:3px 8px; font-size:0.75rem; background:var(--accent); color:#000; border:none;">↗ Destacar em 2ª Tela (Popup)</button>
+        <span style="cursor:pointer; font-size:1.1rem;" onclick="toggleNotes()">✕</span>
+      </div>
+    </div>
+    <div class="notes-body" id="notesContent">
+      Carregando notas...
+    </div>
+  </aside>
+
+  <!-- SLIDE DECK (16 SLIDES COMPLETOS PARA 60 MINUTOS) -->
+  <main class="deck">
+
+    <!-- SLIDE 1: CAPA -->
+    <section class="slide active" data-notes="<strong>[Min 00–04] Abertura e Quebra-Gelo:</strong><br>• Dê boas-vindas com energia lá em cima! Pergunte: <em>'Quem aí quer ganhar +100 pontos na TRI na prova de Matemática sem precisar decorar uma fórmula cabeluda hoje?'</em><br>• Explique que nos próximos 60 minutos faremos a travessia completa pelas <strong>7 Competências do ENEM</strong> com <strong>10 Questões-Chave</strong> resolvidas no Quadro Interativo.">
+      <span class="kicker">🔥 Reta Final</span>
+      <h1>MATEMÁTICA E SUAS <br><span class="gradient-text">TECNOLOGIAS NO ENEM</span></h1>
+      <p class="subtitle">
+        Estratégia TRI + As <strong>7 Competências da Matriz Oficial</strong> + <strong>10 Desafios Clássicos</strong> resolvidos passo a passo para você garantir sua maior nota no 2º Dia do ENEM!
+      </p>
+
+      <div class="grid-3" style="margin-top: 10px;">
+        <div class="card highlight-primary">
+          <div class="card-title">🎯 1. Inteligência de Prova (TRI)</div>
+          <p>Por que dois alunos acertam 25 questões e um tira <strong>780</strong> enquanto o outro tira <strong>620</strong>? Como usar o algoritmo a seu favor.</p>
+        </div>
+        <div class="card highlight-amber">
+          <div class="card-title">⚡ 2. As 7 Competências (C1 a C7)</div>
+          <p>O mapa completo das 45 questões: os padrões que se repetem todo ano e os gatilhos de leitura rápida.</p>
+        </div>
+        <div class="card highlight-emerald">
+          <div class="card-title">✏️ 3. Resolução Ao Vivo no Quadro</div>
+          <p>10 exercícios selecionados a dedo: primeiro vocês votam no tempo, depois destrinchamos a conta no Quadro!</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 2: O SEGREDO DA TRI -->
+    <section class="slide" data-notes="<strong>[Min 04–08] Choque de Realidade da TRI:</strong><br>• Abra o Quadro Branco (Tecla B) no modo 'Riscar Slide' e circule a diferença de 595 para 745 pontos.<br>• Frase obrigatória: <strong>'No ENEM, errar questão fácil por pressa é pecado mortal; gastar 12 minutos em questão difícil por orgulho é armadilha!'</strong>">
+      <span class="kicker cyan">🧠 Inteligência Emocional & Estratégia</span>
+      <h2>TRI: O Algoritmo Caça-Coerência</h2>
+      <p class="subtitle">A Teoria de Resposta ao Item avalia a <strong>coerência pedagógica</strong> da sua prova. Veja o que acontece com dois alunos que acertam <strong>exatamente 20 questões</strong>:</p>
+
+      <div class="grid-2">
+        <div class="card" style="border-color: rgba(244, 63, 94, 0.45);">
+          <div class="card-title" style="color: var(--rose);">❌ Aluno "Linear / Teimoso" — 20 Acertos = 595 pts</div>
+          <ul>
+            <li>Resolve a prova na ordem (da questão 136 até a 180) sem pular nenhuma.</li>
+            <li>Fica 12 minutos brigando com Logaritmo ou Geometria Espacial difícil.</li>
+            <li>Acerta 5 difíceis no suor, mas falta tempo e erra 8 fáceis por desatenção.</li>
+            <li><strong>Veredito da TRI:</strong> "Incoerente! Acertou difícil por sorte." Nota despenca!</li>
+          </ul>
+        </div>
+
+        <div class="card highlight-emerald">
+          <div class="card-title" style="color: var(--emerald);">✅ Aluno "Estrategista" — 20 Acertos = 745 pts</div>
+          <ul>
+            <li>Usa a <strong>Técnica do Radar em 2 Passadas</strong>: caça primeiro as fáceis e médias.</li>
+            <li>Garante 100% em Porcentagem, Escala, Estatística, Tabelas e Regra de Três.</li>
+            <li>Pula sem culpa as 6 questões mais pesadas e deixa para o final.</li>
+            <li><strong>Veredito da TRI:</strong> "Coerência máxima!" Ganha <strong>+150 pontos</strong> com o mesmo número de acertos!</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 3: MAPA GERAL DAS 7 COMPETÊNCIAS -->
+    <section class="slide" data-notes="<strong>[Min 08–12] O Mapa da Mina (Matriz de Referência):</strong><br>• Mostre a distribuição estatística real das 45 questões.<br>• Pergunte: <em>'Se vocês tivessem que apostar fichas hoje, onde apostariam?'</em> Mostre que C1 + C6 + C3 + C4 somam mais de 32 questões das 45!">
+      <span class="kicker">🗺️ Raio-X Oficial do INEP</span>
+      <h2>As 7 Competências Traduzidas em Questões</h2>
+      <p class="subtitle">Não estude no escuro! Veja como as <strong>45 questões</strong> da prova se dividem pelas 7 Competências da Matriz do MEC:</p>
+
+      <div class="grid-4">
+        <div class="card highlight-amber">
+          <span class="comp-badge" style="background: var(--accent); color:#000;">COMPETÊNCIA 1</span>
+          <div class="stat-big">~12 q.</div>
+          <div class="card-title">Números & Operações</div>
+          <p><strong>(28% da prova)</strong> Razão, proporção, porcentagem, juros, MMC/MDC e análise combinatória.</p>
+        </div>
+
+        <div class="card highlight-emerald">
+          <span class="comp-badge" style="background: var(--emerald); color:#000;">COMPETÊNCIA 6</span>
+          <div class="stat-big">~8 q.</div>
+          <div class="card-title">Gráficos & Estatística</div>
+          <p><strong>(18% da prova)</strong> Média simples e ponderada, Mediana, Moda, Desvio Padrão e infográficos.</p>
+        </div>
+
+        <div class="card highlight-primary">
+          <span class="comp-badge" style="background: var(--primary); color:#fff;">COMPETÊNCIAS 3 e 4</span>
+          <div class="stat-big">~11 q.</div>
+          <div class="card-title">Escalas & Grandezas</div>
+          <p><strong>(26% da prova)</strong> Conversão (<span class="math-inline">m³ ↔ L</span>), escalas lineares/volumétricas e grandezas inversas.</p>
+        </div>
+
+        <div class="card">
+          <span class="comp-badge" style="background: rgba(255,255,255,0.15);">COMPETÊNCIAS 2, 5 e 7</span>
+          <div class="stat-big" style="color:#cbd5e1;">~14 q.</div>
+          <div class="card-title">Geometria, Álgebra e Prob.</div>
+          <p><strong>(28% da prova)</strong> Projeção ortogonal, áreas/volumes, funções (<span class="math-inline">1º e 2º grau</span>) e probabilidade.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 4: COMPETÊNCIA 1 (PARTE 1 - PORCENTAGEM) -->
+    <section class="slide" data-notes="<strong>[Min 12–16] Competência 1 — Exercício #1 (Porcentagem):</strong><br>• Dispare 60s! Peça votação.<br>• Abra o Quadro (Tecla B) para mostrar o 'Fator Multiplicativo' ($1,2 \times 0,8 = 0,96$) e o 'Atalho do 100'.">
+      <span class="kicker">🥇 Competência 1 • Construir Significados para os Números (Parte 1/3)</span>
+      <h2>C1: Aumento e Desconto Sucessivo</h2>
+
+      <div class="quiz-layout">
+        <div class="question-box">
+          <div>
+            <span class="comp-badge" style="background: rgba(245,158,11,0.2); color: var(--accent);">⚡ EXERCÍCIO #1 • PORCENTAGEM</span>
+            <p class="question-text">
+              Uma loja aumentou o preço de um tênis em <strong>20%</strong> na véspera da Black Friday. No dia da promoção, anunciou um desconto de <strong>20%</strong> sobre o novo preço. Em relação ao preço original antes do aumento, o preço final na Black Friday ficou:
+            </p>
+          </div>
+
+          <div class="options-grid" id="quiz-1">
+            <button class="option-btn" onclick="checkAnswer('quiz-1', this, false)">
+              <span class="option-letter">A</span> Igual ao preço original (0%)
+            </button>
+            <button class="option-btn" onclick="checkAnswer('quiz-1', this, false)">
+              <span class="option-letter">B</span> 2% mais barato
+            </button>
+            <button class="option-btn" onclick="checkAnswer('quiz-1', this, true)">
+              <span class="option-letter">C</span> 4% mais barato
+            </button>
+            <button class="option-btn" onclick="checkAnswer('quiz-1', this, false)">
+              <span class="option-letter">D</span> 4% mais caro
+            </button>
+          </div>
+        </div>
+
+        <div class="hack-panel">
+          <div class="hack-locked" id="lock-1">
+            <div style="font-size: 2.3rem;">🔒</div>
+            <h3 style="font-family:'Outfit';">Atalho do 100 & Fator Multiplicativo</h3>
+            <p style="color:var(--text-muted); font-size:0.95rem;">Use o Quadro Branco (B) para fazer com a turma ou clique abaixo para revelar!</p>
+            <div style="display:flex; gap:10px;">
+              <button class="open-board-inline" onclick="toggleWhiteboard()">✏️ Abrir Quadro</button>
+              <button class="reveal-btn" onclick="revealHack(1)">✨ Ver Resolução</button>
+            </div>
+          </div>
+
+          <div class="hack-content" id="hack-1">
+            <h3 style="color: var(--emerald); font-family:'Outfit'; margin-bottom:6px;">🚀 Nunca use "x"! Chute R$ 100,00:</h3>
+            <div class="formula-pill">
+              1) Preço Inicial = <strong>R$ 100</strong><br>
+              2) Aumento de 20% (+20) ➔ <strong>R$ 120</strong><br>
+              3) Desconto de 20% sobre 120 (120 × 0,8) ➔ <strong>R$ 96</strong><br>
+              4) De 100 para 96 ➔ <strong style="color:#fde68a;">Caiu 4%! (Letra C)</strong>
+            </div>
+            <p style="font-size:0.92rem; color:#94a3b8;">💡 <strong>Fatores Rápidos:</strong> Aumentar 15% = multiplicar por <span class="math-inline">1,15</span>. Descontar 15% = multiplicar por <span class="math-inline">0,85</span>!</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 5: COMPETÊNCIA 1 (PARTE 2 - MMC e MDC) -->
+    <section class="slide" data-notes="<strong>[Min 16–20] Competência 1 — Exercício #2 (MMC vs. MDC):</strong><br>• Todo ano cai 1 questão de encontro de ciclos (semáforos, remédios, ônibus, satélites).<br>• Abra a Lousa Escura (Tecla B) e fatore 6, 8 e 12 junto com os alunos!">
+      <span class="kicker">🥇 Competência 1 • Ciclos, Múltiplos e Divisores (Parte 2/3)</span>
+      <h2>C1: Quando Usar MMC e Quando Usar MDC?</h2>
+
+      <div class="quiz-layout">
+        <div class="question-box">
+          <div>
+            <span class="comp-badge" style="background: rgba(245,158,11,0.2); color: var(--accent);">⚡ EXERCÍCIO #2 • CICLOS PERIÓDICOS</span>
+            <p class="question-text">
+              Um paciente pós-cirúrgico precisa tomar 3 medicamentos: o <strong>Remédio A</strong> de 6 em 6 horas, o <strong>Remédio B</strong> de 8 em 8 horas e o <strong>Remédio C</strong> de 12 em 12 horas.<br><br>
+              Se ele tomou os três juntos às <strong>08h00 da manhã de sexta-feira</strong>, quando tomará os três juntos novamente?
+            </p>
+          </div>
+
+          <div class="options-grid" id="quiz-2">
+            <button class="option-btn" onclick="checkAnswer('quiz-2', this, false)">
+              <span class="option-letter">A</span> Sexta-feira às 20h00
+            </button>
+            <button class="option-btn" onclick="checkAnswer('quiz-2', this, true)">
+              <span class="option-letter">B</span> Sábado às 08h00
+            </button>
+            <button class="option-btn" onclick="checkAnswer('quiz-2', this, false)">
+              <span class="option-letter">C</span> Sábado às 20h00
+            </button>
+            <button class="option-btn" onclick="checkAnswer('quiz-2', this, false)">
+              <span class="option-letter">D</span> Domingo às 08h00
+            </button>
+          </div>
+        </div>
+
+        <div class="hack-panel">
+          <div class="hack-locked" id="lock-2">
+            <div style="font-size: 2.3rem;">⏰</div>
+            <h3 style="font-family:'Outfit';">Dicionário Tradutor MMC vs. MDC</h3>
+            <p style="color:var(--text-muted); font-size:0.95rem;">Qual palavra do texto entrega de bandeja se a conta é MMC ou MDC?</p>
+            <div style="display:flex; gap:10px;">
+              <button class="open-board-inline" onclick="toggleWhiteboard()">✏️ Abrir Quadro</button>
+              <button class="reveal-btn" onclick="revealHack(2)">✨ Ver Resolução</button>
+            </div>
+          </div>
+
+          <div class="hack-content" id="hack-2">
+            <h3 style="color: var(--emerald); font-family:'Outfit'; margin-bottom:6px;">🔑 Gatilho Verbal Infalível:</h3>
+            <div class="formula-pill">
+              • <strong>MMC:</strong> "Juntos novamente", "Simultaneamente", "Futuro"<br>
+              • <strong>MDC:</strong> "Dividir em partes iguais do MAIOR tamanho possível"<br>
+              ➔ MMC(6, 8, 12) = <strong>24 horas depois!</strong><br>
+              ➔ Sexta 08h + 24h = <strong style="color:#fde68a;">Sábado às 08h00 (Letra B)</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 6: COMPETÊNCIA 1 (PARTE 3 - ANÁLISE COMBINATÓRIA) -->
+    <section class="slide" data-notes="<strong>[Min 20–25] Competência 1 — Exercício #3 (Análise Combinatória):</strong><br>• Pergunte: <em>'Quem trava na hora de decidir se a ordem importa ou não?'</em><br>• Ensine o Teste do Pódio vs. Teste da Vitamina no Quadro!">
+      <span class="kicker">🥇 Competência 1 • Princípio Multiplicativo & Combinatória (Parte 3/3)</span>
+      <h2>C1: A Ordem Importa ou Não Importa?</h2>
+
+      <div class="quiz-layout">
+        <div class="question-box">
+          <div>
+            <span class="comp-badge" style="background: rgba(245,158,11,0.2); color: var(--accent);">⚡ EXERCÍCIO #3 • COMBINATÓRIA SEM FÓRMULA</span>
+            <p class="question-text">
+              Um hospital tem <strong>6 médicos plantonistas</strong> disponíveis e precisa escolher uma equipe de <strong>3 médicos</strong> para atender na ala de emergência no domingo.<br><br>
+              De quantas maneiras distintas essa equipe de 3 médicos pode ser formada?
+            </p>
+          </div>
+
+          <div class="options-grid" id="quiz-3">
+            <button class="option-btn" onclick="checkAnswer('quiz-3', this, false)">
+              <span class="option-letter">A</span> 18 equipes
+            </button>
+            <button class="option-btn" onclick="checkAnswer('quiz-3', this, true)">
+              <span class="option-letter">B</span> 20 equipes
+            </button>
+            <button class="option-btn" onclick="checkAnswer('quiz-3', this, false)">
+              <span class="option-letter">C</span> 120 equipes
+            </button>
+            <button class="option-btn" onclick="checkAnswer('quiz-3', this, false)">
+              <span class="option-letter">D</span> 216 equipes
+            </button>
+          </div>
+        </div>
+
+        <div class="hack-panel">
+          <div class="hack-locked" id="lock-3">
+            <div style="font-size: 2.3rem;">🍹</div>
+            <h3 style="font-family:'Outfit';">O "Teste da Vitamina" (120 ou 20?)</h3>
+            <p style="color:var(--text-muted); font-size:0.95rem;">Por que o 120 (Letra C) é a armadilha que derruba metade dos candidatos?</p>
+            <div style="display:flex; gap:10px;">
+              <button class="open-board-inline" onclick="toggleWhiteboard()">✏️ Abrir Quadro</button>
+              <button class="reveal-btn" onclick="revealHack(3)">✨ Ver Resolução</button>
+            </div>
+          </div>
+
+          <div class="hack-content" id="hack-3">
+            <h3 style="color: var(--emerald); font-family:'Outfit'; margin-bottom:6px;">⚡ Faça os Tracinhos e Tire a Repetição!</h3>
+            <p>Escolher (Ana, Bruno, Carlos) é a <strong>mesma equipe</strong> que (Carlos, Bruno, Ana)! A ordem NÃO importa:</p>
+            <div class="formula-pill">
+              • Tracinhos: <strong>6 × 5 × 4 = 120</strong> (se tivesse cargo fixo)<br>
+              • Como são 3 vagas iguais, divida por <strong>3! (3 × 2 × 1 = 6)</strong>:<br>
+              ➔ 120 ÷ 6 = <strong style="color:#fde68a;">20 equipes (Letra B)!</strong>
+            </div>
+            <p style="font-size:0.9rem; color:#94a3b8;">💡 <strong>Regra:</strong> Senha / Pódio (ordem importa) = só multiplica! Equipe / Comissão (ordem não importa) = divide pelo fatorial!</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 7: COMPETÊNCIA 2 (PARTE 1 - PROJEÇÃO ORTOGONAL) -->
+    <section class="slide" data-notes="<strong>[Min 25–29] Competência 2 — Exercício #4 (Projeção Ortogonal):</strong><br>• Clássico absoluto do ENEM! Desenhe a lata vista de cima no Quadro Branco.">
+      <span class="kicker cyan">📐 Competência 2 • Geometria Plana e Espacial (Parte 1/2)</span>
+      <h2>C2: Projeção Ortogonal & Visão Espacial</h2>
+
+      <div class="quiz-layout">
+        <div class="question-box">
+          <div>
+            <span class="comp-badge" style="background: rgba(6,182,212,0.2); color: var(--cyan);">⚡ EXERCÍCIO #4 • SOMBRA / PROJEÇÃO</span>
+            <p class="question-text">
+              Uma formiga caminha sobre a superfície lateral de um <strong>cilindro reto</strong> (como uma lata de refrigerante), subindo em linha espiral contínua da borda inferior até o ponto exatamente acima na borda superior, dando <strong>1 volta completa</strong>.<br><br>
+              Qual é a <strong>projeção ortogonal</strong> (sombra vista de cima, olhando para a tampa) do caminho feito pela formiga?
+            </p>
+          </div>
+
+          <div class="options-grid" id="quiz-4">
+            <button class="option-btn" onclick="checkAnswer('quiz-4', this, false)">
+              <span class="option-letter">A</span> Um segmento de reta
+            </button>
+            <button class="option-btn" onclick="checkAnswer('quiz-4', this, false)">
+              <span class="option-letter">B</span> Uma espiral aberta
+            </button>
+            <button class="option-btn" onclick="checkAnswer('quiz-4', this, true)">
+              <span class="option-letter">C</span> Uma circunferência completa
+            </button>
+            <button class="option-btn" onclick="checkAnswer('quiz-4', this, false)">
+              <span class="option-letter">D</span> Uma parábola
+            </button>
+          </div>
+        </div>
+
+        <div class="hack-panel">
+          <div class="hack-locked" id="lock-4">
+            <div style="font-size: 2.3rem;">🔦</div>
+            <h3 style="font-family:'Outfit';">Técnica da Prensa / Sol do Meio-Dia</h3>
+            <p style="color:var(--text-muted); font-size:0.95rem;">Como visualizar qualquer projeção ortogonal em 15 segundos?</p>
+            <div style="display:flex; gap:10px;">
+              <button class="open-board-inline" onclick="toggleWhiteboard()">✏️ Abrir Quadro</button>
+              <button class="reveal-btn" onclick="revealHack(4)">✨ Ver Resolução</button>
+            </div>
+          </div>
+
+          <div class="hack-content" id="hack-4">
+            <h3 style="color: var(--cyan); font-family:'Outfit'; margin-bottom:6px;">🥞 "Achate o Objeto como uma Panqueca!"</h3>
+            <p>Projeção ortogonal no plano da base <strong>zera a altura</strong>!</p>
+            <div class="formula-pill">
+              • Esmague a lata de cima para baixo.<br>
+              • Toda a parede lateral cai exatamente sobre o círculo da base!<br>
+              • Como deu 1 volta na parede ➔ <strong style="color:#fde68a;">Circunferência completa (Letra C)</strong>.
+            </div>
+            <p style="font-size:0.9rem; color:#94a3b8;">💡 <strong>Dica extra:</strong> Se a formiga parar para descansar, a sombra no chão vira um <strong>ponto mais forte</strong>, mas não muda o formato do traço!</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 8: COMPETÊNCIA 2 (PARTE 2 - ÁREAS E VOLUMES) -->
+    <section class="slide" data-notes="<strong>[Min 29–34] Competência 2 — Exercício #5 (Volumes & Triângulo 3-4-5):</strong><br>• Abra o Quadro (Tecla B) para lembrar a diferença entre Sólidos sem Ponta ($V = A_b \cdot h$) e Sólidos com Ponta ($V = \frac{A_b \cdot h}{3}$).">
+      <span class="kicker cyan">📐 Competência 2 • Geometria Plana e Espacial (Parte 2/2)</span>
+      <h2>C2: Volumes & O Triângulo Sagrado 3 – 4 – 5</h2>
+
+      <div class="quiz-layout">
+        <div class="question-box">
+          <div>
+            <span class="comp-badge" style="background: rgba(6,182,212,0.2); color: var(--cyan);">⚡ EXERCÍCIO #5 • TRANSVASE DE SÓLIDOS</span>
+            <p class="question-text">
+              Uma cafeteria serve café em uma caneca no formato de um <strong>cilindro reto</strong> totalmente cheio. Um cliente pediu para transferir esse café para taças em formato de <strong>cone reto</strong>, que possuem exatamente o <strong>mesmo raio da base</strong> e a <strong>mesma altura</strong> da caneca cilíndrica.<br><br>
+              Quantas taças cônicas completas serão necessárias para esvaziar 1 caneca cilíndrica?
+            </p>
+          </div>
+
+          <div class="options-grid" id="quiz-5">
+            <button class="option-btn" onclick="checkAnswer('quiz-5', this, false)">
+              <span class="option-letter">A</span> 2 taças
+            </button>
+            <button class="option-btn" onclick="checkAnswer('quiz-5', this, true)">
+              <span class="option-letter">B</span> 3 taças
+            </button>
+            <button class="option-btn" onclick="checkAnswer('quiz-5', this, false)">
+              <span class="option-letter">C</span> 4 taças
+            </button>
+            <button class="option-btn" onclick="checkAnswer('quiz-5', this, false)">
+              <span class="option-letter">D</span> 6 taças
+            </button>
+          </div>
+        </div>
+
+        <div class="hack-panel">
+          <div class="hack-locked" id="lock-5">
+            <div style="font-size: 2.3rem;">🍦</div>
+            <h3 style="font-family:'Outfit';">A Regra da "Ponta" em Geometria Espacial</h3>
+            <p style="color:var(--text-muted); font-size:0.95rem;">Nunca mais decore 10 fórmulas de volume separadas!</p>
+            <div style="display:flex; gap:10px;">
+              <button class="open-board-inline" onclick="toggleWhiteboard()">✏️ Abrir Quadro</button>
+              <button class="reveal-btn" onclick="revealHack(5)">✨ Ver Resolução</button>
+            </div>
+          </div>
+
+          <div class="hack-content" id="hack-5">
+            <h3 style="color: var(--cyan); font-family:'Outfit'; margin-bottom:6px;">⚡ "Tem Ponta? Divide por 3!"</h3>
+            <div class="formula-pill">
+              • <strong>Sem ponta (Prisma / Cilindro):</strong> V = Área da Base × Altura<br>
+              • <strong>Com ponta (Pirâmide / Cone):</strong> V = (Área da Base × Altura) ÷ 3<br>
+              ➔ O cone cabe exatamente <strong style="color:#fde68a;">3 vezes dentro do cilindro (Letra B)!</strong>
+            </div>
+            <p style="font-size:0.9rem; color:#94a3b8;">💡 <strong>Pitágoras Instantâneo:</strong> Catetos 3 e 4 ➔ Hipotenusa 5! (Múltiplos que mais caem: <strong>6-8-10</strong>, <strong>9-12-15</strong> e <strong>30-40-50</strong>).</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 9: COMPETÊNCIA 3 (ESCALAS E CONVERSÃO DE MEDIDAS) -->
+    <section class="slide" data-notes="<strong>[Min 34–38] Competência 3 — Exercício #6 (Escala Volumétrica):</strong><br>• Momento de maior impacto! Quase toda a sala marca 5.000 L. Use o Quadro para desenhar um cubinho 1D, 2D e 3D!">
+      <span class="kicker purple">📏 Competência 3 • Sistemas de Medidas e Escalas</span>
+      <h2>C3: A Maior Pegadinha de Escalas do ENEM!</h2>
+
+      <div class="quiz-layout">
+        <div class="question-box">
+          <div>
+            <span class="comp-badge" style="background: rgba(168,85,247,0.2); color: #c084fc;">🚨 EXERCÍCIO #6 • ESCALA 1D vs. 2D vs. 3D</span>
+            <p class="question-text">
+              Uma piscina olímpica real comporta <strong>50.000 litros</strong> de água. Um engenheiro construiu uma maquete perfeitamente proporcional dessa piscina na <strong>escala 1 : 10</strong>.<br><br>
+              Quantos litros de água cabem dentro da piscina da maquete?
+            </p>
+          </div>
+
+          <div class="options-grid" id="quiz-6">
+            <button class="option-btn" onclick="checkAnswer('quiz-6', this, false)">
+              <span class="option-letter">A</span> 5.000 litros
+            </button>
+            <button class="option-btn" onclick="checkAnswer('quiz-6', this, false)">
+              <span class="option-letter">B</span> 500 litros
+            </button>
+            <button class="option-btn" onclick="checkAnswer('quiz-6', this, true)">
+              <span class="option-letter">C</span> 50 litros
+            </button>
+            <button class="option-btn" onclick="checkAnswer('quiz-6', this, false)">
+              <span class="option-letter">D</span> 5 litros
+            </button>
+          </div>
+        </div>
+
+        <div class="hack-panel">
+          <div class="hack-locked" id="lock-6">
+            <div style="font-size: 2.3rem;">💣</div>
+            <h3 style="font-family:'Outfit';">Quem marcou 5.000 L caiu na armadilha!</h3>
+            <p style="color:var(--text-muted); font-size:0.95rem;">Clique para mostrar por que a resposta é 50 litros e desarmar essa bomba!</p>
+            <div style="display:flex; gap:10px;">
+              <button class="open-board-inline" onclick="toggleWhiteboard()">✏️ Abrir Quadro</button>
+              <button class="reveal-btn" onclick="revealHack(6)">✨ Desarmar Bomba</button>
+            </div>
+          </div>
+
+          <div class="hack-content" id="hack-6">
+            <h3 style="color: var(--accent); font-family:'Outfit'; margin-bottom:6px;">⚡ Lei das 3 Dimensões na Escala <span class="math-inline">1 : k</span></h3>
+            <p>Na maquete <span class="math-inline">1 : 10</span>, comprimento, largura e profundidade dividem por 10 cada um!</p>
+            <div class="formula-pill">
+              • <strong>Comprimento (1D):</strong> divide por <strong>10¹ = 10</strong><br>
+              • <strong>Área (2D — m²):</strong> divide por <strong>10² = 100</strong><br>
+              • <strong>Volume (3D — Litros / m³):</strong> divide por <strong>10³ = 1.000</strong>!<br>
+              ➔ 50.000 ÷ 1.000 = <strong style="color:#fde68a;">50 Litros (Letra C)!</strong>
+            </div>
+            <p style="font-size:0.9rem; color:#94a3b8;">💡 <strong>Tatuagem Mental C3:</strong> <span class="math-inline">1 m³ = 1.000 Litros</span> e <span class="math-inline">1 cm³ = 1 mL</span>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 10: COMPETÊNCIA 4 (VARIAÇÃO DE GRANDEZAS) -->
+    <section class="slide" data-notes="<strong>[Min 38–42] Competência 4 — Exercício #7 (Grandezas Inversamente Proporcionais):</strong><br>• Mostre no Quadro que Diretamente Proporcional = Divisão Constante; Inversamente Proporcional = Multiplicação Constante!">
+      <span class="kicker purple">⚖️ Competência 4 • Variação de GrandezasDiretas e Inversas</span>
+      <h2>C4: Proporcionalidade Direta vs. Inversa</h2>
+
+      <div class="quiz-layout">
+        <div class="question-box">
+          <div>
+            <span class="comp-badge" style="background: rgba(168,85,247,0.2); color: #c084fc;">⚡ EXERCÍCIO #7 • REGRA DE TRÊS & RITMO</span>
+            <p class="question-text">
+              Para esvaziar um reservatório de água, <strong>3 bombas idênticas</strong> funcionando juntas levam <strong>8 horas</strong>.<br><br>
+              Se uma tempestade exigir que esse mesmo reservatório seja esvaziado em apenas <strong>2 horas</strong>, quantas bombas idênticas precisarão funcionar juntas?
+            </p>
+          </div>
+
+          <div class="options-grid" id="quiz-7">
+            <button class="option-btn" onclick="checkAnswer('quiz-7', this, false)">
+              <span class="option-letter">A</span> 6 bombas
+            </button>
+            <button class="option-btn" onclick="checkAnswer('quiz-7', this, false)">
+              <span class="option-letter">B</span> 9 bombas
+            </button>
+            <button class="option-btn" onclick="checkAnswer('quiz-7', this, true)">
+              <span class="option-letter">C</span> 12 bombas
+            </button>
+            <button class="option-btn" onclick="checkAnswer('quiz-7', this, false)">
+              <span class="option-letter">D</span> 16 bombas
+            </button>
+          </div>
+        </div>
+
+        <div class="hack-panel">
+          <div class="hack-locked" id="lock-7">
+            <div style="font-size: 2.3rem;">⚙️</div>
+            <h3 style="font-family:'Outfit';">Truque do Produto Constante</h3>
+            <p style="color:var(--text-muted); font-size:0.95rem;">Esqueça as setinhas para cima e para baixo na Regra de Três Inversa!</p>
+            <div style="display:flex; gap:10px;">
+              <button class="open-board-inline" onclick="toggleWhiteboard()">✏️ Abrir Quadro</button>
+              <button class="reveal-btn" onclick="revealHack(7)">✨ Ver Resolução</button>
+            </div>
+          </div>
+
+          <div class="hack-content" id="hack-7">
+            <h3 style="color: var(--emerald); font-family:'Outfit'; margin-bottom:6px;">🚀 Grandezas Inversas? Basta Multiplicar Reto!</h3>
+            <p>Mais bombas = Menos tempo! O produto <strong>(Bombas × Horas)</strong> é sempre constante (é o tamanho do trabalho):</p>
+            <div class="formula-pill">
+              • Trabalho Total = 3 bombas × 8 horas = <strong>24 "bombas·hora"</strong><br>
+              • Para fazer em 2 horas: <strong>B × 2 = 24</strong><br>
+              ➔ B = 24 ÷ 2 = <strong style="color:#fde68a;">12 bombas (Letra C)!</strong>
+            </div>
+            <p style="font-size:0.9rem; color:#94a3b8;">💡 <strong>No Gráfico C4:</strong> Grandezas Diretas geram uma <strong>reta passando no (0,0)</strong>. Grandezas Inversas geram uma <strong>curva (hipérbole)</strong>!</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 11: COMPETÊNCIA 5 (PARTE 1 - SEMÁFORO DAS FUNÇÕES) -->
+    <section class="slide" data-notes="<strong>[Min 42–45] Competência 5 — Mapa Estratégico de Funções:</strong><br>• Mostre aos alunos onde estão os pontos fáceis de Álgebra e o que eles devem deixar para os últimos minutos da prova.">
+      <span class="kicker">📈 Competência 5 • Modelagem Algébrica e Funções (Parte 1/2)</span>
+      <h2>C5: O Semáforo das Funções no ENEM</h2>
+      <p class="subtitle">Na Competência 5 (~6 questões), a TRI separa claramente as questões obrigatórias das pesadas. Saiba onde atacar primeiro:</p>
+
+      <div class="grid-3">
+        <div class="card highlight-emerald">
+          <span class="comp-badge" style="background: var(--emerald); color:#000;">🟢 FÁCIL / MÉDIA (GARANTA!)</span>
+          <div class="card-title">Função Afim (1º Grau)</div>
+          <p style="margin-bottom:10px;">Táxi, plano de internet, salário com comissão ou tanque enchendo em vazão constante.</p>
+          <div class="formula-pill" style="font-size:0.94rem;">
+            <strong>f(x) = Taxa · x + Fixo</strong><br>
+            • Fixo (b) = onde corta o eixo <strong>y</strong><br>
+            • Taxa (a) = Δy ÷ Δx (inclinação)
+          </div>
+        </div>
+
+        <div class="card highlight-amber">
+          <span class="comp-badge" style="background: var(--accent); color:#000;">🟡 MÉDIA (MUITO COBRADA!)</span>
+          <div class="card-title">Máximo e Mínimo (2º Grau)</div>
+          <p style="margin-bottom:10px;">"Lucro máximo", "Altura máxima", "Receita máxima". Use a <strong>Simetria das Raízes</strong>:</p>
+          <div class="formula-pill" style="font-size:0.94rem;">
+            <strong>x<sub>V</sub> = </strong>
+            <span class="math-frac"><span class="num">x₁ + x₂</span><span class="den">2</span></span>
+            <strong> = </strong>
+            <span class="math-frac"><span class="num">−b</span><span class="den">2a</span></span>
+            <br>
+            (O vértice está sempre no meio exato entre as duas raízes!)
+          </div>
+        </div>
+
+        <div class="card" style="border-color: rgba(244,63,94,0.4);">
+          <span class="comp-badge" style="background: var(--rose); color:#fff;">🔴 DIFÍCIL (DEIXE P/ O FIM!)</span>
+          <div class="card-title">Exponencial, Log & Senóide</div>
+          <p style="margin-bottom:10px;">Meia-vida, terremoto (Richter) ou fenômenos cíclicos como marés e roda-gigante:</p>
+          <div class="formula-pill" style="font-size:0.94rem; border-color:var(--rose); color:#fda4af;">
+            Senóide <strong>f(t) = A + B · sen(...)</strong><br>
+            <strong>A = </strong><span class="math-frac"><span class="num">Máx + Mín</span><span class="den">2</span></span> &nbsp;|&nbsp;
+            <strong>B = </strong><span class="math-frac"><span class="num">Máx − Mín</span><span class="den">2</span></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 12: COMPETÊNCIA 5 (PARTE 2 - EXERCÍCIO DE FUNÇÕES) -->
+    <section class="slide" data-notes="<strong>[Min 45–49] Competência 5 — Exercício #8 (Comparação de Planos / Ponto de Equilíbrio):</strong><br>• Abra o Quadro Branco (Tecla B) e monte a equação $40 + 2x = 70 + 1x$ junto com a turma!">
+      <span class="kicker">📈 Competência 5 • Álgebra na Prática (Parte 2/2)</span>
+      <h2>C5: Comparação de Tarifas & Ponto de Equilíbrio</h2>
+
+      <div class="quiz-layout">
+        <div class="question-box">
+          <div>
+            <span class="comp-badge" style="background: rgba(245,158,11,0.2); color: var(--accent);">⚡ EXERCÍCIO #8 • FUNÇÃO DO 1º GRAU</span>
+            <p class="question-text">
+              Uma locadora de veículos oferece dois planos diários:<br>
+              • <strong>Plano Alfa:</strong> Taxa fixa de <strong>R$ 40,00</strong> mais <strong>R$ 2,00</strong> por km rodado.<br>
+              • <strong>Plano Beta:</strong> Taxa fixa de <strong>R$ 70,00</strong> mais <strong>R$ 1,00</strong> por km rodado.<br><br>
+              A partir de quantos quilômetros rodados no dia o <strong>Plano Beta</strong> passa a ser mais econômico que o Plano Alfa?
+            </p>
+          </div>
+
+          <div class="options-grid" id="quiz-8">
+            <button class="option-btn" onclick="checkAnswer('quiz-8', this, false)">
+              <span class="option-letter">A</span> Acima de 15 km
+            </button>
+            <button class="option-btn" onclick="checkAnswer('quiz-8', this, false)">
+              <span class="option-letter">B</span> Acima de 20 km
+            </button>
+            <button class="option-btn" onclick="checkAnswer('quiz-8', this, true)">
+              <span class="option-letter">C</span> Acima de 30 km
+            </button>
+            <button class="option-btn" onclick="checkAnswer('quiz-8', this, false)">
+              <span class="option-letter">D</span> Acima de 35 km
+            </button>
+          </div>
+        </div>
+
+        <div class="hack-panel">
+          <div class="hack-locked" id="lock-8">
+            <div style="font-size: 2.3rem;">🚗</div>
+            <h3 style="font-family:'Outfit';">Mentalidade de Compensação (Sem Equação!)</h3>
+            <p style="color:var(--text-muted); font-size:0.95rem;">Dá para fazer de cabeça em 10 segundos comparando a diferença fixa com a economia por km!</p>
+            <div style="display:flex; gap:10px;">
+              <button class="open-board-inline" onclick="toggleWhiteboard()">✏️ Abrir Quadro</button>
+              <button class="reveal-btn" onclick="revealHack(8)">✨ Ver Resolução</button>
+            </div>
+          </div>
+
+          <div class="hack-content" id="hack-8">
+            <h3 style="color: var(--emerald); font-family:'Outfit'; margin-bottom:6px;">⚡ Método Algébrico vs. Método Mental:</h3>
+            <div class="formula-pill">
+              • <strong>Por Equação:</strong> 40 + 2x = 70 + 1x ➔ <strong>x = 30 km</strong><br>
+              • <strong>De Cabeça:</strong> O Beta começa <strong>R$ 30 mais caro</strong> no fixo, mas economiza <strong>R$ 1 por km</strong>. Em 30 km ele empata; acima de 30 km fica mais barato! ➔ <strong style="color:#fde68a;">Letra C!</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 13: COMPETÊNCIA 6 (PARTE 1 - MÉDIA, MODA E MEDIANA) -->
+    <section class="slide" data-notes="<strong>[Min 49–53] Competência 6 — Exercício #9 (Estatística):</strong><br>• Toda prova do ENEM tem pelo menos 2 questões de Mediana! Mostre a armadilha dos números fora de ordem.">
+      <span class="kicker emerald">📊 Competência 6 • Estatística, Tabelas e Gráficos (Parte 1/2)</span>
+      <h2>C6: O Trio de Ouro (Média, Moda e Mediana)</h2>
+
+      <div class="quiz-layout">
+        <div class="question-box">
+          <div>
+            <span class="comp-badge" style="background: rgba(16,185,129,0.2); color: var(--emerald);">⚡ EXERCÍCIO #9 • A ARMADILHA DA MEDIANA</span>
+            <p class="question-text">
+              Um estudante anotou o número de gols que seu time marcou nas últimas 5 partidas do campeonato, na ordem em que ocorreram:<br><br>
+              <strong style="font-size: 1.45rem; letter-spacing: 2px;">3 , 0 , 5 , 1 , 1</strong><br><br>
+              Quais são, respectivamente, a <strong>Moda</strong>, a <strong>Mediana</strong> e a <strong>Média</strong> de gols desse time?
+            </p>
+          </div>
+
+          <div class="options-grid" id="quiz-9">
+            <button class="option-btn" onclick="checkAnswer('quiz-9', this, false)">
+              <span class="option-letter">A</span> 1, 5 e 2
+            </button>
+            <button class="option-btn" onclick="checkAnswer('quiz-9', this, true)">
+              <span class="option-letter">B</span> 1, 1 e 2
+            </button>
+            <button class="option-btn" onclick="checkAnswer('quiz-9', this, false)">
+              <span class="option-letter">C</span> 2, 1 e 1
+            </button>
+            <button class="option-btn" onclick="checkAnswer('quiz-9', this, false)">
+              <span class="option-letter">D</span> 1, 2 e 2
+            </button>
+          </div>
+        </div>
+
+        <div class="hack-panel">
+          <div class="hack-locked" id="lock-9">
+            <div style="font-size: 2.3rem;">⚠️</div>
+            <h3 style="font-family:'Outfit';">Quem marcou a Letra A caiu no golpe do INEP!</h3>
+            <p style="color:var(--text-muted); font-size:0.95rem;">Por que o 5 NÃO é a mediana mesmo estando exatamente no meio da lista?</p>
+            <div style="display:flex; gap:10px;">
+              <button class="open-board-inline" onclick="toggleWhiteboard()">✏️ Abrir Quadro</button>
+              <button class="reveal-btn" onclick="revealHack(9)">✨ Ver Resolução</button>
+            </div>
+          </div>
+
+          <div class="hack-content" id="hack-9">
+            <h3 style="color: var(--emerald); font-family:'Outfit'; margin-bottom:6px;">🛑 Mandamento Nº 1 da Mediana: ORDENE!</h3>
+            <p>O ENEM <strong>sempre</strong> entrega os valores bagunçados no gráfico de linha ou barras!</p>
+            <div class="formula-pill">
+              • 1º Passo (Rol Crescente): <strong>0 , 1 , [ 1 ] , 3 , 5</strong><br>
+              • <strong>Moda</strong> (mais repete): <strong>1</strong> &nbsp;|&nbsp; <strong>Mediana</strong> (meio ordenado): <strong>1</strong><br>
+              • <strong>Média</strong>: (0 + 1 + 1 + 3 + 5) ÷ 5 = <strong style="color:#fde68a;">2 ➔ Letra B!</strong>
+            </div>
+            <p style="font-size:0.9rem; color:#94a3b8;">💡 <strong>E se tiver quantidade PAR de números (ex: 6 termos)?</strong> A mediana é a média dos <strong>2 termos centrais</strong> (3º e 4º)!</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 14: COMPETÊNCIA 6 (PARTE 2 - DESVIO PADRÃO E MÉDIA PONDERADA) -->
+    <section class="slide" data-notes="<strong>[Min 53–56] Competência 6 — Desvio Padrão e Média Ponderada:</strong><br>• Mostre que NUNCA é preciso calcular raiz quadrada de Desvio Padrão no ENEM: é 100% conceitual (Regularidade)!">
+      <span class="kicker emerald">📊 Competência 6 • Regularidade & Pesos (Parte 2/2)</span>
+      <h2>C6: Desvio Padrão Sem Conta & Média Ponderada</h2>
+      <p class="subtitle">Duas questões garantidas todo ano que você resolve em menos de 45 segundos se souber o conceito:</p>
+
+      <div class="grid-2">
+        <div class="card highlight-emerald">
+          <div class="card-title">🎯 1. Desvio Padrão = "Oscilação"</div>
+          <p style="margin-bottom:10px;">Quando o texto pedir o atleta, máquina ou investimento <strong>"mais regular", "mais constante", "mais homogêneo" ou "mais confiável"</strong>:</p>
+          <div class="formula-pill">
+            • <strong>Mais Regular / Estável</strong> ➔ <strong>MENOR Desvio Padrão!</strong><br>
+            • Procure a linha da tabela onde os valores estão mais <strong>próximos entre si</strong>.<br>
+            • Exemplo:<br>
+              Atleta X: 10, 10, 10 (Média 10 | Desvio = 0, super regular!)<br>
+              Atleta Y: 5, 10, 15 (Média 10 | Desvio alto, oscila muito!)
+          </div>
+        </div>
+
+        <div class="card highlight-amber">
+          <div class="card-title">⚖️ 2. Cuidado com a Média Ponderada!</div>
+          <p style="margin-bottom:10px;">Se uma tabela mostra <strong>Salário × Quantidade de Funcionários</strong> ou <strong>Nota × Peso</strong>, você NÃO pode somar os salários e dividir por 3!</p>
+          <div class="formula-pill">
+            <strong>Média Ponderada = </strong>
+            <span class="math-frac">
+              <span class="num">(Valor₁ × Peso₁) + (Valor₂ × Peso₂)</span>
+              <span class="den">Peso₁ + Peso₂</span>
+            </span>
+            <br><br>
+            • <strong>Dica "Nota que Falta":</strong> Quer média 7 em 4 provas? Então a soma das 4 notas tem que dar <strong>4 × 7 = 28 pontos</strong>!
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 15: COMPETÊNCIA 7 (PROBABILIDADE) -->
+    <section class="slide" data-notes="<strong>[Min 56–58] Competência 7 — Exercício #10 (Probabilidade Complementar):</strong><br>• Feche a bateria de exercícios com o clássico do 'Pelo menos um'.">
+      <span class="kicker cyan">🎲 Competência 7 • Probabilidade & Tomada de Decisão</span>
+      <h2>C7: Probabilidade sem Dor de Cabeça</h2>
+
+      <div class="quiz-layout">
+        <div class="question-box">
+          <div>
+            <span class="comp-badge" style="background: rgba(6,182,212,0.2); color: var(--cyan);">⚡ EXERCÍCIO FINAL #10 • PROBABILIDADE</span>
+            <p class="question-text">
+              Um sistema de alerta meteorológico possui <strong>3 sensores independentes</strong>. A probabilidade de cada sensor falhar durante uma tempestade é de <strong>10% (0,1)</strong>.<br><br>
+              O alarme dispara se <strong>PELO MENOS UM</strong> sensor funcionar. Qual é a probabilidade de o alarme funcionar na tempestade?
+            </p>
+          </div>
+
+          <div class="options-grid" id="quiz-10">
+            <button class="option-btn" onclick="checkAnswer('quiz-10', this, false)">
+              <span class="option-letter">A</span> 70,0%
+            </button>
+            <button class="option-btn" onclick="checkAnswer('quiz-10', this, false)">
+              <span class="option-letter">B</span> 90,0%
+            </button>
+            <button class="option-btn" onclick="checkAnswer('quiz-10', this, false)">
+              <span class="option-letter">C</span> 99,0%
+            </button>
+            <button class="option-btn" onclick="checkAnswer('quiz-10', this, true)">
+              <span class="option-letter">D</span> 99,9%
+            </button>
+          </div>
+        </div>
+
+        <div class="hack-panel">
+          <div class="hack-locked" id="lock-10">
+            <div style="font-size: 2.3rem;">🎯</div>
+            <h3 style="font-family:'Outfit';">O Gatilho "Pelo Menos Um"</h3>
+            <p style="color:var(--text-muted); font-size:0.95rem;">Como resolver em 10 segundos sem somar 7 casos diferentes?</p>
+            <div style="display:flex; gap:10px;">
+              <button class="open-board-inline" onclick="toggleWhiteboard()">✏️ Abrir Quadro</button>
+              <button class="reveal-btn" onclick="revealHack(10)">✨ Ver Resolução</button>
+            </div>
+          </div>
+
+          <div class="hack-content" id="hack-10">
+            <h3 style="color: var(--cyan); font-family:'Outfit'; margin-bottom:6px;">⚡ Viu "Pelo Menos Um"? Faça <span class="math-inline">100% − Nenhum</span>!</h3>
+            <p>Quando o alarme dá errado? Apenas se o Sensor 1 falhar <strong>E</strong> o Sensor 2 falhar <strong>E</strong> o Sensor 3 falhar!</p>
+            <div class="formula-pill">
+              • P(Todos falharem) = 0,1 × 0,1 × 0,1 = <strong>0,001 (0,1%)</strong><br>
+              • P(Funcionar) = 100% − 0,1% = <strong style="color:#fde68a;">99,9% (Letra D)</strong>
+            </div>
+            <p style="font-size:0.9rem; color:#94a3b8;">💡 <strong>Probabilidade Condicional ("Sabendo que..."):</strong> Reduza o denominador! O total deixa de ser todo mundo e passa a ser só o grupo da condição!</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 16: PLANO DE VOO E ENCERRAMENTO -->
+    <section class="slide" data-notes="<strong>[Min 58–60] Encerramento & Confetes:</strong><br>• Revise os 3 pilares de execução de prova.<br>• Clique em 'Comemorar Aprovação' e deseje uma excelente prova no ENEM!">
+      <span class="kicker">🚀 Checklist Final de Prova</span>
+      <h1>SEU PLANO DE VOO PARA <span class="gradient-text">+750 PONTOS</span></h1>
+      <p class="subtitle">Leve estas 3 regras para a sala de prova no dia de Matemática e ganhe tempo e precisão:</p>
+
+      <div class="grid-3">
+        <div class="card highlight-amber">
+          <div class="card-title">1. Leitura Invertida (2x Mais Rápido)</div>
+          <ul>
+            <li><strong>1º Passo:</strong> Leia a última frase antes das alternativas (o comando da questão!).</li>
+            <li><strong>2º Passo:</strong> Olhe as alternativas (estão longe umas das outras? Dá para aproximar!).</li>
+            <li><strong>3º Passo:</strong> Volte ao texto só caçando os números com a caneta!</li>
+          </ul>
+        </div>
+
+        <div class="card highlight-emerald">
+          <div class="card-title">2. Técnica das 2 Passadas</div>
+          <ul>
+            <li><strong>1ª Passada (90 min):</strong> Faça todas de Gráficos, Estatística, Porcentagem, Regra de 3 e Projeção.</li>
+            <li>Passou de 3 minutos travado? <strong>Circule e PULE!</strong> Seu ego não dá ponto na TRI; seu acerto nas fáceis dá!</li>
+          </ul>
+        </div>
+
+        <div class="card highlight-primary">
+          <div class="card-title">3. Chute Inteligente nos 5 Min Finais</div>
+          <ul>
+            <li>Sobrou questão difícil sem tempo? Elimine os absurdos (muito pequenos ou gigantes).</li>
+            <li>Em geometria, <strong>confie na proporção visual da figura</strong> para estimar metades ou ângulos!</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="margin-top: 24px; display: flex; align-items: center; justify-content: space-between; background: rgba(16, 185, 129, 0.12); border: 1px solid rgba(16, 185, 129, 0.4); padding: 16px 26px; border-radius: 16px;">
+        <div>
+          <strong style="font-size: 1.22rem; font-family: 'Outfit'; color: #fff;">🏆 VOCÊS ESTÃO PRONTOS!</strong>
+          <span style="color: #cbd5e1; margin-left: 12px;">Cabeça fria, caneta preta na mão e foco total nas questões fáceis e médias!</span>
+        </div>
+        <button class="reveal-btn" style="background: linear-gradient(135deg, var(--emerald), #059669);" onclick="fireConfetti()">
+          🎉 Comemorar Aprovação!
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- BOTTOM NAVIGATION -->
+  <footer class="bottombar">
+    <div class="slide-counter" id="slideCounter">01 / 16</div>
+    <div class="progress-Wrap">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+    <div class="nav-btns">
+      <button class="btn-icon" onclick="prevSlide()">← Anterior</button>
+      <button class="btn-icon active" onclick="nextSlide()">Próximo →</button>
+    </div>
+  </footer>
+
+    <script>
+    const slides = document.querySelectorAll('.slide');
+    const slideCounter = document.getElementById('slideCounter');
+    const progressBar = document.getElementById('progressBar');
+    const notesDrawer = document.getElementById('notesDrawer');
+    const notesContent = document.getElementById('notesContent');
+    const notesToggleBtn = document.getElementById('notesToggleBtn');
+    let currentSlide = 0;
+    let presenterWin = null;
+
+    // GUIA DETALHADO DO PROFESSOR (PASSO A PASSO + CONTAS + TEORIA + FALA)
+    const detailedTeacherGuide = [
+      // SLIDE 1
+      {
+        title: "Slide 01 • Abertura e Quebra-Gelo",
+        time: "Minuto 00 ao 04 (4 min)",
+        speech: "“Boa tarde/noite, pessoal! Quem aí quer ganhar de 80 a 120 pontos extras na nota de Matemática do ENEM sem precisar decorar nenhuma fórmula cabeluda hoje? Hoje nosso foco é visão Raio-X da prova: entender como o computador do MEC corrige seu cartão (a TRI), destrinchar as 7 Competências e resolver 10 questões clássicas!”",
+        theory: "<ul><li><strong>Objetivo Psicológico:</strong> Baixar a ansiedade da turma. Muitos alunos acham que Matemática no ENEM é igual vestibular tradicional (cheio de conta literal). Mostre que 70% da prova é interpretação lógica, proporção e leitura visual.</li><li><strong>Dinâmica de Sala:</strong> Combine que em todos os 10 exercícios eles terão de 30 a 60 segundos para votar (levantando a mão para A, B, C ou D) antes de você abrir o Quadro Branco.</li></ul>",
+        solution: "<em>Sem cálculos neste slide. Apresente os 3 blocos da aula e avance para o Slide 2!</em>"
+      },
+      // SLIDE 2
+      {
+        title: "Slide 02 • O Segredo da TRI (Teoria de Resposta ao Item)",
+        time: "Minuto 04 ao 08 (4 min)",
+        speech: "“Olhem para a tela: dois candidatos fizeram a mesma prova e acertaram exatamente 20 questões das 45. O primeiro tirou 595 pontos. O segundo tirou 745 pontos — são 150 pontos de diferença! Por que isso acontece? Porque a TRI é um detector de chute!”",
+        theory: "<ul><li><strong>Os 3 Parâmetros da TRI:</strong><br>1) <em>Dificuldade do item</em> (fácil, médio, difícil);<br>2) <em>Discriminação</em> (capacidade da questão de separar quem domina de quem não domina);<br>3) <em>Acerto Casual</em> (probabilidade de chute).</li><li><strong>O que explicar para o aluno:</strong> Se o aluno acerta uma questão difícil de Logaritmo, mas erra uma fácil de leitura de gráfico ou porcentagem, o sistema entende que ele acertou a difícil na sorte e dá peso baixíssimo para ela.</li><li><strong>Regra de Ouro:</strong> <em>Errar questão fácil por pressa é pecado mortal; gastar 12 minutos numa questão difícil por teimosia é armadilha!</em></li></ul>",
+        solution: "<strong>No Quadro Branco (Opcional):</strong> Desenhe uma escada de 3 degraus:<br>• 1º Degrau (Base): 15 Fáceis (Vale MUITO na TRI)<br>• 2º Degrau (Meio): 20 Médias (Diferencial competitivo)<br>• 3º Degrau (Topo): 10 Difíceis (Só pontuam bem se você acertou a base!)"
+      },
+      // SLIDE 3
+      {
+        title: "Slide 03 • Mapa Geral das 7 Competências do INEP",
+        time: "Minuto 08 ao 12 (4 min)",
+        speech: "“Muita gente ouve falar na Matriz de Referência do ENEM e acha que é burocracia do MEC. Mas na verdade a Matriz é o mapa do tesouro! São 7 Competências (C1 a C7), porém mais de 72% das 45 questões estão concentradas em apenas 4 delas!”",
+        theory: "<ul><li><strong>Resumo Oficial das 7 Competências para você citar:</strong><br>• <strong>C1 (~12 questões / 28%):</strong> Construir significados para os números (Racionais, Reais, Porcentagem, Razão, MMC/MDC, Contagem).<br>• <strong>C2 (~7 questões / 15%):</strong> Geometria Plana e Espacial (Projeção, vistas, áreas, volumes, Pitágoras).<br>• <strong>C3 (~5 questões / 12%):</strong> Sistemas de Medidas e Escalas (Conversão m³↔L, escala linear/superficial/volumétrica).<br>• <strong>C4 (~6 questões / 14%):</strong> Variação de Grandezas (Regra de 3 direta e inversa, taxas de variação).<br>• <strong>C5 (~6 questões / 13%):</strong> Modelagem Algébrica (Equações, funções de 1º e 2º grau, exponencial/log/senóide).<br>• <strong>C6 (~8 questões / 18%):</strong> Tratamento da Informação (Gráficos, Tabelas, Média, Moda, Mediana, Desvio Padrão).<br>• <strong>C7 (~4 questões / 9%):</strong> Probabilidade e avaliação de propostas de intervenção na realidade.</li></ul>",
+        solution: "<strong>Destaque Visual:</strong> Soma das questões mais acessíveis: C1 (12) + C6 (8) + C3/C4 (11) = <strong>31 questões de 45!</strong> Garantir esse bloco já coloca o aluno acima dos 760+ pontos!"
+      },
+      // SLIDE 4
+      {
+        title: "Slide 04 • Competência 1 (Parte 1/3): Porcentagem Sucessiva",
+        time: "Minuto 12 ao 16 (4 min) • EXERCÍCIO #1",
+        speech: "“Vamos para o nosso 1º Desafio valendo 60 segundos no relógio! Subiu 20% na véspera e deu 20% de desconto na Black Friday. Quem acha que voltou para o mesmo preço levanta a mão!”",
+        theory: "<ul><li><strong>Onde mora o erro do aluno:</strong> O cérebro humano tenta somar e subtrair taxas (+20% − 20% = 0%). Explique que a base de cálculo mudou! Os 20% de aumento incidem sobre o valor original (100), mas os 20% de desconto incidem sobre um valor maior (120)!</li><li><strong>Conceito de Fator de Atualização:</strong><br>• Aumento de <em>i%</em> ➔ Multiplica por <strong>(1 + i)</strong>. Ex: +20% = × 1,20.<br>• Desconto de <em>i%</em> ➔ Multiplica por <strong>(1 − i)</strong>. Ex: −20% = × 0,80.</li></ul>",
+        solution: "<strong>Passo a Passo para fazer no Quadro Branco:</strong><br><strong>Método 1 (Chutar R$ 100 — Mais intuitivo):</strong><br>1) Preço inicial = <strong>R$ 100,00</strong><br>2) Aumento de 20% de 100 = +R$ 20 ➔ Novo preço = <strong>R$ 120,00</strong><br>3) Desconto de 20% sobre R$ 120: 10% de 120 é 12, logo 20% é <strong>R$ 24,00</strong>!<br>4) Preço final = 120 − 24 = <strong>R$ 96,00</strong>.<br>5) Comparando com os R$ 100 iniciais: caiu R$ 4 em R$ 100 = <strong>4% mais barato (Gabarito: Letra C)</strong>.<br><br><strong>Método 2 (Fator Multiplicativo):</strong><br>1,20 × 0,80 = 0,96 (que representa 96% do total, ou seja, queda de 4%)."
+      },
+      // SLIDE 5
+      {
+        title: "Slide 05 • Competência 1 (Parte 2/3): MMC vs. MDC",
+        time: "Minuto 16 ao 20 (4 min) • EXERCÍCIO #2",
+        speech: "“Segundo desafio! Todo ano tem alguém tomando remédio, três ônibus saindo do terminal ou planetas alinhando. O aluno lê o texto gigante e pergunta: professor, é MMC ou MDC? Veja como identificar em 5 segundos!”",
+        theory: "<ul><li><strong>Como ensinar a diferença sem decorar:</strong><br>• <strong>MMC (Mínimo Múltiplo Comum):</strong> Ideia de <em>Ciclos que se repetem no futuro</em>. Palavras-chave no texto do ENEM: <em>'juntos novamente', 'simultaneamente', 'próxima vez que coincidirão', 'de tanto em tanto tempo'</em>.<br>• <strong>MDC (Máximo Divisor Comum):</strong> Ideia de <em>Repartir/Cortar em pedaços iguais</em> sem sobrar resto. Palavras-chave: <em>'dividir em pacotes/grupos iguais', 'maior tamanho possível', 'menor número de pacotes/grupos'</em>.</li></ul>",
+        solution: "<strong>Passo a Passo para fazer no Quadro Branco:</strong><br>1) Identificou 'tomará os três juntos novamente' ➔ <strong>MMC(6, 8, 12)</strong>.<br>2) Fatoração simultânea na lousa:<br>&nbsp;&nbsp;6, 8, 12 | ÷ 2<br>&nbsp;&nbsp;3, 4, 6 &nbsp;| ÷ 2<br>&nbsp;&nbsp;3, 2, 3 &nbsp;| ÷ 2<br>&nbsp;&nbsp;3, 1, 3 &nbsp;| ÷ 3<br>&nbsp;&nbsp;1, 1, 1 &nbsp;| Produto = 2 × 2 × 2 × 3 = <strong>24 horas</strong>!<br>3) Como tomou na sexta-feira às 08h00, somando +24 horas = <strong>Sábado às 08h00 (Gabarito: Letra B)</strong>."
+      },
+      // SLIDE 6
+      {
+        title: "Slide 06 • Competência 1 (Parte 3/3): Análise Combinatória",
+        time: "Minuto 20 ao 25 (5 min) • EXERCÍCIO #3",
+        speech: "“Chegamos no terror de muita gente: Análise Combinatória! Arranjo ou Combinação? Esqueça o nome das fórmulas! Vocês só precisam fazer uma única pergunta para o problema: se eu inverter as pessoas escolhidas, muda alguma coisa?”",
+        theory: "<ul><li><strong>O Teste do Pódio vs. Teste da Vitamina:</strong><br>• <strong>Pódio / Senha (Ordem IMPORTA):</strong> 1º lugar Ouro e 2º Prata. (Ana em 1º, Bia em 2º) é DIFERENTE de (Bia em 1º, Ana em 2º). Aqui você só usa o Princípio Multiplicativo (tracinhos)!<br>• <strong>Vitamina / Equipe / Comissão (Ordem NÃO IMPORTA):</strong> Bater banana com maçã no liquidificador dá a mesma vitamina que maçã com banana! Escolher a equipe {Dr. João, Dra. Maria, Dr. Pedro} é a MESMA equipe que {Dr. Pedro, Dra. Maria, Dr. João}. Quando a ordem não importa, você faz os tracinhos e <strong>divide pelo fatorial da quantidade de vagas</strong> para matar as repetições!</li></ul>",
+        solution: "<strong>Passo a Passo para fazer no Quadro Branco:</strong><br>1) São 3 vagas na equipe: faça 3 tracinhos: <code>_6_ × _5_ × _4_ = 120</code>.<br>2) Aviso de Pegadinha: O <strong>120 está na Letra C</strong> esperando quem esquece de dividir!<br>3) Pergunta chave: 'Há cargos diferentes (chefe, vice, secretário) ou são apenas 3 plantonistas iguais?' São iguais! Então a ordem NÃO importa.<br>4) Com 3 pessoas escolhidas, existem <code>3! = 3 × 2 × 1 = 6</code> formas de embaralhar a mesma equipe.<br>5) Conta final: <code>120 ÷ 6 = 20 equipes distintas</code> <strong>(Gabarito: Letra B)</strong>."
+      },
+      // SLIDE 7
+      {
+        title: "Slide 07 • Competência 2 (Parte 1/2): Projeção Ortogonal",
+        time: "Minuto 25 ao 29 (4 min) • EXERCÍCIO #4",
+        speech: "“Entramos na Competência 2: Geometria! Todo ano cai uma questão do globo terrestre, do carrossel, da pirâmide ou da formiga andando num sólido, pedindo a PROJEÇÃO ORTOGONAL. Quem sabe o que significa a palavra ortogonal?”",
+        theory: "<ul><li><strong>Significado de Ortogonal:</strong> Fazendo 90 graus (perpendicular) com o chão/plano.<br>• <strong>Analogia do Sol do Meio-Dia ou da Prensa Hidráulica:</strong> Imagine um sol exatamente a pino (meio-dia) jogando luz de cima para baixo, ou uma prensa amassando a figura até ela virar uma folha de papel 2D no chão.</li><li><strong>O que o aluno precisa gravar:</strong> Quando olhamos de cima (projeção na base), a coordenada de <strong>ALTURA desaparece</strong>! Subir ou descer verticalmente vira um único ponto parado visto de cima.</li></ul>",
+        solution: "<strong>Passo a Passo para fazer no Quadro Branco:</strong><br>1) Desenhe um cilindro em perspectiva e depois desenhe como ele é visto exatamente de cima (apenas um círculo!).<br>2) A formiga nunca entra no meio da lata; ela anda o tempo todo colada na <em>parede lateral</em>.<br>3) Vista de cima, toda a parede lateral do cilindro está exatamente em cima da linha da circunferência da base!<br>4) Como ela deu 1 volta completa subindo pela parede, a sombra dela no chão desenha <strong>uma circunferência completa (Gabarito: Letra C)</strong>."
+      },
+      // SLIDE 8
+      {
+        title: "Slide 08 • Competência 2 (Parte 2/2): Volumes e Triângulo 3-4-5",
+        time: "Minuto 29 ao 34 (5 min) • EXERCÍCIO #5",
+        speech: "“Ainda na Competência 2: o ENEM adora pegar água ou café de um recipiente cilíndrico e despejar em copos cônicos (ou piramidais). Qual é a relação mágica entre figuras retas e figuras pontudas?”",
+        theory: "<ul><li><strong>Resumo Universal de Volumes (Só 3 regras para toda a Geometria Espacial!):</strong><br>1) <strong>Sólidos que sobem reto (Prisma, Paralelepípedo, Cubo, Cilindro):</strong><br>&nbsp;&nbsp;<code>Volume = Área da Base × Altura</code><br>2) <strong>Sólidos que têm PONTA no topo (Pirâmide, Cone):</strong><br>&nbsp;&nbsp;<code>Volume = (Área da Base × Altura) ÷ 3</code><br>3) <strong>Esfera:</strong> <code>V = (4/3) · π · R³</code>.</li><li><strong>Triângulo Pitagórico 3-4-5:</strong> Sempre lembre a turma: antes de gastar tempo aplicando <em>a² = b² + c²</em> em rampa, escada ou telhado, verifique se os lados são múltiplos de <strong>3, 4 e 5</strong> (ex: 6, 8 e 10; 15, 20 e 25; 30, 40 e 50).</li></ul>",
+        solution: "<strong>Passo a Passo para fazer no Quadro Branco:</strong><br>1) Volume da Caneca (Cilindro) = <code>π · R² · H</code>.<br>2) Volume da Taça (Cone de mesmo raio R e mesma altura H) = <code>(π · R² · H) ÷ 3</code>.<br>3) Ou seja, o volume do cone é exatamente <strong>1/3 (um terço)</strong> do volume do cilindro!<br>4) Portanto, cabem exatamente <strong>3 taças cônicas cheias (Gabarito: Letra B)</strong>."
+      },
+      // SLIDE 9
+      {
+        title: "Slide 09 • Competência 3: Escalas Lineares, Superficiais e Volumétricas",
+        time: "Minuto 34 ao 38 (4 min) • EXERCÍCIO #6",
+        speech: "“Atenção máxima agora! Este Slide vale ouro puro! Essa é estatisticamente a pegadinha que mais derruba candidatos bons no ENEM: Escala de Volume! Valendo 45 segundos: quantos litros cabem na maquete 1:10?”",
+        theory: "<ul><li><strong>Por que todo mundo erra e marca 5.000 Litros (Letra A)?</strong> Porque o aluno divide 50.000 por 10 uma única vez! Ele esquece que a escala <code>1 : 10</code> é uma escala <strong>LINEAR (1 dimensão)</strong>.</li><li><strong>A Matemática das 3 Dimensões:</strong><br>Quando você reduz uma piscina na escala 1:10:<br>• O <em>Comprimento</em> fica 10 vezes menor (÷ 10);<br>• A <em>Largura</em> fica 10 vezes menor (÷ 10);<br>• A <em>Profundidade</em> fica 10 vezes menor (÷ 10).<br>Logo, o Volume (C × L × P) fica <code>10 × 10 × 10 = 1.000 vezes menor</code>!</li><li><strong>Conversões Obrigatórias C3:</strong><br>• <code>1 m³ = 1.000 Litros</code> (Caixa d'água de 1m × 1m × 1m)<br>• <code>1 dm³ = 1 Litro</code><br>• <code>1 cm³ = 1 mL</code></li></ul>",
+        solution: "<strong>Passo a Passo para fazer no Quadro Branco:</strong><br>1) Escala Linear (1D): <code>k = 10</code><br>2) Escala de Área (2D): <code>k² = 10² = 100</code><br>3) Escala de Volume (3D): <code>k³ = 10³ = 1.000</code><br>4) Volume da Maquete = Volume Real ÷ 1.000<br>5) <code>50.000 L ÷ 1.000 = 50 Litros</code> <strong>(Gabarito: Letra C)</strong>."
+      },
+      // SLIDE 10
+      {
+        title: "Slide 10 • Competência 4: Variação de Grandezas (Direta vs. Inversa)",
+        time: "Minuto 38 ao 42 (4 min) • EXERCÍCIO #7",
+        speech: "“Na Competência 4 o ENEM avalia se você sabe como uma grandeza afeta a outra. Quando uma dobra, a outra dobra ou cai pela metade? Vamos ver o clássico das bombas hidráulicas e torneiras!”",
+        theory: "<ul><li><strong>Diferença Conceitual C4:</strong><br>• <strong>Grandezas Diretamente Proporcionais:</strong> Quando uma aumenta, a outra aumenta na mesma razão (Ex: Quantidade de combustível e distância percorrida). A <strong>DIVISÃO (Y ÷ X = k)</strong> é constante!<br>• <strong>Grandezas Inversamente Proporcionais:</strong> Quando uma aumenta, a outra diminui na mesma proporção (Ex: Velocidade e Tempo; Número de operários/bombas e Tempo de serviço). A <strong>MULTIPLICAÇÃO (Y × X = k)</strong> é constante!</li></ul>",
+        solution: "<strong>Passo a Passo para fazer no Quadro Branco:</strong><br>1) Pergunte à turma: 'Se eu colocar MAIS bombas, o tempo para esvaziar aumenta ou diminui?' Diminui! Logo são <strong>Inversamente Proporcionais</strong>.<br>2) Em vez de montar regra de três e esquecer de inverter a fração, use a <strong>Lei do Produto Constante</strong>:<br>&nbsp;&nbsp;<code>(Nº de Bombas₁) × (Tempo₁) = (Nº de Bombas₂) × (Tempo₂)</code><br>3) Substituindo os dados:<br>&nbsp;&nbsp;<code>3 × 8 = B × 2</code><br>&nbsp;&nbsp;<code>24 = 2B ➔ B = 24 ÷ 2 = 12 bombas</code> <strong>(Gabarito: Letra C)</strong>.<br><em>Atenção se a pergunta pedisse 'quantas bombas A MAIS devem ser ligadas': aí seria 12 − 3 = 9! Sempre releia o comando final!</em>"
+      },
+      // SLIDE 11
+      {
+        title: "Slide 11 • Competência 5 (Parte 1/2): Semáforo das Funções",
+        time: "Minuto 42 ao 45 (3 min) • Revisão Teórica Estratégica",
+        speech: "“Entramos na Competência 5: Álgebra e Funções! Aqui está o segredo da gestão de tempo: nem toda questão de função deve ser resolvida na 1ª passada da prova. Vamos separar pelo Semáforo da TRI!”",
+        theory: "<ul><li><strong>🟢 Sinal Verde (Função Afim / 1º Grau — FAÇA NA HORA!):</strong><br><code>f(x) = a·x + b</code>. Explique que <strong>b</strong> é o valor fixo (taxa inicial, onde o gráfico corta o eixo vertical Y quando x=0) e <strong>a</strong> é a taxa variável por unidade (inclinação da reta: <code>a = Δy / Δx</code>).</li><li><strong>🟡 Sinal Amarelo (Função Quadrática / 2º Grau — MUITO RENTÁVEL!):</strong><br>Sempre que o texto falar em <em>Lucro Máximo, Receita Máxima, Altura Máxima ou Custo Mínimo</em>, ele quer o <strong>Vértice da Parábola</strong>! Ensine o atalho da <strong>Simetria</strong>: o X do vértice fica exatamente na metade do caminho entre as duas raízes (<code>Xv = (x₁ + x₂)/2</code> ou <code>-b / 2a</code>).</li><li><strong>🔴 Sinal Vermelho (Exponencial, Logaritmo e Trigonometria — DEIXE PRO FINAL!):</strong><br>Se cair função trigonométrica de maré ou temperatura <code>f(t) = A + B·sen(...)</code>, mostre que não precisa saber trigonometria avançada: como o seno varia entre -1 e +1, o valor <strong>A</strong> é a média entre o topo e o fundo do gráfico, e o <strong>B</strong> é a metade da altura da onda!</li></ul>",
+        solution: "<em>Mostre os 3 cartões na tela e prepare a turma para aplicar a Função do 1º Grau no próximo slide!</em>"
+      },
+      // SLIDE 12
+      {
+        title: "Slide 12 • Competência 5 (Parte 2/2): Comparação de Planos (1º Grau)",
+        time: "Minuto 45 ao 49 (4 min) • EXERCÍCIO #8",
+        speech: "“Desafio #8 na tela! Essa questão cai ano sim, ano também no ENEM: comparar dois planos de aluguel de carro, internet, academia ou energia solar para descobrir a partir de qual consumo um passa a valer mais a pena que o outro!”",
+        theory: "<ul><li><strong>Ponto de Equilíbrio (Break-even point):</strong> É o ponto onde as duas retas se cruzam no gráfico, ou seja, onde <code>Custo Alfa = Custo Beta</code>.</li><li><strong>Visão de Negócios (Sem Álgebra):</strong> Ensine o aluno a pensar financeiramente: o Plano Beta cobra R$ 30,00 a mais na taxa fixa inicial (70 contra 40), mas cobra R$ 1,00 a menos por cada km rodado (1 contra 2). Quantos km você precisa rodar para economizar os R$ 30,00 que pagou a mais na largada? Exatamente 30 km!</li></ul>",
+        solution: "<strong>Passo a Passo para fazer no Quadro Branco:</strong><br>1) <strong>Modelando as funções (para x quilômetros):</strong><br>&nbsp;&nbsp;• Plano Alfa: <code>A(x) = 40 + 2x</code><br>&nbsp;&nbsp;• Plano Beta: <code>B(x) = 70 + 1x</code><br>2) <strong>Queremos que o Beta seja mais barato que o Alfa (B(x) < A(x)):</strong><br>&nbsp;&nbsp;<code>70 + 1x < 40 + 2x</code><br>&nbsp;&nbsp;<code>70 − 40 < 2x − 1x</code><br>&nbsp;&nbsp;<code>30 < x</code> (ou seja, <strong>x > 30 km</strong>)<br>3) Portanto, acima de 30 km rodados o Plano Beta é mais econômico <strong>(Gabarito: Letra C)</strong>."
+      },
+      // SLIDE 13
+      {
+        title: "Slide 13 • Competência 6 (Parte 1/2): Média, Moda e Mediana",
+        time: "Minuto 49 ao 53 (4 min) • EXERCÍCIO #9",
+        speech: "“Chegamos na Competência 6: Estatística e Gráficos! São cerca de 8 questões na prova e todas têm TRI altíssima! Valendo 30 segundos: qual é a Moda, a Mediana e a Média de gols desse time?”",
+        theory: "<ul><li><strong>Revisão dos 3 Conceitos:</strong><br>• <strong>MOda:</strong> O que está na <em>moda</em> é o que todo mundo usa (o valor mais frequente, que mais se repete).<br>• <strong>MEdiana:</strong> É o termo que ocupa exatamente o <em>MEIO</em> da fila, mas <strong>SOMENTE APÓS ORDENAR OS DADOS</strong> (em ordem crescente ou decrescente)!<br>• <strong>MÉdia Aritmética:</strong> Soma de todos os valores dividida pela quantidade de elementos.</li><li><strong>Observação Crucial para Quantidade PAR de dados:</strong> Se a lista tiver 6 números ordenados, não existe um único número no meio; você pega os 2 centrais (o 3º e o 4º), soma e divide por 2!</li></ul>",
+        solution: "<strong>Passo a Passo para fazer no Quadro Branco:</strong><br>1) Lista original do enunciado: <code>3 , 0 , 5 , 1 , 1</code> (Quem olha rápido vê o 5 no meio e marca a Letra A — ERRO GRAVE!).<br>2) <strong>1º Mandamento: Colocar em Ordem Crescente (Rol):</strong><br>&nbsp;&nbsp;<code>0 , 1 , [ 1 ] , 3 , 5</code><br>3) <strong>Moda</strong> (valor que mais aparece): o número <strong>1</strong> (aparece duas vezes).<br>4) <strong>Mediana</strong> (termo central da fila ordenada): o 3º termo agora é o <strong>1</strong>!<br>5) <strong>Média</strong>: <code>(0 + 1 + 1 + 3 + 5) ÷ 5 = 10 ÷ 5 = 2</code>.<br>6) Resposta respectiva: <strong>1, 1 e 2 (Gabarito: Letra B)</strong>."
+      },
+      // SLIDE 14
+      {
+        title: "Slide 14 • Competência 6 (Parte 2/2): Desvio Padrão e Média Ponderada",
+        time: "Minuto 53 ao 56 (3 min) • Conceitos Garantidores de Ponto",
+        speech: "“Ainda na Competência 6: e quando aparece uma tabela com Desvio Padrão? Precisa elevar ao quadrado e tirar raiz quadrada no ENEM? NUNCA! Desvio Padrão no ENEM se resolve no olho em 15 segundos!”",
+        theory: "<ul><li><strong>Desvio Padrão = Medida de Dispersão / Oscilação:</strong><br>• Quanto <strong>MENOR</strong> o desvio padrão, mais próximos da média estão os dados (mais <em>regular, estável, constante, homogêneo, confiável</em>).<br>• Quanto <strong>MAIOR</strong> o desvio padrão, mais espalhados/instáveis são os valores.</li><li><strong>A Pegadinha da Média Ponderada:</strong><br>Quando o ENEM dá uma tabela onde cada linha tem uma frequência ou peso diferente (ex: 10 alunos tiraram nota 6, e 30 alunos tiraram nota 8), a média NÃO é (6+8)/2 = 7! Você precisa multiplicar cada valor pelo seu peso/quantidade antes de somar!</li></ul>",
+        solution: "<strong>Exemplo Rápido para o Quadro Branco (Nota que falta):</strong><br><em>'Um aluno precisa de média 7,0 nas 4 provas do ano. Nas 3 primeiras tirou 5,0; 6,0 e 8,0. Quanto precisa tirar na 4ª prova?'</em><br>• Truque da Soma Total: Para ter média 7 em 4 provas, a soma tem que ser <code>4 × 7 = 28 pontos</code>.<br>• Ele já tem: <code>5 + 6 + 8 = 19 pontos</code>.<br>• Falta: <code>28 − 19 = 9,0</code>! Sem fração e sem sofrimento!"
+      },
+      // SLIDE 15
+      {
+        title: "Slide 15 • Competência 7: Probabilidade e Tomada de Decisão",
+        time: "Minuto 56 ao 58 (2 min) • EXERCÍCIO FINAL #10",
+        speech: "“Nosso 10º e último desafio para fechar as 7 Competências com chave de ouro! Probabilidade! Três sensores independentes com 10% de chance de falha cada um. Qual a chance de PELO MENOS UM funcionar?”",
+        theory: "<ul><li><strong>Por que o caminho direto dá trabalho?</strong> 'Pelo menos um funcionar' significa: funcionar só o 1º, ou só o 2º, ou só o 3º, ou o 1º e o 2º, ou o 1º e o 3º, ou o 2º e o 3º, ou os três juntos (são 7 casos para calcular e somar!).</li><li><strong>O Atalho do Evento Complementar (100% − Nenhum):</strong><br>O contrário de <em>'pelo menos um funcionar'</em> é <strong>'NENHUM funcionar (todos falharem ao mesmo tempo)'</strong>, que é apenas 1 único caso!</li><li><strong>Conectivos da Probabilidade:</strong><br>• Falhar o 1º <strong>E</strong> falhar o 2º <strong>E</strong> falhar o 3º ➔ Regra do <strong>E = Multiplica (×)</strong>!<br>• Acontecer o caso A <strong>OU</strong> o caso B ➔ Regra do <strong>OU = Soma (+)</strong>!</li></ul>",
+        solution: "<strong>Passo a Passo para fazer no Quadro Branco:</strong><br>1) Probabilidade de 1 sensor falhar = <code>10% = 0,1</code> (ou 1/10).<br>2) Probabilidade dos 3 sensores falharem juntos (1º E 2º E 3º):<br>&nbsp;&nbsp;<code>P(Todos falharem) = 0,1 × 0,1 × 0,1 = 0,001</code><br>3) Passando <code>0,001</code> para porcentagem (multiplica por 100): <strong>0,1% de chance de tudo dar errado</strong>.<br>4) Logo, a chance de o alarme funcionar (pelo menos um funcionar) é:<br>&nbsp;&nbsp;<code>100% − 0,1% = 99,9%</code> <strong>(Gabarito: Letra D)</strong>."
+      },
+      // SLIDE 16
+      {
+        title: "Slide 16 • Plano de Voo Final & Encerramento",
+        time: "Minuto 58 ao 60 (2 min) • Motivação e Fechamento",
+        speech: "“Pessoal, para fechar nossa aula: conhecimento vocês já têm, o que define o jogo no dia da prova é EXECUÇÃO! Gravem esses 3 passos: Leitura Invertida, Técnica das 2 Passadas e Chute Inteligente!”",
+        theory: "<ul><li><strong>1. Leitura Invertida:</strong> Nunca comece lendo a historinha do ENEM do início. Leia primeiro a última frase antes das alternativas (o comando). Assim seu cérebro já volta para o texto filtrando apenas os números que importam!</li><li><strong>2. Duas Passadas:</strong> Na primeira hora e meia de Matemática, proibido ficar mais de 3 minutos na mesma questão. Travou? Circula o número da questão no caderno e pula para garantir as fáceis da TRI!</li><li><strong>3. Chute Consciente:</strong> Faltam 5 minutos para entregar o cartão? Elimine alternativas absurdas (valores negativos, pequenos demais ou fora de escala visual na figura).</li></ul>",
+        solution: "<strong>Ação Final:</strong> Clique no botão verde <strong>'🎉 Comemorar Aprovação!'</strong> para disparar os confetes na tela, agradeça a presença da turma e deseje uma excelente prova!"
+      }
+    ];
+
+    function buildGuideHTML(idx) {
+      const g = detailedTeacherGuide[idx] || detailedTeacherGuide[0];
+      return `
+        <div style="margin-bottom:12px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,255,255,0.12); padding-bottom:8px;">
+          <strong style="color:#fde68a; font-size:1.05rem;">${g.title}</strong>
+          <span style="background:rgba(99,102,241,0.25); color:#a5b4fc; padding:3px 10px; border-radius:999px; font-size:0.8rem; font-weight:700;">⏱️ ${g.time}</span>
+        </div>
+        <div style="margin-bottom:12px; background:rgba(16,185,129,0.1); border-left:3px solid #10b981; padding:10px 12px; border-radius:6px;">
+          <div style="font-size:0.78rem; text-transform:uppercase; font-weight:800; color:#6ee7b7; margin-bottom:4px;">🗣️ O que falar para a turma (Quebra-gelo / Pergunta):</div>
+          <div style="font-style:italic; color:#ecfdf5;">${g.speech}</div>
+        </div>
+        <div style="margin-bottom:12px; background:rgba(255,255,255,0.04); border-left:3px solid #6366f1; padding:10px 12px; border-radius:6px;">
+          <div style="font-size:0.78rem; text-transform:uppercase; font-weight:800; color:#818cf8; margin-bottom:4px;">🧠 Teoria, Conceitos & Pegadinhas para Explicar:</div>
+          <div>${g.theory}</div>
+        </div>
+        <div style="background:rgba(245,158,11,0.1); border-left:3px solid #f59e0b; padding:10px 12px; border-radius:6px;">
+          <div style="font-size:0.78rem; text-transform:uppercase; font-weight:800; color:#fcd34d; margin-bottom:4px;">✏️ Resolução Passo a Passo para o Quadro Branco:</div>
+          <div>${g.solution}</div>
+        </div>
+      `;
+    }
+
+    function openPresenterPopup() {
+      if (presenterWin && !presenterWin.closed) {
+        presenterWin.focus();
+        syncPresenterPopup();
+        return;
+      }
+      presenterWin = window.open('', 'GuiaProfessorENEM', 'width=760,height=820,menubar=no,toolbar=no,location=no,status=no,resizable=yes,scrollbars=yes');
+      if (!presenterWin) {
+        alert('O navegador bloqueou o Popup! Permita popups para esta página na barra de endereços.');
+        return;
+      }
+
+      presenterWin.document.write(`
+        <!DOCTYPE html>
+        <html lang="pt-BR">
+        <head>
+          <meta charset="UTF-8">
+          <title>🖥️ Guia do Professor (2ª Tela - Modo Estendido)</title>
+          <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;800&family=Plus+Jakarta+Sans:wght@400;600;700&family=JetBrains+Mono:wght@600&display=swap" rel="stylesheet">
+          <style>
+            body {
+              margin: 0;
+              padding: 20px;
+              background: #090d1a;
+              color: #f1f5f9;
+              font-family: 'Plus Jakarta Sans', sans-serif;
+              line-height: 1.55;
+            }
+            .top-ctrl {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              background: #141c33;
+              border: 1px solid rgba(255,255,255,0.15);
+              padding: 12px 18px;
+              border-radius: 14px;
+              margin-bottom: 18px;
+              position: sticky;
+              top: 10px;
+              z-index: 10;
+              box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            }
+            .btn {
+              background: #253159;
+              color: #fff;
+              border: 1px solid rgba(255,255,255,0.2);
+              padding: 8px 14px;
+              border-radius: 8px;
+              font-weight: 700;
+              cursor: pointer;
+              font-size: 0.85rem;
+            }
+            .btn:hover { background: #3b4c85; }
+            .btn.primary { background: #6366f1; border-color: #6366f1; }
+            .btn.emerald { background: #10b981; color: #022c22; border-color: #10b981; }
+            .btn.amber { background: #f59e0b; color: #000; border-color: #f59e0b; }
+            ul { padding-left: 18px; margin: 6px 0; }
+            li { margin-bottom: 6px; }
+            code {
+              font-family: 'JetBrains Mono', monospace;
+              background: rgba(0,0,0,0.45);
+              color: #fde68a;
+              padding: 2px 6px;
+              border-radius: 4px;
+            }
+            .next-preview {
+              margin-top: 16px;
+              padding: 12px 16px;
+              background: rgba(255,255,255,0.03);
+              border: 1px dashed rgba(255,255,255,0.18);
+              border-radius: 10px;
+              font-size: 0.88rem;
+              color: #94a3b8;
+            }
+          </style>
+        </head>
+        <body>
+          <div class="top-ctrl">
+            <div>
+              <span style="font-family:'Outfit'; font-weight:800; color:#818cf8; font-size:1rem;">🎙️ PAINEL DO PROFESSOR (2ª TELA)</span>
+              <span id="popCounter" style="margin-left:10px; font-family:'JetBrains Mono'; background:rgba(255,255,255,0.1); padding:3px 8px; border-radius:6px; font-size:0.85rem;">01 / 16</span>
+            </div>
+            <div style="display:flex; gap:8px; flex-wrap:wrap;">
+              <button class="btn" onclick="window.opener.prevSlide()">← Anterior</button>
+              <button class="btn primary" onclick="window.opener.nextSlide()">Próximo →</button>
+              <button class="btn emerald" onclick="window.opener.toggleWhiteboard()">✏️ Quadro (B)</button>
+              <button class="btn amber" onclick="window.opener.revealCurrentHack()">✨ Revelar Atalho</button>
+              <button class="btn" onclick="window.opener.startTimer(60)">⏱️ 60s</button>
+            </div>
+          </div>
+          <div id="popBody"></div>
+          <div class="next-preview" id="popNext"></div>
+          <script>
+            document.addEventListener('keydown', (e) => {
+              if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); window.opener.nextSlide(); }
+              else if (e.key === 'ArrowLeft') { e.preventDefault(); window.opener.prevSlide(); }
+              else if (e.key.toLowerCase() === 'b' || e.key.toLowerCase() === 'q') { window.opener.toggleWhiteboard(); }
+            });
+          <\/script>
+        </body>
+        </html>
+      `);
+      presenterWin.document.close();
+      syncPresenterPopup();
+    }
+
+    function revealCurrentHack() {
+      const activeSlideEl = slides[currentSlide];
+      const quizBox = activeSlideEl.querySelector('.options-grid');
+      if (quizBox && quizBox.id) {
+        const num = quizBox.id.split('-')[1];
+        revealHack(num);
+      }
+    }
+
+    function syncPresenterPopup() {
+      if (!presenterWin || presenterWin.closed) return;
+      const total = slides.length;
+      const num = String(currentSlide + 1).padStart(2, '0');
+      const tot = String(total).padStart(2, '0');
+      const popCounter = presenterWin.document.getElementById('popCounter');
+      const popBody = presenterWin.document.getElementById('popBody');
+      const popNext = presenterWin.document.getElementById('popNext');
+
+      if (popCounter) popCounter.textContent = `Slide ${num} de ${tot}`;
+      if (popBody) popBody.innerHTML = buildGuideHTML(currentSlide);
+      if (popNext) {
+        if (currentSlide < total - 1) {
+          const nextG = detailedTeacherGuide[currentSlide + 1];
+          popNext.innerHTML = `<strong>⏭️ Próximo Slide:</strong> ${nextG.title} (${nextG.time})`;
+        } else {
+          popNext.innerHTML = `<strong>🏁 Último Slide da Apresentação!</strong>`;
+        }
+      }
+    }
+
+    function updateSlide() {
+      slides.forEach((s, idx) => {
+        s.classList.toggle('active', idx === currentSlide);
+      });
+      const total = slides.length;
+      const num = String(currentSlide + 1).padStart(2, '0');
+      const tot = String(total).padStart(2, '0');
+      slideCounter.textContent = `${num} / ${tot}`;
+      progressBar.style.width = `${((currentSlide + 1) / total) * 100}%`;
+      notesContent.innerHTML = buildGuideHTML(currentSlide);
+      syncPresenterPopup();
+    }
+
+    function nextSlide() {
+      if (currentSlide < slides.length - 1) {
+        currentSlide++;
+        updateSlide();
+      }
+    }
+
+    function prevSlide() {
+      if (currentSlide > 0) {
+        currentSlide--;
+        updateSlide();
+      }
+    }
+
+    function toggleNotes() {
+      notesDrawer.classList.toggle('open');
+      notesToggleBtn.classList.toggle('active');
+    }
+
+    function toggleFullScreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(() => {});
+      } else {
+        document.exitFullscreen();
+      }
+    }
+
+    // Quiz Answer Checker
+    function checkAnswer(quizId, btnElement, isCorrect) {
+      const container = document.getElementById(quizId);
+      if (isCorrect) {
+        btnElement.classList.add('correct');
+        const quizNum = quizId.split('-')[1];
+        revealHack(quizNum);
+        fireConfetti();
+      } else {
+        btnElement.classList.add('wrong');
+      }
+    }
+
+    function revealHack(num) {
+      const lock = document.getElementById(`lock-${num}`);
+      const hack = document.getElementById(`hack-${num}`);
+      if (lock && hack) {
+        lock.style.display = 'none';
+        hack.classList.add('visible');
+      }
+    }
+
+    // Timer Logic
+    let timerInterval = null;
+    let remainingSeconds = 60;
+    const timerDisplay = document.getElementById('timerDisplay');
+
+    function renderTimer() {
+      const mins = String(Math.floor(remainingSeconds / 60)).padStart(2, '0');
+      const secs = String(remainingSeconds % 60).padStart(2, '0');
+      timerDisplay.textContent = `${mins}:${secs}`;
+      timerDisplay.classList.toggle('urgent', remainingSeconds <= 10 && remainingSeconds > 0);
+    }
+
+    function startTimer(seconds) {
+      clearInterval(timerInterval);
+      remainingSeconds = seconds;
+      renderTimer();
+      timerInterval = setInterval(() => {
+        if (remainingSeconds > 0) {
+          remainingSeconds--;
+          renderTimer();
+        } else {
+          clearInterval(timerInterval);
+        }
+      }, 1000);
+    }
+
+    function resetTimer() {
+      clearInterval(timerInterval);
+      remainingSeconds = 60;
+      timerDisplay.classList.remove('urgent');
+      renderTimer();
+    }
+
+    // ==========================================
+    // INTERACTIVE WHITEBOARD LOGIC
+    // ==========================================
+    const wbWrapper = document.getElementById('wbWrapper');
+    const wbToggleBtn = document.getElementById('wbToggleBtn');
+    const wbCanvas = document.getElementById('wbCanvas');
+    const wbCtx = wbCanvas.getContext('2d');
+
+    let isDrawing = false;
+    let penColor = '#facc15';
+    let penTool = 'pen'; // 'pen' | 'highlighter' | 'eraser'
+    let strokes = [];
+    let currentStroke = null;
+
+    function resizeWhiteboard() {
+      const rect = wbWrapper.getBoundingClientRect();
+      if (rect.width > 0 && rect.height > 0) {
+        wbCanvas.width = rect.width;
+        wbCanvas.height = rect.height;
+        redrawStrokes();
+      }
+    }
+
+    window.addEventListener('resize', () => {
+      if (wbWrapper.classList.contains('open')) {
+        resizeWhiteboard();
+      }
+      resizeCanvas();
+    });
+
+    function toggleWhiteboard() {
+      wbWrapper.classList.toggle('open');
+      wbToggleBtn.classList.toggle('active');
+      if (wbWrapper.classList.contains('open')) {
+        resizeWhiteboard();
+      }
+    }
+
+    function setBoardBg(mode) {
+      wbWrapper.classList.remove('bg-transparent', 'bg-chalkboard', 'bg-whiteboard');
+      document.getElementById('modeTransparent').classList.remove('active');
+      document.getElementById('modeChalk').classList.remove('active');
+      document.getElementById('modeWhite').classList.remove('active');
+
+      if (mode === 'transparent') {
+        wbWrapper.classList.add('bg-transparent');
+        document.getElementById('modeTransparent').classList.add('active');
+      } else if (mode === 'chalkboard') {
+        wbWrapper.classList.add('bg-chalkboard');
+        document.getElementById('modeChalk').classList.add('active');
+      } else if (mode === 'whiteboard') {
+        wbWrapper.classList.add('bg-whiteboard');
+        document.getElementById('modeWhite').classList.add('active');
+      }
+    }
+
+    function setPenColor(color, swatchEl) {
+      penColor = color;
+      if (penTool === 'eraser') {
+        setPenTool('pen');
+      }
+      document.querySelectorAll('.color-swatch').forEach(el => el.classList.remove('active'));
+      if (swatchEl) swatchEl.classList.add('active');
+    }
+
+    function setPenTool(tool) {
+      penTool = tool;
+      document.getElementById('toolPen').classList.toggle('active', tool === 'pen');
+      document.getElementById('toolHighlighter').classList.toggle('active', tool === 'highlighter');
+      document.getElementById('toolEraser').classList.toggle('active', tool === 'eraser');
+    }
+
+    function getPointerPos(e) {
+      const rect = wbCanvas.getBoundingClientRect();
+      return {
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top
+      };
+    }
+
+    wbCanvas.addEventListener('pointerdown', (e) => {
+      isDrawing = true;
+      const pos = getPointerPos(e);
+      currentStroke = {
+        tool: penTool,
+        color: penColor,
+        points: [pos]
+      };
+      strokes.push(currentStroke);
+      redrawStrokes();
+    });
+
+    wbCanvas.addEventListener('pointermove', (e) => {
+      if (!isDrawing || !currentStroke) return;
+      const pos = getPointerPos(e);
+      currentStroke.points.push(pos);
+      redrawStrokes();
+    });
+
+    window.addEventListener('pointerup', () => {
+      isDrawing = false;
+      currentStroke = null;
+    });
+
+    function redrawStrokes() {
+      wbCtx.clearRect(0, 0, wbCanvas.width, wbCanvas.height);
+      wbCtx.lineCap = 'round';
+      wbCtx.lineJoin = 'round';
+
+      for (const s of strokes) {
+        if (s.points.length === 0) continue;
+        wbCtx.save();
+
+        if (s.tool === 'eraser') {
+          wbCtx.globalCompositeOperation = 'destination-out';
+          wbCtx.lineWidth = 34;
+          wbCtx.strokeStyle = 'rgba(0,0,0,1)';
+        } else if (s.tool === 'highlighter') {
+          wbCtx.globalCompositeOperation = 'source-over';
+          wbCtx.lineWidth = 24;
+          wbCtx.globalAlpha = 0.35;
+          wbCtx.strokeStyle = s.color;
+        } else {
+          wbCtx.globalCompositeOperation = 'source-over';
+          wbCtx.lineWidth = 4.5;
+          wbCtx.globalAlpha = 1;
+          wbCtx.strokeStyle = s.color;
+        }
+
+        wbCtx.beginPath();
+        wbCtx.moveTo(s.points[0].x, s.points[0].y);
+        for (let i = 1; i < s.points.length; i++) {
+          wbCtx.lineTo(s.points[i].x, s.points[i].y);
+        }
+        if (s.points.length === 1) {
+          wbCtx.lineTo(s.points[0].x + 0.5, s.points[0].y + 0.5);
+        }
+        wbCtx.stroke();
+        wbCtx.restore();
+      }
+    }
+
+    function undoStroke() {
+      strokes.pop();
+      redrawStrokes();
+    }
+
+    function clearBoard() {
+      strokes = [];
+      redrawStrokes();
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'z') {
+        if (wbWrapper.classList.contains('open')) {
+          e.preventDefault();
+          undoStroke();
+          return;
+        }
+      }
+
+      if (e.key === 'ArrowRight' || e.key === ' ') {
+        e.preventDefault();
+        nextSlide();
+      } else if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        prevSlide();
+      } else if (e.key.toLowerCase() === 'n') {
+        toggleNotes();
+      } else if (e.key.toLowerCase() === 'p') {
+        openPresenterPopup();
+      } else if (e.key.toLowerCase() === 'b' || e.key.toLowerCase() === 'q') {
+        toggleWhiteboard();
+      } else if (e.key.toLowerCase() === 'f') {
+        toggleFullScreen();
+      }
+    });
+
+    // Lightweight Confetti Effect
+    const canvas = document.getElementById('confetti-canvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+
+    function fireConfetti() {
+      const colors = ['#6366f1', '#f59e0b', '#10b981', '#06b6d4', '#f43f5e', '#a855f7'];
+      for (let i = 0; i < 85; i++) {
+        particles.push({
+          x: window.innerWidth / 2,
+          y: window.innerHeight / 2 + 60,
+          vx: (Math.random() - 0.5) * 18,
+          vy: (Math.random() - 1) * 18 - 4,
+          size: Math.random() * 8 + 5,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          rot: Math.random() * 360,
+          vrot: (Math.random() - 0.5) * 12,
+          life: 100
+        });
+      }
+      if (particles.length <= 85) requestAnimationFrame(updateConfetti);
+    }
+
+    function updateConfetti() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach((p) => {
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += 0.38;
+        p.rot += p.vrot;
+        p.life -= 1.2;
+
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate((p.rot * Math.PI) / 180);
+        ctx.fillStyle = p.color;
+        ctx.globalAlpha = Math.max(0, p.life / 100);
+        ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.6);
+        ctx.restore();
+      });
+      particles = particles.filter((p) => p.life > 0);
+      if (particles.length > 0) {
+        requestAnimationFrame(updateConfetti);
+      } else {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }
+    }
+
+    updateSlide();
+  </script>
+</body>
+</html>
