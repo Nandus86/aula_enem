@@ -381,12 +381,11 @@
     }
 
     .card ul li::before {
-      content: "▸";
-      color: var(--accent);
+      content: "⚡";
       position: absolute;
       left: 0;
-      top: 0;
-      font-weight: bold;
+      top: 1px;
+      font-size: 0.85rem;
     }
 
     /* Interactive Quiz System */
@@ -484,10 +483,10 @@
       color: white;
     }
 
-    /* Solution Box */
+    /* Dicas & Pegadinhas Box */
     .hack-panel {
       background: linear-gradient(160deg, rgba(20, 26, 46, 0.9), rgba(15, 23, 42, 0.95));
-      border: 1px solid rgba(255, 255, 255, 0.16);
+      border: 1px dashed rgba(245, 158, 11, 0.45);
       border-radius: 20px;
       padding: 24px;
       display: flex;
@@ -506,7 +505,7 @@
     }
 
     .reveal-btn {
-      background: linear-gradient(135deg, var(--primary), #4f46e5);
+      background: linear-gradient(135deg, var(--accent), #ea580c);
       color: #fff;
       border: none;
       padding: 12px 22px;
@@ -515,7 +514,7 @@
       font-weight: 800;
       font-size: 1rem;
       cursor: pointer;
-      box-shadow: 0 10px 25px -5px var(--primary-glow);
+      box-shadow: 0 10px 25px -5px var(--accent-glow);
       transition: all 0.2s;
       display: inline-flex;
       align-items: center;
@@ -874,7 +873,7 @@
     </div>
   </aside>
 
-  <!-- SLIDE DECK (16 SLIDES DIRETOS AO PONTO) -->
+  <!-- SLIDE DECK (16 SLIDES SIMPLES, COM DICAS E PEGADINHAS, SEM TRI) -->
   <main class="deck">
 
     <!-- SLIDE 1: CAPA -->
@@ -882,87 +881,71 @@
       <span class="kicker">🔥 Reta Final</span>
       <h1>MATEMÁTICA E SUAS <br><span class="gradient-text">TECNOLOGIAS NO ENEM</span></h1>
       <p class="subtitle">
-        Revisão prática das <strong>7 Competências do ENEM</strong> com os temas mais cobrados e <strong>11 exercícios clássicos</strong> resolvidos passo a passo.
+        As <strong>7 Competências do ENEM</strong> de forma simples e direta: o que mais cai, como escapar das <strong>pegadinhas clássicas</strong> e <strong>12 exercícios</strong> resolvidos com dicas práticas!
       </p>
 
       <div class="grid-3" style="margin-top: 10px;">
         <div class="card highlight-primary">
-          <div class="card-title">📌 1. As 7 Competências</div>
-          <p>O que significa cada uma das 7 competências da prova e quais assuntos aparecem dentro delas.</p>
+          <div class="card-title">🗺️ 1. As 7 Competências</div>
+          <p>O mapa simples das 45 questões: onde estão concentrados mais de 70% dos assuntos da prova.</p>
         </div>
         <div class="card highlight-amber">
-          <div class="card-title">📐 2. Resumo Direto</div>
-          <p>As relações essenciais de porcentagem, geometria, escalas, funções, estatística e probabilidade.</p>
+          <div class="card-title">⚠️ 2. Pegadinhas & Dicas</div>
+          <p>Os erros mais comuns que derrubam os candidatos e os atalhos simples para resolver rápido.</p>
         </div>
         <div class="card highlight-emerald">
-          <div class="card-title">✏️ 3. Prática no Quadro</div>
-          <p>11 questões passo a passo para resolvermos juntos e revisar cada conta.</p>
+          <div class="card-title">✏️ 3. Desafios no Quadro</div>
+          <p>12 questões clássicas: primeiro vocês votam, depois revelamos a dica e fazemos a conta juntos!</p>
         </div>
       </div>
     </section>
 
-    <!-- SLIDE 2: VISÃO GERAL DAS 7 COMPETÊNCIAS -->
+    <!-- SLIDE 2: MAPA GERAL DAS 7 COMPETÊNCIAS -->
     <section class="slide">
-      <span class="kicker cyan">🗺️ Estrutura da Prova</span>
-      <h2>As 7 Competências da Matemática no ENEM</h2>
-      <p class="subtitle">As 45 questões da prova são organizadas nestes 7 blocos de assuntos:</p>
+      <span class="kicker cyan">🗺️ Raio-X da Prova</span>
+      <h2>As 7 Competências: O Que Mais Cai na Prova</h2>
+      <p class="subtitle">Veja como as <strong>45 questões</strong> se dividem e quais são os assuntos campeões de cobrança:</p>
 
       <div class="grid-4">
         <div class="card highlight-amber">
-          <span class="comp-badge" style="background: var(--accent); color:#000;">COMPETÊNCIA 1</span>
-          <div class="card-title">Números & Contagem</div>
-          <ul>
-            <li>Porcentagem</li>
-            <li>Razão e Proporção</li>
-            <li>MMC e MDC</li>
-            <li>Análise Combinatória</li>
-          </ul>
-        </div>
-
-        <div class="card highlight-primary">
-          <span class="comp-badge" style="background: var(--primary); color:#fff;">COMPETÊNCIA 2</span>
-          <div class="card-title">Geometria</div>
-          <ul>
-            <li>Projeção Ortogonal</li>
-            <li>Áreas de Figuras Planas</li>
-            <li>Volumes (Prisma, Cilindro, Cone)</li>
-            <li>Teorema de Pitágoras</li>
-          </ul>
+          <span class="comp-badge" style="background: var(--accent); color:#000;">COMPETÊNCIA 1 (~28%)</span>
+          <div class="stat-big">~12 questões</div>
+          <div class="card-title">Números & Operações</div>
+          <p>Porcentagem, razão e proporção, MMC/MDC e análise combinatória.</p>
         </div>
 
         <div class="card highlight-emerald">
-          <span class="comp-badge" style="background: var(--emerald); color:#000;">COMPETÊNCIAS 3 e 4</span>
-          <div class="card-title">Medidas & Grandezas</div>
-          <ul>
-            <li>Escalas (Linear, Área, Volume)</li>
-            <li>Conversão de Unidades (<span class="math-inline">m³ ↔ L</span>)</li>
-            <li>Regra de Três Direta</li>
-            <li>Regra de Três Inversa</li>
-          </ul>
+          <span class="comp-badge" style="background: var(--emerald); color:#000;">COMPETÊNCIA 6 (~18%)</span>
+          <div class="stat-big">~8 questões</div>
+          <div class="card-title">Estatística & Gráficos</div>
+          <p>Média, Moda, Mediana, Desvio Padrão e leitura de tabelas e gráficos.</p>
+        </div>
+
+        <div class="card highlight-primary">
+          <span class="comp-badge" style="background: var(--primary); color:#fff;">COMPETÊNCIAS 3 e 4 (~26%)</span>
+          <div class="stat-big">~11 questões</div>
+          <div class="card-title">Escalas & Grandezas</div>
+          <p>Escalas (1D, 2D e 3D), conversão (<span class="math-inline">m³ ↔ L</span>) e regra de três direta e inversa.</p>
         </div>
 
         <div class="card">
-          <span class="comp-badge" style="background: rgba(255,255,255,0.18);">COMPETÊNCIAS 5, 6 e 7</span>
-          <div class="card-title">Álgebra, Dados & Prob.</div>
-          <ul>
-            <li>Funções de 1º e 2º Grau</li>
-            <li>Média, Moda e Mediana</li>
-            <li>Leitura de Tabelas e Gráficos</li>
-            <li>Cálculo de Probabilidade</li>
-          </ul>
+          <span class="comp-badge" style="background: rgba(255,255,255,0.18);">COMPETÊNCIAS 2, 5 e 7 (~28%)</span>
+          <div class="stat-big" style="color:#cbd5e1;">~14 questões</div>
+          <div class="card-title">Geometria, Álgebra e Prob.</div>
+          <p>Projeção ortogonal, áreas, volumes, funções de 1º e 2º grau e probabilidade.</p>
         </div>
       </div>
     </section>
 
     <!-- SLIDE 3: COMPETÊNCIA 1 (PARTE 1 - PORCENTAGEM) -->
     <section class="slide">
-      <span class="kicker">Competência 1 • Números e Operações (1/3)</span>
-      <h2>C1: Porcentagem (Aumento e Desconto)</h2>
+      <span class="kicker">🥇 Competência 1 • Números no Cotidiano (1/3)</span>
+      <h2>C1: A Pegadinha da Porcentagem Sucessiva</h2>
 
       <div class="quiz-layout">
         <div class="question-box">
           <div>
-            <span class="comp-badge" style="background: rgba(245,158,11,0.2); color: var(--accent);">EXERCÍCIO 01 • PORCENTAGEM</span>
+            <span class="comp-badge" style="background: rgba(245,158,11,0.2); color: var(--accent);">⚡ DESAFIO #1 • PORCENTAGEM</span>
             <p class="question-text">
               Uma loja aumentou o preço de um tênis em <strong>20%</strong>. Na semana seguinte, anunciou um desconto de <strong>20%</strong> sobre o novo preço.<br><br>
               Em relação ao preço inicial, o preço final do tênis ficou:
@@ -987,24 +970,24 @@
 
         <div class="hack-panel">
           <div class="hack-locked" id="lock-1">
-            <div style="font-size: 2.2rem;">📝</div>
-            <h3 style="font-family:'Outfit';">Resolução do Exercício 01</h3>
-            <p style="color:var(--text-muted); font-size:0.95rem;">Use o Quadro Branco para fazer com a turma ou clique em Ver Resolução.</p>
+            <div style="font-size: 2.2rem;">⚠️</div>
+            <h3 style="font-family:'Outfit';">Cuidado com a Letra A (+20% − 20% ≠ 0%)!</h3>
+            <p style="color:var(--text-muted); font-size:0.95rem;">Use o Quadro Branco ou clique abaixo para ver a dica do 100!</p>
             <div style="display:flex; gap:10px;">
               <button class="open-board-inline" onclick="toggleWhiteboard()">✏️ Abrir Quadro</button>
-              <button class="reveal-btn" onclick="revealHack(1)">✓ Ver Resolução</button>
+              <button class="reveal-btn" onclick="revealHack(1)">💡 Revelar Dica</button>
             </div>
           </div>
 
           <div class="hack-content" id="hack-1">
-            <h3 style="color: var(--emerald); font-family:'Outfit'; margin-bottom:6px;">Passo a Passo (Adotando valor inicial = 100):</h3>
+            <h3 style="color: var(--emerald); font-family:'Outfit'; margin-bottom:6px;">💡 Dica Prática: "Chute o R$ 100!"</h3>
+            <p>Não use <span class="math-inline">x</span> quando a questão não dá o preço! Imagine que custava <strong>R$ 100</strong>:</p>
             <div class="formula-pill">
-              1) Valor inicial = <strong>R$ 100,00</strong><br>
-              2) Aumento de 20% de 100 (+20) ➔ <strong>R$ 120,00</strong><br>
-              3) Desconto de 20% sobre 120 (120 × 0,20 = 24) ➔ 120 − 24 = <strong>R$ 96,00</strong><br>
-              4) De R$ 100 para R$ 96 ➔ <strong style="color:#fde68a;">Redução de 4% (Letra C)</strong>
+              1) Subiu 20% de 100 (+20) ➔ foi para <strong>R$ 120</strong><br>
+              2) Desconto de 20% sobre 120 (120 × 0,2 = 24) ➔ 120 − 24 = <strong>R$ 96</strong><br>
+              3) De 100 para 96 ➔ <strong style="color:#fde68a;">Ficou 4% mais barato (Letra C)!</strong>
             </div>
-            <p style="font-size:0.92rem; color:#94a3b8;">• Usando decimais: <span class="math-inline">1,20 × 0,80 = 0,96</span> (96% do valor inicial).</p>
+            <p style="font-size:0.92rem; color:#94a3b8;">⚡ <strong>Atalho Decimal:</strong> Subir 20% é <span class="math-inline">× 1,2</span> e descontar 20% é <span class="math-inline">× 0,8</span> (<span class="math-inline">1,2 × 0,8 = 0,96</span>).</p>
           </div>
         </div>
       </div>
@@ -1012,13 +995,13 @@
 
     <!-- SLIDE 4: COMPETÊNCIA 1 (PARTE 2 - MMC e MDC) -->
     <section class="slide">
-      <span class="kicker">Competência 1 • Números e Operações (2/3)</span>
-      <h2>C1: Mínimo Múltiplo Comum (MMC)</h2>
+      <span class="kicker">🥇 Competência 1 • Números no Cotidiano (2/3)</span>
+      <h2>C1: Como Saber se a Questão é MMC ou MDC?</h2>
 
       <div class="quiz-layout">
         <div class="question-box">
           <div>
-            <span class="comp-badge" style="background: rgba(245,158,11,0.2); color: var(--accent);">EXERCÍCIO 02 • MÚLTIPLOS E CICLOS</span>
+            <span class="comp-badge" style="background: rgba(245,158,11,0.2); color: var(--accent);">⚡ DESAFIO #2 • CICLOS E REPETIÇÃO</span>
             <p class="question-text">
               Um paciente precisa tomar 3 medicamentos: o <strong>Remédio A</strong> de 6 em 6 horas, o <strong>Remédio B</strong> de 8 em 8 horas e o <strong>Remédio C</strong> de 12 em 12 horas.<br><br>
               Se ele tomou os três juntos às <strong>08h00 de sexta-feira</strong>, quando tomará os três juntos novamente?
@@ -1043,25 +1026,23 @@
 
         <div class="hack-panel">
           <div class="hack-locked" id="lock-2">
-            <div style="font-size: 2.2rem;">📝</div>
-            <h3 style="font-family:'Outfit';">Resolução do Exercício 02</h3>
-            <p style="color:var(--text-muted); font-size:0.95rem;">Use o Quadro Branco para fatorar 6, 8 e 12 ou clique abaixo.</p>
+            <div style="font-size: 2.2rem;">🔑</div>
+            <h3 style="font-family:'Outfit';">Qual palavra do texto entrega a conta?</h3>
+            <p style="color:var(--text-muted); font-size:0.95rem;">Veja as palavras-chave que separam MMC de MDC no ENEM.</p>
             <div style="display:flex; gap:10px;">
               <button class="open-board-inline" onclick="toggleWhiteboard()">✏️ Abrir Quadro</button>
-              <button class="reveal-btn" onclick="revealHack(2)">✓ Ver Resolução</button>
+              <button class="reveal-btn" onclick="revealHack(2)">💡 Revelar Dica</button>
             </div>
           </div>
 
           <div class="hack-content" id="hack-2">
-            <h3 style="color: var(--emerald); font-family:'Outfit'; margin-bottom:6px;">Passo a Passo:</h3>
+            <h3 style="color: var(--emerald); font-family:'Outfit'; margin-bottom:6px;">💡 Palavras-Chave Infalíveis:</h3>
             <div class="formula-pill">
-              • Múltiplos de 6: 6, 12, 18, <strong>24</strong>...<br>
-              • Múltiplos de 8: 8, 16, <strong>24</strong>...<br>
-              • Múltiplos de 12: 12, <strong>24</strong>...<br>
+              • <strong>MMC:</strong> "Juntos novamente", "Simultaneamente" (Encontro no futuro)<br>
+              • <strong>MDC:</strong> "Dividir em partes iguais do MAIOR tamanho possível"<br>
               ➔ <strong>MMC(6, 8, 12) = 24 horas</strong><br>
-              ➔ Sexta às 08h + 24h = <strong style="color:#fde68a;">Sábado às 08h00 (Letra B)</strong>
+              ➔ Sexta 08h + 24h = <strong style="color:#fde68a;">Sábado às 08h00 (Letra B)!</strong>
             </div>
-            <p style="font-size:0.92rem; color:#94a3b8;">• <strong>MMC:</strong> encontro de tempos/ciclos. <strong>MDC:</strong> dividir quantidades em partes iguais de maior tamanho.</p>
           </div>
         </div>
       </div>
@@ -1069,13 +1050,13 @@
 
     <!-- SLIDE 5: COMPETÊNCIA 1 (PARTE 3 - ANÁLISE COMBINATÓRIA) -->
     <section class="slide">
-      <span class="kicker">Competência 1 • Números e Operações (3/3)</span>
-      <h2>C1: Contagem e Combinação Simples</h2>
+      <span class="kicker">🥇 Competência 1 • Números no Cotidiano (3/3)</span>
+      <h2>C1: Contagem — A Ordem Importa ou Não?</h2>
 
       <div class="quiz-layout">
         <div class="question-box">
           <div>
-            <span class="comp-badge" style="background: rgba(245,158,11,0.2); color: var(--accent);">EXERCÍCIO 03 • ANÁLISE COMBINATÓRIA</span>
+            <span class="comp-badge" style="background: rgba(245,158,11,0.2); color: var(--accent);">⚡ DESAFIO #3 • ANÁLISE COMBINATÓRIA</span>
             <p class="question-text">
               Um hospital tem <strong>6 médicos plantonistas</strong> disponíveis e precisa formar uma equipe de <strong>3 médicos</strong> para o plantão.<br><br>
               De quantas maneiras diferentes essa equipe de 3 médicos pode ser formada?
@@ -1100,23 +1081,24 @@
 
         <div class="hack-panel">
           <div class="hack-locked" id="lock-3">
-            <div style="font-size: 2.2rem;">📝</div>
-            <h3 style="font-family:'Outfit';">Resolução do Exercício 03</h3>
-            <p style="color:var(--text-muted); font-size:0.95rem;">Use o Quadro Branco para montar a combinação de 6 tomados 3 a 3.</p>
+            <div style="font-size: 2.2rem;">⚠️</div>
+            <h3 style="font-family:'Outfit';">Pegadinha da Letra C (120 vs. 20)!</h3>
+            <p style="color:var(--text-muted); font-size:0.95rem;">Quem só multiplica 6 × 5 × 4 = 120 cai na armadilha. Veja por quê!</p>
             <div style="display:flex; gap:10px;">
               <button class="open-board-inline" onclick="toggleWhiteboard()">✏️ Abrir Quadro</button>
-              <button class="reveal-btn" onclick="revealHack(3)">✓ Ver Resolução</button>
+              <button class="reveal-btn" onclick="revealHack(3)">💡 Revelar Dica</button>
             </div>
           </div>
 
           <div class="hack-content" id="hack-3">
-            <h3 style="color: var(--emerald); font-family:'Outfit'; margin-bottom:6px;">Passo a Passo:</h3>
-            <p>Em uma equipe sem cargos distintos, a ordem de escolha não muda o grupo:</p>
+            <h3 style="color: var(--emerald); font-family:'Outfit'; margin-bottom:6px;">💡 Dica: Faça os Tracinhos e Tire a Repetição!</h3>
+            <p>A equipe (Ana, Bruno, Carlos) é a <strong>mesma equipe</strong> que (Carlos, Bruno, Ana). A ordem NÃO importa!</p>
             <div class="formula-pill">
-              • Escolha das 3 vagas: <strong>6 × 5 × 4 = 120</strong><br>
-              • Divisão pelas permutações de 3 pessoas (<strong>3! = 3 × 2 × 1 = 6</strong>):<br>
-              ➔ 120 ÷ 6 = <strong style="color:#fde68a;">20 equipes (Letra B)</strong>
+              • Tracinhos das 3 vagas: <strong>6 × 5 × 4 = 120</strong><br>
+              • Como a ordem não importa, divida por <strong>3! (3 × 2 × 1 = 6)</strong>:<br>
+              ➔ 120 ÷ 6 = <strong style="color:#fde68a;">20 equipes (Letra B)!</strong>
             </div>
+            <p style="font-size:0.9rem; color:#94a3b8;">⚡ <strong>Regra simples:</strong> Senha / Pódio = só multiplica! Equipe / Grupo = divide pelo fatorial!</p>
           </div>
         </div>
       </div>
@@ -1124,16 +1106,16 @@
 
     <!-- SLIDE 6: COMPETÊNCIA 2 (PARTE 1 - PROJEÇÃO ORTOGONAL) -->
     <section class="slide">
-      <span class="kicker cyan">Competência 2 • Geometria Plana e Espacial (1/3)</span>
-      <h2>C2: Projeção Ortogonal (Vista Superior)</h2>
+      <span class="kicker cyan">📐 Competência 2 • Geometria Plana e Espacial (1/3)</span>
+      <h2>C2: Projeção Ortogonal (Sombra Vista de Cima)</h2>
 
       <div class="quiz-layout">
         <div class="question-box">
           <div>
-            <span class="comp-badge" style="background: rgba(6,182,212,0.2); color: var(--cyan);">EXERCÍCIO 04 • GEOMETRIA ESPACIAL</span>
+            <span class="comp-badge" style="background: rgba(6,182,212,0.2); color: var(--cyan);">⚡ DESAFIO #4 • CLÁSSICO DE TODO ANO</span>
             <p class="question-text">
-              Uma formiga caminha sobre a lateral de um <strong>cilindro reto</strong>, subindo da borda inferior até a borda superior e dando <strong>1 volta completa</strong> ao redor do cilindro.<br><br>
-              Qual é a <strong>projeção ortogonal</strong> (vista de cima para baixo, sobre o plano da base) do caminho feito pela formiga?
+              Uma formiga caminha sobre a lateral de um <strong>cilindro reto</strong> (como uma lata), subindo da borda inferior até a borda superior e dando <strong>1 volta completa</strong> ao redor do cilindro.<br><br>
+              Qual é a <strong>projeção ortogonal</strong> (sombra vista de cima, sobre o plano da base) do caminho feito pela formiga?
             </p>
           </div>
 
@@ -1155,36 +1137,37 @@
 
         <div class="hack-panel">
           <div class="hack-locked" id="lock-4">
-            <div style="font-size: 2.2rem;">📝</div>
-            <h3 style="font-family:'Outfit';">Resolução do Exercício 04</h3>
-            <p style="color:var(--text-muted); font-size:0.95rem;">Use o Quadro Branco para desenhar a vista superior do cilindro.</p>
+            <div style="font-size: 2.2rem;">🔦</div>
+            <h3 style="font-family:'Outfit';">Dica da Sombra do Meio-Dia</h3>
+            <p style="color:var(--text-muted); font-size:0.95rem;">Como visualizar qualquer questão de projeção sem precisar desenhar em 3D?</p>
             <div style="display:flex; gap:10px;">
               <button class="open-board-inline" onclick="toggleWhiteboard()">✏️ Abrir Quadro</button>
-              <button class="reveal-btn" onclick="revealHack(4)">✓ Ver Resolução</button>
+              <button class="reveal-btn" onclick="revealHack(4)">💡 Revelar Dica</button>
             </div>
           </div>
 
           <div class="hack-content" id="hack-4">
-            <h3 style="color: var(--cyan); font-family:'Outfit'; margin-bottom:6px;">Passo a Passo:</h3>
+            <h3 style="color: var(--cyan); font-family:'Outfit'; margin-bottom:6px;">💡 Dica: "Achate a Figura de Cima para Baixo!"</h3>
+            <p>Quando olhamos exatamente de cima, a <strong>altura some</strong>!</p>
             <div class="formula-pill">
-              • Olhando o cilindro exatamente de cima, a parede lateral projeta-se sobre o contorno do círculo da base.<br>
-              • Como a formiga deu 1 volta completa ao redor da lateral:<br>
-              ➔ A projeção na base forma <strong style="color:#fde68a;">uma circunferência completa (Letra C)</strong>.
+              • Imagine amassar a lata de cima para baixo.<br>
+              • Toda a parede lateral cai exatamente sobre o círculo da base!<br>
+              • Como deu 1 volta completa ➔ <strong style="color:#fde68a;">Circunferência completa (Letra C)!</strong>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SLIDE 7: COMPETÊNCIA 2 (PARTE 2 - PITÁGORAS E ÁREAS) -->
+    <!-- SLIDE 7: COMPETÊNCIA 2 (PARTE 2 - PITÁGORAS) -->
     <section class="slide">
-      <span class="kicker cyan">Competência 2 • Geometria Plana e Espacial (2/3)</span>
-      <h2>C2: Teorema de Pitágoras & Triângulo Retângulo</h2>
+      <span class="kicker cyan">📐 Competência 2 • Geometria Plana e Espacial (2/3)</span>
+      <h2>C2: O Triângulo Retângulo que Mais Cai (3 – 4 – 5)</h2>
 
       <div class="quiz-layout">
         <div class="question-box">
           <div>
-            <span class="comp-badge" style="background: rgba(6,182,212,0.2); color: var(--cyan);">EXERCÍCIO 05 • GEOMETRIA PLANA</span>
+            <span class="comp-badge" style="background: rgba(6,182,212,0.2); color: var(--cyan);">⚡ DESAFIO #5 • GEOMETRIA PLANA</span>
             <p class="question-text">
               Uma escada de <strong>10 metros</strong> de comprimento está apoiada no topo de um muro vertical. A base da escada está afastada <strong>6 metros</strong> do pé do muro, em um piso horizontal.<br><br>
               Qual é a altura desse muro?
@@ -1209,23 +1192,23 @@
 
         <div class="hack-panel">
           <div class="hack-locked" id="lock-5">
-            <div style="font-size: 2.2rem;">📝</div>
-            <h3 style="font-family:'Outfit';">Resolução do Exercício 05</h3>
-            <p style="color:var(--text-muted); font-size:0.95rem;">Use o Quadro Branco para desenhar o triângulo retângulo.</p>
+            <div style="font-size: 2.2rem;">📐</div>
+            <h3 style="font-family:'Outfit';">Dica para Ganhar Tempo em Pitágoras</h3>
+            <p style="color:var(--text-muted); font-size:0.95rem;">Faça por Pitágoras no Quadro ou veja como achar de cabeça!</p>
             <div style="display:flex; gap:10px;">
               <button class="open-board-inline" onclick="toggleWhiteboard()">✏️ Abrir Quadro</button>
-              <button class="reveal-btn" onclick="revealHack(5)">✓ Ver Resolução</button>
+              <button class="reveal-btn" onclick="revealHack(5)">💡 Revelar Dica</button>
             </div>
           </div>
 
           <div class="hack-content" id="hack-5">
-            <h3 style="color: var(--cyan); font-family:'Outfit'; margin-bottom:6px;">Passo a Passo (Pitágoras: a² = b² + c²):</h3>
+            <h3 style="color: var(--cyan); font-family:'Outfit'; margin-bottom:6px;">💡 Dica do Triângulo 3 – 4 – 5:</h3>
             <div class="formula-pill">
-              • Hipotenusa (escada) = <strong>10 m</strong> | Cateto (chão) = <strong>6 m</strong><br>
-              • 10² = h² + 6² ➔ 100 = h² + 36<br>
-              • h² = 100 − 36 = 64 ➔ <strong>h = √64 = <span style="color:#fde68a;">8 metros (Letra C)</span></strong>
+              • <strong>Por Pitágoras:</strong> 10² = h² + 6² ➔ 100 = h² + 36 ➔ h² = 64 ➔ <strong>h = 8 m</strong><br>
+              • <strong>Atalho 3 – 4 – 5:</strong> Multiplique (3, 4, 5) por 2:<br>
+              ➔ Cateto <strong>6</strong>, Cateto <strong style="color:#fde68a;">8 (Letra C)</strong> e Hipotenusa <strong>10</strong>!
             </div>
-            <p style="font-size:0.9rem; color:#94a3b8;">• Proporção do triângulo retângulo <strong>3 – 4 – 5</strong> multiplicada por 2: <strong>6 – 8 – 10</strong>.</p>
+            <p style="font-size:0.9rem; color:#94a3b8;">⚡ Sempre procure o <strong>3-4-5</strong> (ou 6-8-10, 9-12-15, 30-40-50) nas questões de rampa e escada!</p>
           </div>
         </div>
       </div>
@@ -1233,52 +1216,52 @@
 
     <!-- SLIDE 8: COMPETÊNCIA 2 (PARTE 3 - VOLUMES) -->
     <section class="slide">
-      <span class="kicker cyan">Competência 2 • Geometria Plana e Espacial (3/3)</span>
-      <h2>C2: Volume do Cilindro e do Cone</h2>
+      <span class="kicker cyan">📐 Competência 2 • Geometria Plana e Espacial (3/3)</span>
+      <h2>C2: Volumes de Sólidos (Cilindro, Prisma, Cone e Pirâmide)</h2>
 
       <div class="quiz-layout">
         <div class="question-box">
           <div>
-            <span class="comp-badge" style="background: rgba(6,182,212,0.2); color: var(--cyan);">EXERCÍCIO 06 • VOLUMES</span>
+            <span class="comp-badge" style="background: rgba(6,182,212,0.2); color: var(--cyan);">⚡ DESAFIO #6 • VOLUMES</span>
             <p class="question-text">
-              Um recipiente no formato de um <strong>cilindro reto</strong> está totalmente cheio de líquido. Todo esse líquido será transferido para copos em formato de <strong>cone reto</strong>, que possuem exatamente o <strong>mesmo raio da base</strong> e a <strong>mesma altura</strong> do cilindro.<br><br>
-              Quantos copos cônicos completos serão preenchidos?
+              Um copo no formato de um <strong>cilindro reto</strong> está totalmente cheio de suco. Todo esse suco será transferido para taças em formato de <strong>cone reto</strong>, que possuem exatamente o <strong>mesmo raio da base</strong> e a <strong>mesma altura</strong> do cilindro.<br><br>
+              Quantas taças cônicas completas serão enchidas?
             </p>
           </div>
 
           <div class="options-grid" id="quiz-6">
             <button class="option-btn" onclick="checkAnswer('quiz-6', this, false)">
-              <span class="option-letter">A</span> 2 copos
+              <span class="option-letter">A</span> 2 taças
             </button>
             <button class="option-btn" onclick="checkAnswer('quiz-6', this, true)">
-              <span class="option-letter">B</span> 3 copos
+              <span class="option-letter">B</span> 3 taças
             </button>
             <button class="option-btn" onclick="checkAnswer('quiz-6', this, false)">
-              <span class="option-letter">C</span> 4 copos
+              <span class="option-letter">C</span> 4 taças
             </button>
             <button class="option-btn" onclick="checkAnswer('quiz-6', this, false)">
-              <span class="option-letter">D</span> 6 copos
+              <span class="option-letter">D</span> 6 taças
             </button>
           </div>
         </div>
 
         <div class="hack-panel">
           <div class="hack-locked" id="lock-6">
-            <div style="font-size: 2.2rem;">📝</div>
-            <h3 style="font-family:'Outfit';">Resolução do Exercício 06</h3>
-            <p style="color:var(--text-muted); font-size:0.95rem;">Compare as fórmulas de volume do cilindro e do cone no Quadro.</p>
+            <div style="font-size: 2.2rem;">🍦</div>
+            <h3 style="font-family:'Outfit';">Dica para Nunca Esquecer Fórmulas de Volume</h3>
+            <p style="color:var(--text-muted); font-size:0.95rem;">Veja a regra simples que vale para todos os sólidos geométricos!</p>
             <div style="display:flex; gap:10px;">
               <button class="open-board-inline" onclick="toggleWhiteboard()">✏️ Abrir Quadro</button>
-              <button class="reveal-btn" onclick="revealHack(6)">✓ Ver Resolução</button>
+              <button class="reveal-btn" onclick="revealHack(6)">💡 Revelar Dica</button>
             </div>
           </div>
 
           <div class="hack-content" id="hack-6">
-            <h3 style="color: var(--cyan); font-family:'Outfit'; margin-bottom:6px;">Passo a Passo:</h3>
+            <h3 style="color: var(--cyan); font-family:'Outfit'; margin-bottom:6px;">💡 Regra Prática: "Tem Ponta? Divide por 3!"</h3>
             <div class="formula-pill">
-              • <strong>Volume do Cilindro:</strong> V<sub>cil</sub> = π · r² · h<br>
-              • <strong>Volume do Cone:</strong> V<sub>cone</sub> = (π · r² · h) ÷ 3<br>
-              ➔ O volume do cone é um terço do cilindro, logo enche <strong style="color:#fde68a;">3 copos (Letra B)</strong>.
+              • <strong>Sólido sem ponta (Prisma / Cilindro):</strong> V = Área da Base × Altura<br>
+              • <strong>Sólido com ponta (Pirâmide / Cone):</strong> V = (Área da Base × Altura) ÷ 3<br>
+              ➔ O cone tem 1/3 do volume do cilindro, logo enche <strong style="color:#fde68a;">3 taças (Letra B)!</strong>
             </div>
           </div>
         </div>
@@ -1287,15 +1270,15 @@
 
     <!-- SLIDE 9: COMPETÊNCIA 3 (ESCALAS E MEDIDAS) -->
     <section class="slide">
-      <span class="kicker purple">Competência 3 • Sistemas de Medidas e Escalas</span>
-      <h2>C3: Escala Linear, de Área e de Volume</h2>
+      <span class="kicker purple">📏 Competência 3 • Sistemas de Medidas e Escalas</span>
+      <h2>C3: A Maior Pegadinha de Escalas do ENEM!</h2>
 
       <div class="quiz-layout">
         <div class="question-box">
           <div>
-            <span class="comp-badge" style="background: rgba(168,85,247,0.2); color: #c084fc;">EXERCÍCIO 07 • ESCALA E CAPACIDADE</span>
+            <span class="comp-badge" style="background: rgba(168,85,247,0.2); color: #c084fc;">🚨 DESAFIO #7 • PEGADINHA CLÁSSICA DE ESCALA</span>
             <p class="question-text">
-              Uma piscina real comporta <strong>50.000 litros</strong> de água. Foi construída uma maquete dessa piscina na <strong>escala 1 : 10</strong>.<br><br>
+              Uma piscina real comporta <strong>50.000 litros</strong> de água. Foi construída uma maquete perfeitamente proporcional dessa piscina na <strong>escala 1 : 10</strong>.<br><br>
               Quantos litros de água cabem dentro da piscina da maquete?
             </p>
           </div>
@@ -1318,25 +1301,25 @@
 
         <div class="hack-panel">
           <div class="hack-locked" id="lock-7">
-            <div style="font-size: 2.2rem;">📝</div>
-            <h3 style="font-family:'Outfit';">Resolução do Exercício 07</h3>
-            <p style="color:var(--text-muted); font-size:0.95rem;">Mostre a redução nas 3 dimensões (comprimento, largura e profundidade).</p>
+            <div style="font-size: 2.2rem;">💣</div>
+            <h3 style="font-family:'Outfit';">Quem marcou 5.000 L caiu na pegadinha!</h3>
+            <p style="color:var(--text-muted); font-size:0.95rem;">Clique abaixo para ver por que no volume não se divide apenas por 10!</p>
             <div style="display:flex; gap:10px;">
               <button class="open-board-inline" onclick="toggleWhiteboard()">✏️ Abrir Quadro</button>
-              <button class="reveal-btn" onclick="revealHack(7)">✓ Ver Resolução</button>
+              <button class="reveal-btn" onclick="revealHack(7)">💡 Revelar Dica</button>
             </div>
           </div>
 
           <div class="hack-content" id="hack-7">
-            <h3 style="color: var(--accent); font-family:'Outfit'; margin-bottom:6px;">Passo a Passo:</h3>
-            <p>Na escala <span class="math-inline">1 : 10</span>, cada uma das 3 dimensões é dividida por 10:</p>
+            <h3 style="color: var(--accent); font-family:'Outfit'; margin-bottom:6px;">💡 Dica das 3 Dimensões na Escala <span class="math-inline">1 : 10</span>:</h3>
+            <p>Na maquete, o comprimento divide por 10, a largura divide por 10 e a profundidade <strong>também divide por 10</strong>!</p>
             <div class="formula-pill">
               • <strong>Comprimento (1D):</strong> divide por 10¹ = <strong>10</strong><br>
-              • <strong>Área (2D):</strong> divide por 10² = <strong>100</strong><br>
-              • <strong>Volume (3D):</strong> divide por 10³ = <strong>1.000</strong><br>
-              ➔ 50.000 ÷ 1.000 = <strong style="color:#fde68a;">50 litros (Letra C)</strong>
+              • <strong>Área (2D — m²):</strong> divide por 10² = <strong>100</strong><br>
+              • <strong>Volume (3D — Litros / m³):</strong> divide por 10³ = <strong>1.000</strong>!<br>
+              ➔ 50.000 ÷ 1.000 = <strong style="color:#fde68a;">50 litros (Letra C)!</strong>
             </div>
-            <p style="font-size:0.9rem; color:#94a3b8;">• Conversão importante: <span class="math-inline">1 m³ = 1.000 litros</span>.</p>
+            <p style="font-size:0.9rem; color:#94a3b8;">⚡ <strong>Não esqueça:</strong> <span class="math-inline">1 m³ = 1.000 litros</span> e <span class="math-inline">1 cm³ = 1 mL</span>.</p>
           </div>
         </div>
       </div>
@@ -1344,13 +1327,13 @@
 
     <!-- SLIDE 10: COMPETÊNCIA 4 (GRANDEZAS PROPORCIONAIS) -->
     <section class="slide">
-      <span class="kicker purple">Competência 4 • Variação de Grandezas</span>
-      <h2>C4: Grandezas Diretamente e Inversamente Proporcionais</h2>
+      <span class="kicker purple">⚖️ Competência 4 • Variação de Grandezas</span>
+      <h2>C4: Regra de Três Direta vs. Inversa</h2>
 
       <div class="quiz-layout">
         <div class="question-box">
           <div>
-            <span class="comp-badge" style="background: rgba(168,85,247,0.2); color: #c084fc;">EXERCÍCIO 08 • REGRA DE TRÊS INVERSA</span>
+            <span class="comp-badge" style="background: rgba(168,85,247,0.2); color: #c084fc;">⚡ DESAFIO #8 • GRANDEZAS INVERSAS</span>
             <p class="question-text">
               Para esvaziar um reservatório de água, <strong>3 bombas iguais</strong> funcionando juntas levam <strong>8 horas</strong>.<br><br>
               Para esvaziar esse mesmo reservatório em apenas <strong>2 horas</strong>, quantas bombas iguais precisarão funcionar juntas?
@@ -1375,22 +1358,22 @@
 
         <div class="hack-panel">
           <div class="hack-locked" id="lock-8">
-            <div style="font-size: 2.2rem;">📝</div>
-            <h3 style="font-family:'Outfit';">Resolução do Exercício 08</h3>
-            <p style="color:var(--text-muted); font-size:0.95rem;">Use o Quadro Branco para montar a proporção inversa.</p>
+            <div style="font-size: 2.2rem;">⚙️</div>
+            <h3 style="font-family:'Outfit';">Dica para Não Errar Regra de Três Inversa</h3>
+            <p style="color:var(--text-muted); font-size:0.95rem;">Se você multiplicar cruzado aqui, vai dar errado! Veja o jeito mais simples.</p>
             <div style="display:flex; gap:10px;">
               <button class="open-board-inline" onclick="toggleWhiteboard()">✏️ Abrir Quadro</button>
-              <button class="reveal-btn" onclick="revealHack(8)">✓ Ver Resolução</button>
+              <button class="reveal-btn" onclick="revealHack(8)">💡 Revelar Dica</button>
             </div>
           </div>
 
           <div class="hack-content" id="hack-8">
-            <h3 style="color: var(--emerald); font-family:'Outfit'; margin-bottom:6px;">Passo a Passo:</h3>
-            <p>Quantidade de bombas e tempo são grandezas <strong>inversamente proporcionais</strong> (produto constante):</p>
+            <h3 style="color: var(--emerald); font-family:'Outfit'; margin-bottom:6px;">💡 Dica: Grandezas Inversas? Multiplique Reto!</h3>
+            <p>Mais bombas = Menos tempo! Quando uma sobe e a outra desce, basta <strong>multiplicar na horizontal</strong>:</p>
             <div class="formula-pill">
               • Bombas₁ × Tempo₁ = Bombas₂ × Tempo₂<br>
               • 3 × 8 = x × 2<br>
-              • 24 = 2x ➔ x = 24 ÷ 2 = <strong style="color:#fde68a;">12 bombas (Letra C)</strong>
+              • 24 = 2x ➔ x = 24 ÷ 2 = <strong style="color:#fde68a;">12 bombas (Letra C)!</strong>
             </div>
           </div>
         </div>
@@ -1399,18 +1382,18 @@
 
     <!-- SLIDE 11: COMPETÊNCIA 5 (PARTE 1 - FUNÇÃO DO 1º GRAU) -->
     <section class="slide">
-      <span class="kicker">Competência 5 • Álgebra e Funções (1/2)</span>
+      <span class="kicker">📈 Competência 5 • Álgebra e Funções (1/2)</span>
       <h2>C5: Função do 1º Grau (<span class="math-inline">f(x) = ax + b</span>)</h2>
 
       <div class="quiz-layout">
         <div class="question-box">
           <div>
-            <span class="comp-badge" style="background: rgba(245,158,11,0.2); color: var(--accent);">EXERCÍCIO 09 • EQUAÇÃO E FUNÇÃO AFIM</span>
+            <span class="comp-badge" style="background: rgba(245,158,11,0.2); color: var(--accent);">⚡ DESAFIO #9 • COMPARAÇÃO DE PLANOS</span>
             <p class="question-text">
               Uma locadora de veículos oferece dois planos diários:<br>
               • <strong>Plano Alfa:</strong> Taxa fixa de <strong>R$ 40,00</strong> mais <strong>R$ 2,00</strong> por km rodado.<br>
               • <strong>Plano Beta:</strong> Taxa fixa de <strong>R$ 70,00</strong> mais <strong>R$ 1,00</strong> por km rodado.<br><br>
-              Para quantos quilômetros rodados no dia os dois planos terão exatamente o <strong>mesmo custo</strong>?
+              Com quantos quilômetros rodados no dia os dois planos ficam com o <strong>mesmo valor</strong>?
             </p>
           </div>
 
@@ -1432,22 +1415,20 @@
 
         <div class="hack-panel">
           <div class="hack-locked" id="lock-9">
-            <div style="font-size: 2.2rem;">📝</div>
-            <h3 style="font-family:'Outfit';">Resolução do Exercício 09</h3>
-            <p style="color:var(--text-muted); font-size:0.95rem;">Monte as duas funções no Quadro Branco e iguale os custos.</p>
+            <div style="font-size: 2.2rem;">🚗</div>
+            <h3 style="font-family:'Outfit';">Por Equação ou De Cabeça em 10s!</h3>
+            <p style="color:var(--text-muted); font-size:0.95rem;">Veja como montar a função e o atalho mental de compensação.</p>
             <div style="display:flex; gap:10px;">
               <button class="open-board-inline" onclick="toggleWhiteboard()">✏️ Abrir Quadro</button>
-              <button class="reveal-btn" onclick="revealHack(9)">✓ Ver Resolução</button>
+              <button class="reveal-btn" onclick="revealHack(9)">💡 Revelar Dica</button>
             </div>
           </div>
 
           <div class="hack-content" id="hack-9">
-            <h3 style="color: var(--emerald); font-family:'Outfit'; margin-bottom:6px;">Passo a Passo:</h3>
+            <h3 style="color: var(--emerald); font-family:'Outfit'; margin-bottom:6px;">💡 Equação vs. Dica de Cabeça:</h3>
             <div class="formula-pill">
-              • Custo Alfa: <strong>A(x) = 40 + 2x</strong><br>
-              • Custo Beta: <strong>B(x) = 70 + 1x</strong><br>
-              • Igualando: 40 + 2x = 70 + x<br>
-              • 2x − x = 70 − 40 ➔ <strong style="color:#fde68a;">x = 30 km (Letra C)</strong>
+              • <strong>Por Equação:</strong> 40 + 2x = 70 + 1x ➔ <strong>x = 30 km</strong><br>
+              • <strong>Dica de Cabeça:</strong> O Beta começa <strong>R$ 30 mais caro</strong> no fixo, mas economiza <strong>R$ 1 por km</strong>. Logo, em <strong style="color:#fde68a;">30 km (Letra C)</strong> ele desconta a diferença!
             </div>
           </div>
         </div>
@@ -1456,13 +1437,13 @@
 
     <!-- SLIDE 12: COMPETÊNCIA 5 (PARTE 2 - FUNÇÃO DO 2º GRAU) -->
     <section class="slide">
-      <span class="kicker">Competência 5 • Álgebra e Funções (2/2)</span>
-      <h2>C5: Função do 2º Grau (Ponto de Máximo / Vértice)</h2>
+      <span class="kicker">📈 Competência 5 • Álgebra e Funções (2/2)</span>
+      <h2>C5: Função do 2º Grau (Máximo e Mínimo)</h2>
 
       <div class="quiz-layout">
         <div class="question-box">
           <div>
-            <span class="comp-badge" style="background: rgba(245,158,11,0.2); color: var(--accent);">EXERCÍCIO 10 • VÉRTICE DA PARÁBOLA</span>
+            <span class="comp-badge" style="background: rgba(245,158,11,0.2); color: var(--accent);">⚡ DESAFIO #10 • VÉRTICE DA PARÁBOLA</span>
             <p class="question-text">
               Uma bola é chutada a partir do chão e sua altura <span class="math-inline">h(t)</span>, em metros, em função do tempo <span class="math-inline">t</span>, em segundos, é dada por:<br><br>
               <strong style="font-size:1.3rem;">h(t) = −5t² + 20t</strong><br><br>
@@ -1488,22 +1469,22 @@
 
         <div class="hack-panel">
           <div class="hack-locked" id="lock-10">
-            <div style="font-size: 2.2rem;">📝</div>
-            <h3 style="font-family:'Outfit';">Resolução do Exercício 10</h3>
-            <p style="color:var(--text-muted); font-size:0.95rem;">Use a fórmula do vértice <span class="math-inline">t<sub>V</sub> = −b / (2a)</span> no Quadro.</p>
+            <div style="font-size: 2.2rem;">⚽</div>
+            <h3 style="font-family:'Outfit';">Falou em "Máximo" ou "Mínimo" = Vértice!</h3>
+            <p style="color:var(--text-muted); font-size:0.95rem;">Não precisa fazer Bhaskara! Veja a fórmula direta do topo da parábola.</p>
             <div style="display:flex; gap:10px;">
               <button class="open-board-inline" onclick="toggleWhiteboard()">✏️ Abrir Quadro</button>
-              <button class="reveal-btn" onclick="revealHack(10)">✓ Ver Resolução</button>
+              <button class="reveal-btn" onclick="revealHack(10)">💡 Revelar Dica</button>
             </div>
           </div>
 
           <div class="hack-content" id="hack-10">
-            <h3 style="color: var(--emerald); font-family:'Outfit'; margin-bottom:6px;">Passo a Passo:</h3>
+            <h3 style="color: var(--emerald); font-family:'Outfit'; margin-bottom:6px;">💡 Dica Direta do Vértice:</h3>
             <div class="formula-pill">
               • Coeficientes: <strong>a = −5</strong> e <strong>b = 20</strong><br>
-              • <strong>t<sub>V</sub> = </strong><span class="math-frac"><span class="num">−b</span><span class="den">2a</span></span> = <span class="math-frac"><span class="num">−20</span><span class="den">2 · (−5)</span></span> = <span class="math-frac"><span class="num">−20</span><span class="den">−10</span></span> = <strong style="color:#fde68a;">2 segundos (Letra B)</strong><br>
-              • Altura máxima: h(2) = −5(2²) + 20(2) = −20 + 40 = <strong>20 metros</strong>.
+              • <strong>t<sub>V</sub> = </strong><span class="math-frac"><span class="num">−b</span><span class="den">2a</span></span> = <span class="math-frac"><span class="num">−20</span><span class="den">2 · (−5)</span></span> = <span class="math-frac"><span class="num">−20</span><span class="den">−10</span></span> = <strong style="color:#fde68a;">2 segundos (Letra B)!</strong>
             </div>
+            <p style="font-size:0.9rem; color:#94a3b8;">⚡ <strong>Cuidado:</strong> Se a pergunta pedir <em>"Em qual tempo atinge o máximo"</em> é o <strong>x<sub>V</sub> (2s)</strong>. Se pedir <em>"Qual é a altura máxima"</em>, substitua o 2 na função: h(2) = <strong>20m</strong>!</p>
           </div>
         </div>
       </div>
@@ -1511,13 +1492,13 @@
 
     <!-- SLIDE 13: COMPETÊNCIA 6 (PARTE 1 - MÉDIA, MODA E MEDIANA) -->
     <section class="slide">
-      <span class="kicker emerald">Competência 6 • Estatística, Tabelas e Gráficos (1/2)</span>
-      <h2>C6: Moda, Mediana e Média Aritmética</h2>
+      <span class="kicker emerald">📊 Competência 6 • Estatística, Tabelas e Gráficos (1/2)</span>
+      <h2>C6: A Pegadinha Clássica da Mediana!</h2>
 
       <div class="quiz-layout">
         <div class="question-box">
           <div>
-            <span class="comp-badge" style="background: rgba(16,185,129,0.2); color: var(--emerald);">EXERCÍCIO 11 • ESTATÍSTICA</span>
+            <span class="comp-badge" style="background: rgba(16,185,129,0.2); color: var(--emerald);">🚨 DESAFIO #11 • MÉDIA, MODA E MEDIANA</span>
             <p class="question-text">
               O número de gols que uma equipe marcou nas últimas 5 partidas foi:<br><br>
               <strong style="font-size: 1.45rem; letter-spacing: 2px;">3 , 0 , 5 , 1 , 1</strong><br><br>
@@ -1543,22 +1524,22 @@
 
         <div class="hack-panel">
           <div class="hack-locked" id="lock-11">
-            <div style="font-size: 2.2rem;">📝</div>
-            <h3 style="font-family:'Outfit';">Resolução do Exercício 11</h3>
-            <p style="color:var(--text-muted); font-size:0.95rem;">Ordene a sequência no Quadro Branco para encontrar a mediana.</p>
+            <div style="font-size: 2.2rem;">⚠️</div>
+            <h3 style="font-family:'Outfit';">Quem marcou a Letra A caiu na pegadinha!</h3>
+            <p style="color:var(--text-muted); font-size:0.95rem;">Por que o 5 NÃO é a mediana mesmo estando no meio da lista?</p>
             <div style="display:flex; gap:10px;">
               <button class="open-board-inline" onclick="toggleWhiteboard()">✏️ Abrir Quadro</button>
-              <button class="reveal-btn" onclick="revealHack(11)">✓ Ver Resolução</button>
+              <button class="reveal-btn" onclick="revealHack(11)">💡 Revelar Dica</button>
             </div>
           </div>
 
           <div class="hack-content" id="hack-11">
-            <h3 style="color: var(--emerald); font-family:'Outfit'; margin-bottom:6px;">Passo a Passo:</h3>
+            <h3 style="color: var(--emerald); font-family:'Outfit'; margin-bottom:6px;">🛑 Regra Nº 1 da Mediana: ORDENE PRIMEIRO!</h3>
+            <p>O ENEM sempre entrega os números fora de ordem no gráfico ou tabela para você pegar o número errado do meio!</p>
             <div class="formula-pill">
-              • 1º) Colocar em ordem crescente: <strong>0 , 1 , [ 1 ] , 3 , 5</strong><br>
-              • <strong>Moda</strong> (valor que mais se repete): <strong>1</strong><br>
-              • <strong>Mediana</strong> (valor central após ordenar): <strong>1</strong><br>
-              • <strong>Média</strong>: (0 + 1 + 1 + 3 + 5) ÷ 5 = 10 ÷ 5 = <strong style="color:#fde68a;">2 (Letra B)</strong>
+              • 1º) Ordem crescente: <strong>0 , 1 , [ 1 ] , 3 , 5</strong><br>
+              • <strong>Moda</strong> (mais repete): <strong>1</strong> &nbsp;|&nbsp; <strong>Mediana</strong> (meio ordenado): <strong>1</strong><br>
+              • <strong>Média</strong>: (0 + 1 + 1 + 3 + 5) ÷ 5 = 10 ÷ 5 = <strong style="color:#fde68a;">2 (Letra B)!</strong>
             </div>
           </div>
         </div>
@@ -1567,32 +1548,31 @@
 
     <!-- SLIDE 14: COMPETÊNCIA 6 (PARTE 2 - MÉDIA PONDERADA E DESVIO PADRÃO) -->
     <section class="slide">
-      <span class="kicker emerald">Competência 6 • Estatística, Tabelas e Gráficos (2/2)</span>
-      <h2>C6: Média Ponderada e Desvio Padrão</h2>
-      <p class="subtitle">Como calcular a Média Ponderada e como interpretar o Desvio Padrão em tabelas:</p>
+      <span class="kicker emerald">📊 Competência 6 • Estatística, Tabelas e Gráficos (2/2)</span>
+      <h2>C6: Dicas de Desvio Padrão e Média Ponderada</h2>
+      <p class="subtitle">Duas dicas simples para resolver questões de tabelas em segundos:</p>
 
       <div class="grid-2">
-        <div class="card highlight-amber">
-          <div class="card-title">⚖️ 1. Média Ponderada (Com Pesos)</div>
-          <p style="margin-bottom:10px;">Multiplique cada valor pelo seu respectivo peso (ou quantidade) e divida pela soma dos pesos:</p>
+        <div class="card highlight-emerald">
+          <div class="card-title">🎯 1. Desvio Padrão Sem Fazer Conta!</div>
+          <p style="margin-bottom:10px;">No ENEM você não precisa calcular a raiz quadrada do Desvio Padrão! Basta saber o que ele significa:</p>
           <div class="formula-pill">
-            <strong>Média = </strong>
-            <span class="math-frac">
-              <span class="num">(Nota₁ × Peso₁) + (Nota₂ × Peso₂)</span>
-              <span class="den">Peso₁ + Peso₂</span>
-            </span>
-            <br><br>
-            • <strong>Exemplo:</strong> Tirou 6,0 (peso 2) e 9,0 (peso 1):<br>
-            Média = (6×2 + 9×1) ÷ (2 + 1) = 21 ÷ 3 = <strong>7,0</strong>.
+            • Falou em <strong>"Mais regular, mais constante, mais estável ou homogêneo"</strong> ➔ Escolha o <strong>MENOR Desvio Padrão!</strong><br>
+            • Olhe na tabela qual linha tem os números mais <strong>próximos entre si</strong> (que oscilam menos).
           </div>
         </div>
 
-        <div class="card highlight-emerald">
-          <div class="card-title">📊 2. Desvio Padrão (Regularidade)</div>
-          <p style="margin-bottom:10px;">O Desvio Padrão mede o quanto os dados variam em relação à média:</p>
+        <div class="card highlight-amber">
+          <div class="card-title">⚠️ 2. Pegadinha da Média Ponderada</div>
+          <p style="margin-bottom:10px;">Quando a tabela tem <strong>Pesos</strong> ou <strong>Quantidade de Pessoas</strong>, não some só os valores! Multiplique cada valor pelo seu peso:</p>
           <div class="formula-pill">
-            • <strong>Menor Desvio Padrão:</strong> dados mais próximos entre si (maior <strong>regularidade / estabilidade</strong>).<br>
-            • <strong>Maior Desvio Padrão:</strong> dados mais distantes entre si (maior <strong>variação / oscilação</strong>).
+            <strong>Média = </strong>
+            <span class="math-frac">
+              <span class="num">(Valor₁ × Peso₁) + (Valor₂ × Peso₂)</span>
+              <span class="den">Peso₁ + Peso₂</span>
+            </span>
+            <br><br>
+            • <strong>Dica "Nota que Falta":</strong> Precisa de média 7 em 4 provas? Então a soma das 4 notas tem que dar <strong>4 × 7 = 28 pontos</strong>!
           </div>
         </div>
       </div>
@@ -1600,13 +1580,13 @@
 
     <!-- SLIDE 15: COMPETÊNCIA 7 (PROBABILIDADE) -->
     <section class="slide">
-      <span class="kicker cyan">Competência 7 • Probabilidade</span>
-      <h2>C7: Cálculo de Probabilidade</h2>
+      <span class="kicker cyan">🎲 Competência 7 • Probabilidade</span>
+      <h2>C7: Probabilidade e a Dica do "E" vs. "OU"</h2>
 
       <div class="quiz-layout">
         <div class="question-box">
           <div>
-            <span class="comp-badge" style="background: rgba(6,182,212,0.2); color: var(--cyan);">EXERCÍCIO 12 • PROBABILIDADE</span>
+            <span class="comp-badge" style="background: rgba(6,182,212,0.2); color: var(--cyan);">⚡ DESAFIO #12 • PROBABILIDADE</span>
             <p class="question-text">
               Uma urna contém <strong>20 bolas</strong> numeradas de 1 a 20: sendo <strong>8 bolas azuis</strong>, <strong>7 bolas verdes</strong> e <strong>5 bolas amarelas</strong>.<br><br>
               Sorteando-se 1 bola ao acaso, qual é a probabilidade de ela ser <strong>azul OU amarela</strong>?
@@ -1631,66 +1611,55 @@
 
         <div class="hack-panel">
           <div class="hack-locked" id="lock-12">
-            <div style="font-size: 2.2rem;">📝</div>
-            <h3 style="font-family:'Outfit';">Resolução do Exercício 12</h3>
-            <p style="color:var(--text-muted); font-size:0.95rem;">Use a definição <span class="math-inline">P = Casos Favoráveis / Total</span> no Quadro.</p>
+            <div style="font-size: 2.2rem;">🎲</div>
+            <h3 style="font-family:'Outfit';">Dica Rápida da Probabilidade</h3>
+            <p style="color:var(--text-muted); font-size:0.95rem;">Use o Quadro Branco ou clique para ver a resolução e as dicas de probabilidade!</p>
             <div style="display:flex; gap:10px;">
               <button class="open-board-inline" onclick="toggleWhiteboard()">✏️ Abrir Quadro</button>
-              <button class="reveal-btn" onclick="revealHack(12)">✓ Ver Resolução</button>
+              <button class="reveal-btn" onclick="revealHack(12)">💡 Revelar Dica</button>
             </div>
           </div>
 
           <div class="hack-content" id="hack-12">
-            <h3 style="color: var(--cyan); font-family:'Outfit'; margin-bottom:6px;">Passo a Passo:</h3>
+            <h3 style="color: var(--cyan); font-family:'Outfit'; margin-bottom:6px;">💡 Passo a Passo + Dicionário da Probabilidade:</h3>
             <div class="formula-pill">
-              • Total de casos possíveis = <strong>20 bolas</strong><br>
-              • Casos favoráveis (Azul + Amarela) = 8 + 5 = <strong>13 bolas</strong><br>
-              • <strong>P = </strong><span class="math-frac"><span class="num">13</span><span class="den">20</span></span> = <span class="math-frac"><span class="num">65</span><span class="den">100</span></span> = <strong style="color:#fde68a;">65% (Letra C)</strong>
+              • Total = <strong>20 bolas</strong> | Favoráveis (Azul + Amarela) = 8 + 5 = <strong>13 bolas</strong><br>
+              • <strong>P = </strong><span class="math-frac"><span class="num">13</span><span class="den">20</span></span> = <span class="math-frac"><span class="num">65</span><span class="den">100</span></span> = <strong style="color:#fde68a;">65% (Letra C)!</strong>
             </div>
+            <p style="font-size:0.9rem; color:#94a3b8;">⚡ <strong>Dicas C7:</strong> Acontecer isso <strong>"OU"</strong> aquilo = <strong>Soma (+)</strong>. Acontecer isso <strong>"E"</strong> aquilo = <strong>Multiplica (×)</strong>. Leu <strong>"Pelo menos um"</strong> = faça <span class="math-inline">100% − Nenhum</span>!</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SLIDE 16: RESUMO GERAL DE FÓRMULAS -->
+    <!-- SLIDE 16: DICAS FINAIS DE PROVA E RESUMO -->
     <section class="slide">
-      <span class="kicker">📌 Quadro-Resumo Final</span>
-      <h2>Resumo das Fórmulas Essenciais</h2>
-      <p class="subtitle">Revisão rápida das expressões mais utilizadas ao longo das 7 competências:</p>
+      <span class="kicker">🚀 Dicas Práticas para o Dia da Prova</span>
+      <h2>3 Dicas Simples para Ganhar Tempo na Prova</h2>
+      <p class="subtitle">Como resolver as 45 questões sem faltar tempo no final:</p>
 
       <div class="grid-3">
         <div class="card highlight-amber">
-          <div class="card-title">📐 Geometria & Medidas</div>
+          <div class="card-title">1. Comece Lendo a Pergunta Final</div>
           <ul>
-            <li><strong>Pitágoras:</strong> <span class="math-inline">a² = b² + c²</span></li>
-            <li><strong>Área do Triângulo:</strong> <span class="math-inline">(b · h) ÷ 2</span></li>
-            <li><strong>Área do Círculo:</strong> <span class="math-inline">π · r²</span></li>
-            <li><strong>Volume Prisma/Cilindro:</strong> <span class="math-inline">A<sub>base</sub> · h</span></li>
-            <li><strong>Volume Pirâmide/Cone:</strong> <span class="math-inline">(A<sub>base</sub> · h) ÷ 3</span></li>
-            <li><strong>Conversão:</strong> <span class="math-inline">1 m³ = 1.000 L</span></li>
+            <li>Antes de ler o texto longo da questão, leia a <strong>última frase antes das alternativas</strong> (o comando).</li>
+            <li>Assim você já volta para o texto sabendo exatamente quais números precisa procurar!</li>
           </ul>
         </div>
 
         <div class="card highlight-emerald">
-          <div class="card-title">📈 Funções & Porcentagem</div>
+          <div class="card-title">2. Não Trave em Conta Longa</div>
           <ul>
-            <li><strong>Função de 1º Grau:</strong> <span class="math-inline">f(x) = ax + b</span></li>
-            <li><strong>Função de 2º Grau:</strong> <span class="math-inline">f(x) = ax² + bx + c</span></li>
-            <li><strong>X do Vértice:</strong> <span class="math-inline">x<sub>V</sub> = −b ÷ (2a)</span></li>
-            <li><strong>Aumento de i%:</strong> multiplicar por <span class="math-inline">(1 + i)</span></li>
-            <li><strong>Desconto de i%:</strong> multiplicar por <span class="math-inline">(1 − i)</span></li>
+            <li>Comece garantindo as questões de <strong>Tabelas, Gráficos, Porcentagem, Regra de 3 e Estatística</strong>.</li>
+            <li>Viu uma questão muito trabalhosa? Circule e deixe para o final para não perder tempo!</li>
           </ul>
         </div>
 
         <div class="card highlight-primary">
-          <div class="card-title">📊 Estatística & Probabilidade</div>
+          <div class="card-title">3. Olhe as Alternativas Antes de Calcular</div>
           <ul>
-            <li><strong>Média:</strong> <span class="math-inline">(Soma dos valores) ÷ n</span></li>
-            <li><strong>Mediana:</strong> termo central (dados em ordem!)</li>
-            <li><strong>Moda:</strong> valor que mais se repete</li>
-            <li><strong>Probabilidade:</strong> <span class="math-inline">Favoráveis ÷ Total</span></li>
-            <li><strong>Eventos "E":</strong> multiplica (<span class="math-inline">×</span>)</li>
-            <li><strong>Eventos "OU":</strong> soma (<span class="math-inline">+</span>)</li>
+            <li>Se as alternativas estão bem distantes umas das outras, você pode <strong>arredondar os números</strong> para fazer a conta mais rápido!</li>
+            <li>Cuidado com a unidade de medida pedida no final (<span class="math-inline">m³ ↔ Litros</span>, <span class="math-inline">cm ↔ m</span>).</li>
           </ul>
         </div>
       </div>
@@ -1698,10 +1667,10 @@
       <div style="margin-top: 22px; display: flex; align-items: center; justify-content: space-between; background: rgba(16, 185, 129, 0.12); border: 1px solid rgba(16, 185, 129, 0.4); padding: 14px 24px; border-radius: 16px;">
         <div>
           <strong style="font-size: 1.2rem; font-family: 'Outfit'; color: #fff;">🏆 ÓTIMA PROVA A TODOS!</strong>
-          <span style="color: #cbd5e1; margin-left: 12px;">Confiem no preparo de vocês e façam uma excelente prova de Matemática!</span>
+          <span style="color: #cbd5e1; margin-left: 12px;">Cabeça tranquila, atenção às pegadinhas e excelente prova de Matemática!</span>
         </div>
         <button class="reveal-btn" style="background: linear-gradient(135deg, var(--emerald), #059669);" onclick="fireConfetti()">
-          🎉 Encerrar Aula!
+          🎉 Comemorar!
         </button>
       </div>
     </section>
@@ -1730,119 +1699,119 @@
     let currentSlide = 0;
     let presenterWin = null;
 
-    // GUIA DO PROFESSOR DIRETO AO PONTO (CONCEITO + PASSO A PASSO DA CONTA)
+    // GUIA DO PROFESSOR SIMPLES: DICA/PEGADINHA + PASSO A PASSO DA CONTA
     const detailedTeacherGuide = [
       // SLIDE 1
       {
         title: "Slide 01 • Abertura da Aula",
         time: "00 a 03 min",
-        concept: "Apresentação direta da revisão: vamos passar pelas 7 Competências da prova de Matemática do ENEM resolvendo exercícios práticos de cada uma.",
-        steps: "<ul><li>Apresente a estrutura da aula: visão geral das 7 competências + resolução comentada no quadro branco.</li><li>Avance para o Slide 2 para mostrar os assuntos de cada competência.</li></ul>"
+        tip: "Dê as boas-vindas à turma! Explique que vamos revisar as 7 Competências da prova de Matemática do ENEM de forma direta: vendo o que mais cai, como não cair nas pegadinhas clássicas e resolvendo 12 desafios práticos.",
+        steps: "<ul><li>Combine a dinâmica com os alunos: em cada desafio você dará um tempo rápido no cronômetro para eles escolherem A, B, C ou D antes de revelar a dica e fazer a conta no Quadro.</li></ul>"
       },
       // SLIDE 2
       {
-        title: "Slide 02 • As 7 Competências da Matemática no ENEM",
+        title: "Slide 02 • Raio-X das 7 Competências",
         time: "03 a 07 min",
-        concept: "Explicar de forma simples o que cada competência cobra:<br>• <strong>C1:</strong> Números (porcentagem, razão, MMC/MDC, contagem).<br>• <strong>C2:</strong> Geometria plana e espacial.<br>• <strong>C3:</strong> Unidades de medida e escalas.<br>• <strong>C4:</strong> Regra de três direta e inversa.<br>• <strong>C5:</strong> Funções e equações (1º e 2º grau).<br>• <strong>C6:</strong> Estatística (média, moda, mediana) e gráficos.<br>• <strong>C7:</strong> Probabilidade.",
-        steps: "<ul><li>Comente brevemente os 4 blocos na tela para situar os alunos.</li><li>Destaque que vamos resolver questões práticas de todas elas a partir do próximo slide.</li></ul>"
+        tip: "Mostre para a turma que mais de 70% da prova está concentrada em assuntos do dia a dia: <strong>Porcentagem e Proporção (C1)</strong>, <strong>Estatística e Gráficos (C6)</strong> e <strong>Escalas e Regra de Três (C3 e C4)</strong>.",
+        steps: "<ul><li>Passe brevemente pelos 4 cards mostrando os temas de cada competência.</li><li>Avance para o Slide 3 para começar o Desafio #1!</li></ul>"
       },
       // SLIDE 3
       {
-        title: "Slide 03 • Exercício 01: Porcentagem (Competência 1)",
+        title: "Slide 03 • Desafio #1: Porcentagem Sucessiva (C1)",
         time: "07 a 12 min",
-        concept: "Em aumentos e descontos sucessivos, a segunda porcentagem incide sobre o novo valor já alterado, e não sobre o valor inicial.",
-        steps: "<strong>Resolução para fazer no Quadro:</strong><br>1) Adote o preço inicial = <code>R$ 100,00</code>.<br>2) Aumento de 20% sobre 100: <code>100 + 20 = R$ 120,00</code>.<br>3) Desconto de 20% sobre R$ 120,00:<br>&nbsp;&nbsp;<code>20% de 120 = 0,20 × 120 = R$ 24,00</code>.<br>4) Subtraindo o desconto: <code>120 − 24 = R$ 96,00</code>.<br>5) Comparando com os R$ 100,00 iniciais: passou de 100 para 96, ou seja, ficou <strong>4% mais barato (Letra C)</strong>."
+        tip: "<strong>⚠️ Pegadinha:</strong> Muita gente acha que subir 20% e descontar 20% volta para o mesmo valor (Letra A). Explique que o desconto de 20% é calculado sobre o preço maior (120), por isso o desconto em reais é maior do que o aumento!<br><strong>💡 Dica:</strong> Sempre que a questão não der o valor inicial em reais, chute <strong>R$ 100,00</strong>!",
+        steps: "<strong>Conta no Quadro Branco:</strong><br>1) Preço inicial = <code>R$ 100</code><br>2) Aumento de 20% de 100 (+20) ➔ <code>R$ 120</code><br>3) Desconto de 20% sobre 120: <code>120 × 0,20 = R$ 24 de desconto</code><br>4) Preço final: <code>120 − 24 = R$ 96</code><br>5) De 100 para 96 ➔ <strong>4% mais barato (Letra C)</strong>."
       },
       // SLIDE 4
       {
-        title: "Slide 04 • Exercício 02: MMC (Competência 1)",
+        title: "Slide 04 • Desafio #2: MMC vs. MDC (C1)",
         time: "12 a 16 min",
-        concept: "Problemas que envolvem eventos periódicos que acontecem juntos e perguntam quando voltarão a acontecer ao mesmo tempo são resolvidos pelo <strong>MMC (Mínimo Múltiplo Comum)</strong>.",
-        steps: "<strong>Resolução para fazer no Quadro:</strong><br>1) Calcular o <code>MMC(6, 8, 12)</code>:<br>&nbsp;&nbsp;6, 8, 12 | 2<br>&nbsp;&nbsp;3, 4, 6 &nbsp;| 2<br>&nbsp;&nbsp;3, 2, 3 &nbsp;| 2<br>&nbsp;&nbsp;3, 1, 3 &nbsp;| 3<br>&nbsp;&nbsp;1, 1, 1 &nbsp;| Produto = <code>2 × 2 × 2 × 3 = 24 horas</code>.<br>2) Somar 24 horas ao horário inicial (sexta-feira às 08h00):<br>&nbsp;&nbsp;Resultado = <strong>Sábado às 08h00 (Letra B)</strong>."
+        tip: "<strong>💡 Dica para nunca confundir:</strong><br>• Falou em tempos diferentes que acontecem juntos e perguntou <em>'quando acontecerão juntos novamente / simultaneamente'</em> ➔ é sempre <strong>MMC</strong>!<br>• Falou em <em>'dividir em pacotes/pedaços iguais do maior tamanho possível'</em> ➔ é sempre <strong>MDC</strong>!",
+        steps: "<strong>Conta no Quadro Branco:</strong><br>1) Tirar o <code>MMC(6, 8, 12)</code>:<br>&nbsp;&nbsp;6, 8, 12 | 2<br>&nbsp;&nbsp;3, 4, 6 &nbsp;| 2<br>&nbsp;&nbsp;3, 2, 3 &nbsp;| 2<br>&nbsp;&nbsp;3, 1, 3 &nbsp;| 3<br>&nbsp;&nbsp;1, 1, 1 &nbsp;| Multiplica tudo: <code>2 × 2 × 2 × 3 = 24 horas</code>.<br>2) Sexta-feira às 08h00 + 24 horas = <strong>Sábado às 08h00 (Letra B)</strong>."
       },
       // SLIDE 5
       {
-        title: "Slide 05 • Exercício 03: Combinação Simples (Competência 1)",
+        title: "Slide 05 • Desafio #3: Análise Combinatória (C1)",
         time: "16 a 21 min",
-        concept: "Na formação de grupos ou equipes onde todos têm a mesma função, a ordem de escolha não altera a equipe (Combinação).",
-        steps: "<strong>Resolução para fazer no Quadro:</strong><br>1) Para a 1ª vaga temos 6 opções, para a 2ª temos 5, para a 3ª temos 4:<br>&nbsp;&nbsp;<code>6 × 5 × 4 = 120</code>.<br>2) Como a ordem dos 3 médicos na equipe não importa, dividimos pelo fatorial de 3 (<code>3! = 3 × 2 × 1 = 6</code>):<br>&nbsp;&nbsp;<code>120 ÷ 6 = 20 equipes</code> <strong>(Letra B)</strong>."
+        tip: "<strong>⚠️ Pegadinha da Letra C (120):</strong> Se o aluno apenas multiplicar <code>6 × 5 × 4 = 120</code>, ele marca a Letra C e erra!<br><strong>💡 Dica simples:</strong> Pergunte: <em>'Mudar a ordem das pessoas muda a equipe?'</em> Não! Escolher (João, Maria, Pedro) é a mesma equipe que (Pedro, Maria, João). Quando a ordem não importa, dividimos pelo fatorial das vagas!",
+        steps: "<strong>Conta no Quadro Branco:</strong><br>1) Faça 3 tracinhos para as 3 vagas: <code>6 × 5 × 4 = 120</code>.<br>2) Divida pela permutação de 3 pessoas (<code>3! = 3 × 2 × 1 = 6</code>):<br>&nbsp;&nbsp;<code>120 ÷ 6 = 20 equipes</code> <strong>(Letra B)</strong>."
       },
       // SLIDE 6
       {
-        title: "Slide 06 • Exercício 04: Projeção Ortogonal (Competência 2)",
+        title: "Slide 06 • Desafio #4: Projeção Ortogonal (C2)",
         time: "21 a 25 min",
-        concept: "A projeção ortogonal sobre o plano da base corresponde à vista superior (olhando o objeto exatamente de cima para baixo).",
-        steps: "<strong>Resolução para fazer no Quadro:</strong><br>1) Desenhe o cilindro visto de cima: ele é visto como uma circunferência.<br>2) A formiga anda apenas pela superfície lateral do cilindro.<br>3) Olhando de cima, todo o deslocamento na parede lateral fica exatamente sobre a linha da circunferência da base.<br>4) Como ela deu 1 volta completa: <strong>uma circunferência completa (Letra C)</strong>."
+        tip: "<strong>⚠️ Pegadinha:</strong> O aluno lê que a formiga subiu em espiral e quer marcar 'espiral' (Letra B).<br><strong>💡 Dica da Panqueca:</strong> Projeção ortogonal na base é olhar a lata exatamente de cima para baixo (como se amassasse a lata no chão). A altura desaparece e toda a parede lateral vira o círculo da base!",
+        steps: "<strong>Desenho no Quadro Branco:</strong><br>1) Desenhe um cilindro visto de frente e ao lado desenhe ele visto de cima (um círculo).<br>2) Mostre que como a formiga anda colada na parede lateral dando 1 volta completa, a sombra dela no chão desenha <strong>uma circunferência completa (Letra C)</strong>."
       },
       // SLIDE 7
       {
-        title: "Slide 07 • Exercício 05: Teorema de Pitágoras (Competência 2)",
+        title: "Slide 07 • Desafio #5: Triângulo 3 – 4 – 5 (C2)",
         time: "25 a 29 min",
-        concept: "Em todo triângulo retângulo, o quadrado da hipotenusa é igual à soma dos quadrados dos catetos (<code>a² = b² + c²</code>).",
-        steps: "<strong>Resolução para fazer no Quadro:</strong><br>1) Desenhe o muro vertical (altura <code>h</code>), o chão horizontal (<code>6 m</code>) e a escada inclinada (hipotenusa = <code>10 m</code>).<br>2) Aplicando Pitágoras:<br>&nbsp;&nbsp;<code>10² = h² + 6²</code><br>&nbsp;&nbsp;<code>100 = h² + 36</code><br>&nbsp;&nbsp;<code>h² = 100 − 36 = 64</code><br>&nbsp;&nbsp;<code>h = √64 = 8 metros</code> <strong>(Letra C)</strong>."
+        tip: "<strong>💡 Dica para ganhar tempo:</strong> O ENEM usa o triângulo retângulo <strong>3 – 4 – 5</strong> (e seus múltiplos: <strong>6 – 8 – 10</strong>, <strong>9 – 12 – 15</strong>, <strong>30 – 40 – 50</strong>) em quase toda questão de escada, rampa ou tirolesa!",
+        steps: "<strong>Conta no Quadro Branco:</strong><br>1) <strong>Pelo atalho 3-4-5:</strong> Hipotenusa = 10 (5×2), Cateto = 6 (3×2), logo o outro cateto é <code>4×2 = 8 metros</code>!<br>2) <strong>Por Pitágoras:</strong><br>&nbsp;&nbsp;<code>10² = h² + 6²</code><br>&nbsp;&nbsp;<code>100 = h² + 36 ➔ h² = 64 ➔ h = 8 metros</code> <strong>(Letra C)</strong>."
       },
       // SLIDE 8
       {
-        title: "Slide 08 • Exercício 06: Volume do Cilindro e do Cone (Competência 2)",
+        title: "Slide 08 • Desafio #6: Volumes de Sólidos (C2)",
         time: "29 a 33 min",
-        concept: "O volume do cilindro é <code>V = A_base × h</code>. O volume do cone de mesma base e altura é um terço desse valor: <code>V = (A_base × h) ÷ 3</code>.",
-        steps: "<strong>Resolução para fazer no Quadro:</strong><br>1) Escreva a fórmula do cilindro: <code>V_cilindro = π · r² · h</code>.<br>2) Escreva a fórmula do cone: <code>V_cone = (π · r² · h) / 3</code>.<br>3) Como o cone tem exatamente 1/3 do volume do cilindro, são necessários <strong>3 copos cônicos (Letra B)</strong> para igualar o volume."
+        tip: "<strong>💡 Dica para não decorar várias fórmulas:</strong><br>• Sólido que sobe reto sem ponta (Prisma e Cilindro): <code>Volume = Área da Base × Altura</code>.<br>• Sólido que tem ponta em cima (Pirâmide e Cone): <code>Volume = (Área da Base × Altura) ÷ 3</code>!",
+        steps: "<strong>Conta no Quadro Branco:</strong><br>1) Volume do Cilindro = <code>π · r² · h</code><br>2) Volume do Cone = <code>(π · r² · h) ÷ 3</code><br>3) Como o cone tem um terço do volume do cilindro, cabem exatamente <strong>3 taças cônicas (Letra B)</strong>."
       },
       // SLIDE 9
       {
-        title: "Slide 09 • Exercício 07: Escala e Volume (Competência 3)",
+        title: "Slide 09 • Desafio #7: Pegadinha de Escala e Volume (C3)",
         time: "33 a 38 min",
-        concept: "Quando reduzimos um objeto na escala <code>1 : k</code>:<br>• Comprimento divide por <code>k</code><br>• Área divide por <code>k²</code><br>• Volume divide por <code>k³</code>",
-        steps: "<strong>Resolução para fazer no Quadro:</strong><br>1) A escala linear é <code>1 : 10</code>.<br>2) Como capacidade (litros) é uma medida de volume (3 dimensões: comprimento × largura × profundidade), a razão de volume é:<br>&nbsp;&nbsp;<code>10³ = 10 × 10 × 10 = 1.000</code>.<br>3) Dividindo o volume real por 1.000:<br>&nbsp;&nbsp;<code>50.000 ÷ 1.000 = 50 litros</code> <strong>(Letra C)</strong>."
+        tip: "<strong>🚨 A Maior Pegadinha do ENEM:</strong> Quase todo mundo divide 50.000 por 10 e marca 5.000 L (Letra A)!<br><strong>💡 Dica:</strong> Na escala <code>1 : 10</code>, o comprimento divide por 10, a largura divide por 10 e a profundidade também divide por 10! No volume (3D), dividimos por <code>10³ = 1.000</code>!",
+        steps: "<strong>Conta no Quadro Branco:</strong><br>1) Escala 1D (Comprimento): divide por <code>10</code><br>2) Escala 2D (Área): divide por <code>10² = 100</code><br>3) Escala 3D (Volume / Litros): divide por <code>10³ = 1.000</code><br>4) Conta: <code>50.000 ÷ 1.000 = 50 litros</code> <strong>(Letra C)</strong>.<br><em>Lembre também no quadro: 1 m³ = 1.000 litros!</em>"
       },
       // SLIDE 10
       {
-        title: "Slide 10 • Exercício 08: Grandezas Inversamente Proporcionais (Competência 4)",
+        title: "Slide 10 • Desafio #8: Regra de Três Inversa (C4)",
         time: "38 a 42 min",
-        concept: "Duas grandezas são inversamente proporcionais quando o aumento de uma provoca a redução da outra na mesma proporção.",
-        steps: "<strong>Resolução para fazer no Quadro:</strong><br>1) 3 bombas levam 8 horas. Para reduzir o tempo para 2 horas (4 vezes menos tempo), precisamos de 4 vezes mais bombas.<br>2) Equação do produto constante:<br>&nbsp;&nbsp;<code>3 × 8 = x × 2</code><br>&nbsp;&nbsp;<code>24 = 2x</code><br>&nbsp;&nbsp;<code>x = 24 ÷ 2 = 12 bombas</code> <strong>(Letra C)</strong>."
+        tip: "<strong>⚠️ Pegadinha:</strong> Montar regra de três e multiplicar cruzado sem perceber que as grandezas são inversas!<br><strong>💡 Dica:</strong> Aumentou o número de bombas, o tempo diminui! Quando é inversa, basta <strong>multiplicar reto (na horizontal)</strong>!",
+        steps: "<strong>Conta no Quadro Branco:</strong><br>1) <code>3 bombas —— 8 horas</code><br>&nbsp;&nbsp;<code>x bombas —— 2 horas</code><br>2) Multiplicando reto:<br>&nbsp;&nbsp;<code>2 · x = 3 · 8</code><br>&nbsp;&nbsp;<code>2x = 24 ➔ x = 12 bombas</code> <strong>(Letra C)</strong>."
       },
       // SLIDE 11
       {
-        title: "Slide 11 • Exercício 09: Função do 1º Grau (Competência 5)",
+        title: "Slide 11 • Desafio #9: Função do 1º Grau (C5)",
         time: "42 a 46 min",
-        concept: "Na função afim <code>f(x) = ax + b</code>, <code>b</code> é o valor fixo e <code>a</code> é a taxa variável por unidade.",
-        steps: "<strong>Resolução para fazer no Quadro:</strong><br>1) Escrever a função do custo para <code>x</code> km rodados:<br>&nbsp;&nbsp;• Plano Alfa: <code>40 + 2x</code><br>&nbsp;&nbsp;• Plano Beta: <code>70 + 1x</code><br>2) Igualar as duas expressões para achar a quilometragem de mesmo custo:<br>&nbsp;&nbsp;<code>40 + 2x = 70 + x</code><br>&nbsp;&nbsp;<code>2x − x = 70 − 40</code><br>&nbsp;&nbsp;<code>x = 30 km</code> <strong>(Letra C)</strong>."
+        tip: "<strong>💡 Dica Prática:</strong> Toda questão que tem uma taxa fixa + um valor por unidade (km rodado, minuto, peça produzida) é uma função do 1º grau: <code>f(x) = ax + b</code>. Dá para fazer igualando as equações ou pensando na compensação de cabeça!",
+        steps: "<strong>Conta no Quadro Branco:</strong><br>1) Plano Alfa: <code>40 + 2x</code> | Plano Beta: <code>70 + 1x</code><br>2) Igualando os valores:<br>&nbsp;&nbsp;<code>40 + 2x = 70 + x</code><br>&nbsp;&nbsp;<code>2x − x = 70 − 40 ➔ x = 30 km</code> <strong>(Letra C)</strong>."
       },
       // SLIDE 12
       {
-        title: "Slide 12 • Exercício 10: Função do 2º Grau / Vértice (Competência 5)",
+        title: "Slide 12 • Desafio #10: Vértice da Parábola (C5)",
         time: "46 a 50 min",
-        concept: "Em uma parábola com concavidade para baixo (<code>a < 0</code>), o valor máximo ocorre no vértice: <code>x_V = −b / (2a)</code>.",
-        steps: "<strong>Resolução para fazer no Quadro:</strong><br>1) Na função <code>h(t) = −5t² + 20t</code>, identificar os coeficientes:<br>&nbsp;&nbsp;<code>a = −5</code> e <code>b = 20</code>.<br>2) Aplicar a fórmula do instante do vértice:<br>&nbsp;&nbsp;<code>t_V = −b / (2a) = −20 / (2 × (−5)) = −20 / (−10) = 2 segundos</code> <strong>(Letra B)</strong>.<br>3) Caso queira mostrar a altura máxima atingida, basta substituir <code>t = 2</code>:<br>&nbsp;&nbsp;<code>h(2) = −5(2²) + 20(2) = −20 + 40 = 20 metros</code>."
+        tip: "<strong>💡 Dica:</strong> Sempre que a questão tiver uma equação de 2º grau e pedir o <em>Lucro Máximo, Altura Máxima ou Custo Mínimo</em>, use direto a fórmula do X do Vértice: <code>x_V = −b / (2a)</code>.<br><strong>⚠️ Pegadinha:</strong> Cuidado para não confundir o tempo do máximo (<code>2 s</code>) com a altura máxima (<code>20 m</code>, que está na Letra D)!",
+        steps: "<strong>Conta no Quadro Branco:</strong><br>1) Na função <code>h(t) = −5t² + 20t</code>, temos <code>a = −5</code> e <code>b = 20</code>.<br>2) Calculando o instante do vértice:<br>&nbsp;&nbsp;<code>t_V = −b / (2a) = −20 / (2 · (−5)) = −20 / (−10) = 2 segundos</code> <strong>(Letra B)</strong>."
       },
       // SLIDE 13
       {
-        title: "Slide 13 • Exercício 11: Moda, Mediana e Média (Competência 6)",
+        title: "Slide 13 • Desafio #11: Pegadinha da Mediana (C6)",
         time: "50 a 54 min",
-        concept: "• <strong>Moda:</strong> valor mais frequente.<br>• <strong>Mediana:</strong> termo central dos dados ordenados.<br>• <strong>Média:</strong> soma de todos os valores dividida pela quantidade.",
-        steps: "<strong>Resolução para fazer no Quadro:</strong><br>1) Ordenar os 5 valores em ordem crescente:<br>&nbsp;&nbsp;<code>0 , 1 , 1 , 3 , 5</code><br>2) <strong>Moda:</strong> o número <code>1</code> aparece duas vezes ➔ <strong>1</strong>.<br>3) <strong>Mediana:</strong> o termo do meio (3º termo da lista ordenada) é o <strong>1</strong>.<br>4) <strong>Média:</strong> <code>(0 + 1 + 1 + 3 + 5) ÷ 5 = 10 ÷ 5 = 2</code>.<br>5) Resultado: <strong>1, 1 e 2 (Letra B)</strong>."
+        tip: "<strong>🚨 Pegadinha Clássica (Letra A):</strong> O aluno olha a lista <code>3, 0, 5, 1, 1</code>, vê o número 5 bem no meio e marca que a mediana é 5!<br><strong>💡 Dica:</strong> Nunca pegue o número do meio sem antes colocar os dados em <strong>ordem crescente</strong>!",
+        steps: "<strong>Conta no Quadro Branco:</strong><br>1) Colocando em ordem crescente: <code>0 , 1 , [ 1 ] , 3 , 5</code><br>2) <strong>Moda</strong> (mais aparece): <code>1</code><br>3) <strong>Mediana</strong> (meio da fila ordenada): <code>1</code><br>4) <strong>Média</strong>: <code>(0 + 1 + 1 + 3 + 5) ÷ 5 = 10 ÷ 5 = 2</code><br>5) Resposta: <strong>1, 1 e 2 (Letra B)</strong>."
       },
       // SLIDE 14
       {
-        title: "Slide 14 • Média Ponderada e Desvio Padrão (Competência 6)",
+        title: "Slide 14 • Dicas de Desvio Padrão e Média Ponderada (C6)",
         time: "54 a 56 min",
-        concept: "Explicar de forma direta a fórmula da média ponderada e o significado de desvio padrão (regularidade dos dados).",
-        steps: "<ul><li>Mostre o exemplo da tela para Média Ponderada: multiplica cada nota pelo seu peso e divide pela soma dos pesos.</li><li>Para o Desvio Padrão: explique que quanto menor o desvio padrão, mais próximos e regulares são os valores da tabela.</li></ul>"
+        tip: "<strong>💡 Duas dicas rápidas para tabelas:</strong><br>1) <strong>Desvio Padrão:</strong> Não precisa fazer conta! 'Mais regular / mais estável' significa escolher a opção que tem o <strong>MENOR desvio padrão</strong>.<br>2) <strong>Média Ponderada:</strong> Quando há pesos, multiplique cada nota pelo peso antes de somar, e divida pela soma dos pesos.",
+        steps: "<ul><li>Comente os dois quadros na tela mostrando que Desvio Padrão é uma questão puramente visual/conceitual na prova.</li></ul>"
       },
       // SLIDE 15
       {
-        title: "Slide 15 • Exercício 12: Probabilidade (Competência 7)",
+        title: "Slide 15 • Desafio #12: Probabilidade (C7)",
         time: "56 a 58 min",
-        concept: "Probabilidade é a razão entre o número de casos favoráveis e o número total de casos possíveis: <code>P = Favoráveis / Total</code>.",
-        steps: "<strong>Resolução para fazer no Quadro:</strong><br>1) Total de bolas na urna = <code>20</code>.<br>2) Bolas favoráveis (azuis ou amarelas) = <code>8 + 5 = 13</code>.<br>3) Montar a fração:<br>&nbsp;&nbsp;<code>P = 13 / 20</code>.<br>4) Multiplicando numerador e denominador por 5 para transformar em porcentagem:<br>&nbsp;&nbsp;<code>(13 × 5) / (20 × 5) = 65 / 100 = 65%</code> <strong>(Letra C)</strong>."
+        tip: "<strong>💡 Dica do 'OU' vs. 'E':</strong><br>• Pediu Azul <strong>OU</strong> Amarela ➔ <strong>SOMA (+)</strong> os favoráveis!<br>• Pediu acontecer uma coisa <strong>E</strong> outra em seguida ➔ <strong>MULTIPLICA (×)</strong>!<br>• Pediu <strong>'Pelo menos um'</strong> ➔ Faça <code>100% − Nenhum</code>!",
+        steps: "<strong>Conta no Quadro Branco:</strong><br>1) Total de bolas = <code>20</code><br>2) Favoráveis (8 azuis + 5 amarelas) = <code>13 bolas</code><br>3) Probabilidade: <code>P = 13 / 20</code><br>4) Multiplicando em cima e embaixo por 5 para virar porcentagem:<br>&nbsp;&nbsp;<code>65 / 100 = 65%</code> <strong>(Letra C)</strong>."
       },
       // SLIDE 16
       {
-        title: "Slide 16 • Quadro-Resumo Final de Fórmulas",
+        title: "Slide 16 • Dicas Finais de Prova & Encerramento",
         time: "58 a 60 min",
-        concept: "Fechamento da revisão passando pelas principais fórmulas de Geometria, Funções e Estatística.",
-        steps: "<ul><li>Faça um fechamento tranquilo revisando as fórmulas nos 3 cartões.</li><li>Tire eventuais dúvidas finais dos alunos e clique em <strong>🎉 Encerrar Aula!</strong></li></ul>"
+        tip: "Passe as 3 dicas práticas de gestão de tempo para o dia da prova: ler a pergunta final primeiro, fazer as questões diretas de gráficos/porcentagem antes das longas e observar as alternativas.",
+        steps: "<ul><li>Deseje uma excelente prova a todos e clique no botão verde <strong>🎉 Comemorar!</strong> para soltar os confetes!</li></ul>"
       }
     ];
 
@@ -1853,9 +1822,9 @@
           <strong style="color:#fde68a; font-size:1.05rem;">${g.title}</strong>
           <span style="background:rgba(99,102,241,0.25); color:#a5b4fc; padding:3px 10px; border-radius:999px; font-size:0.8rem; font-weight:700;">⏱️ ${g.time}</span>
         </div>
-        <div style="margin-bottom:12px; background:rgba(255,255,255,0.04); border-left:3px solid #6366f1; padding:10px 12px; border-radius:6px;">
-          <div style="font-size:0.78rem; text-transform:uppercase; font-weight:800; color:#818cf8; margin-bottom:4px;">📌 Conceito Direto para Explicar:</div>
-          <div>${g.concept}</div>
+        <div style="margin-bottom:12px; background:rgba(245,158,11,0.1); border-left:3px solid #f59e0b; padding:10px 12px; border-radius:6px;">
+          <div style="font-size:0.78rem; text-transform:uppercase; font-weight:800; color:#fcd34d; margin-bottom:4px;">💡 Dica & Pegadinha para Destacar:</div>
+          <div>${g.tip}</div>
         </div>
         <div style="background:rgba(16,185,129,0.1); border-left:3px solid #10b981; padding:10px 12px; border-radius:6px;">
           <div style="font-size:0.78rem; text-transform:uppercase; font-weight:800; color:#6ee7b7; margin-bottom:4px;">✏️ Passo a Passo da Conta (Quadro Branco):</div>
@@ -1950,7 +1919,7 @@
               <button class="btn" onclick="window.opener.prevSlide()">← Anterior</button>
               <button class="btn primary" onclick="window.opener.nextSlide()">Próximo →</button>
               <button class="btn emerald" onclick="window.opener.toggleWhiteboard()">✏️ Quadro (B)</button>
-              <button class="btn amber" onclick="window.opener.revealCurrentHack()">✓ Mostrar Resolução</button>
+              <button class="btn amber" onclick="window.opener.revealCurrentHack()">💡 Revelar Dica</button>
               <button class="btn" onclick="window.opener.startTimer(60)">⏱️ 60s</button>
             </div>
           </div>
