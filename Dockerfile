@@ -11,3 +11,4 @@ COPY roteiro_aula_show_enem.md /usr/share/nginx/html/roteiro_aula_show_enem.md
 EXPOSE 80
 
 CMD ["nginx", "-g", "daemon off;"]
+
